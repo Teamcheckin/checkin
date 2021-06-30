@@ -1,0 +1,172 @@
+html {
+    height: 100%;
+    margin: 0px;
+}
+
+body {
+    height: 100%;
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: 0;
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    cursor: pointer;
+    color: initial;
+    text-decoration: initial;
+}
+
+.d-none {
+    display: none !important;
+}
+
+button {
+    border: 0;
+    outline: 0;
+}
+
+/* -------------------------------------------------------------- */
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.font {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 15px;
+}
+
+.text-strong {
+	font-weight: bold;
+	color: rgb(250, 195, 43);
+}
+
+:root {
+    --text-color-basic: #464646 !important;
+    --text-color-light: #E2E2E2 !important;
+    --text-color-strong: #FD9F28 !important;
+    --bg-color-light: #FFFEFD !important;
+    --hover-color-bg: #EFF0F1;
+    --border-color-light: #E4E6E8;
+}
+
+/* -------------------------------------------------------------- */
+
+.gu-list {
+	width: 80px;
+    height: 24px;
+}
+
+.review-container {
+	margin-top: 10px;
+}
+
+.review-list {
+	width: 340px;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+	.review-info {
+        display: flex;  
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    
+    .review-info>div {
+    	display: flex;   
+    }
+
+        .profile-img {
+            background-color: rgb(224, 223, 223);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .nickname {
+            margin-left: 10px;
+            line-height: 40px;
+        }
+        
+        .regdate {
+            text-align: right;
+            line-height: 40px;
+        }         
+        
+.img-section>div:nth-child(2) {
+	text-align: center;
+}        
+        
+ 	.review-img {
+		display: inline-block;
+		position: relative;
+		width: 338px;
+		height: 265px;
+		background-color: rgb(224, 223, 223);
+	} 
+	
+	.review-img>img {
+		width: 338px;
+		height: 265px;
+		border-radius: 5px;
+	}
+	
+	.review-img>div {
+		display: flex;
+		position: absolute;
+		left: 7px;
+		bottom: 0px;
+		background-color: rgb(245, 245, 245);
+		margin: 5px 0 10px 0;
+		padding: 3px;
+		border-radius: 3px;
+	} 
+		
+		.like {
+			width: 20px;
+			height: 20px;
+			margin: 0 6px 0 5px;
+		}
+	
+	.bookstore-name {
+		line-height: 20px;
+	}
+	
+	.hashtag-list {
+		margin: 10px 0;
+	}	
+	
+		.hashtag {
+			display: inline-block;
+			border: 1px solid black;
+			padding: 3px 10px;
+			border-radius: 10px;
+		}
+	
+.content-section>div:nth-child(2) {
+	text-align: center;    
+}
+
+	.review-content {
+		box-sizing: border-box;
+		resize: none;
+		width: 338px;
+		height: 40px;
+		padding: 10px;
+	}

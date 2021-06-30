@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    
+<mapper namespace="com.checkin.web.dao.HashtagBookstoreDao">
+
+	<select id="getList" resultType="com.checkin.web.entity.HashtagBookstore">
+		select b1.*
+		from bookstore b1
+		join hashtag_bookstore b2 on b1.id = b2.Bookstore_id
+		join hashtag h on h.Id = b2.Hashtag_id
+		where h.Name = #{query};
+		<!-- view를 생성?, 중복제거 -->
+	</select>	
+
+</mapper>
