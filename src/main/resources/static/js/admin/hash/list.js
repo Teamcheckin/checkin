@@ -12,6 +12,9 @@ window.addEventListener("load", function() {
 
 
 
+
+
+
 	addBtn.onclick = function(e) {
 		e.preventDefault();
 
