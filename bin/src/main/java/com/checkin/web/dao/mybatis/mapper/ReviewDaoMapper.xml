@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.checkin.web.dao.ReviewDao">
+	
+	<select id="getList" resultType="com.checkin.web.entity.Review"> <!-- 반환할 때 사용되는 그릇의 형식 적기 -->
+    	select * from review 
+    	<where>
+    	<if test="gu != null">
+    		gu = #{gu}  	
+    	</if>    	
+    	</where>
+    	order by regdate desc
+    </select>
+    
+    <insert id="insert" parameterType="com.checkin.web.entity.Review"> <!-- 입력될 데이터, int insert(Notice notice) 참고 -->
+    	insert into review(content, bookstore_id, member_id)
+    	values(#{content}, #{bookstoreId}, #{memberId}) <!-- notice가 가지고 있는 getTitle, getContent, getWriterId 참고 -->
+    </insert>
+    
+    <update id="update" parameterType="com.checkin.web.entity.Review">
+    	update review
+    	<set>
+    		<if test="content != null">content = #{content},</if>
+    		<if test="img != null">img = #{img},</if>    		
+    		<if test="bookstoreId != null">bookstore_id = #{bookstoreId},</if>
+    		<if test="memberId != null">member_id = #{memberId},</if>
+    	</set>
+	    where id = #{id}    	
+    </update>
+    
+    <delete id="delete" parameterType="int">
+    	delete from review where id = #{id}
+    </delete>
+    
+</mapper>
+  

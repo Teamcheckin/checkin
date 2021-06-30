@@ -1,0 +1,48 @@
+:root {
+    --primary: #287e19;
+    --secondary: #0d7785;
+    --danger: #fb0603;
+    --gray: #f8f9fa;
+  }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #181818;
+    text-decoration: none;
+}
+
+.btn {
+    color: #fff;
+    background-color: var(--primary);
+    padding: 4px 14px;
+    cursor: pointer;
+    transition: all 0.4s;
+    border-radius: 10px;
+}
+
+
+.truncate{
+   white-space:nowrap;
+   overflow: hidden !important;
+   text-overflow:ellipsis !important;
+}
+
+.d-none{
+    display: none;
+}
+
+section{
+    margin: 0px 20px;
+}
+/*---mypage---*/
+.title{
+    text-align: center;
+    margin: 30px 0;
+    font-size: 30px;
+}
+
