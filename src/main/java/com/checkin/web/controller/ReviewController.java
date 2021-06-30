@@ -150,18 +150,7 @@ public class ReviewController {
             Files.createDirectories(uploadPath);
         }
          
-<<<<<<< HEAD
-        try (InputStream inputStream = multipartFile.getInputStream()) {
-            Path filePath = uploadPath.resolve(fileName);
-            System.out.println(filePath.toFile().getAbsolutePath());
-            
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException ioe) {        
-            throw new IOException("이미지를 저장할 수 없습니다: " + fileName, ioe);
-        }       
-        
-        review.setImg(fileName);
-=======
+
         if(fileName != null && !fileName.equals("")) {
         	try (InputStream inputStream = multipartFile.getInputStream()) {
         		Path filePath = uploadPath.resolve(fileName);
@@ -175,7 +164,6 @@ public class ReviewController {
         	review.setImg(fileName);
         }
         
->>>>>>> branch 'main' of https://github.com/Teamcheckin/checkin.git
 		
 		service.update(review, hreview, rreview);
 		

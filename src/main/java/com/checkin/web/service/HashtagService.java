@@ -11,10 +11,6 @@ public interface HashtagService {
 	List<Hashtag> getList(String query);
 	
 	int getCount();	//해시태그 총 개수
-<<<<<<< HEAD
 	int insert(String hashtag); //해시태그 추가
-=======
-	int insert(Hashtag hashtag); //해시태그 추가
->>>>>>> branch 'main' of https://github.com/Teamcheckin/checkin.git
 	int delete(int id); //해시태그 삭제
 }

@@ -20,7 +20,6 @@ ul, li{
     display: flex; 
     flex-direction: row; 
     align-items: center;
-<<<<<<< HEAD
     margin-right : 16px;
     margin-left : 20px;
 }
@@ -49,7 +48,6 @@ ul, li{
             font-size: 15px;
             text-align: center;
             line-height: 30px;
-=======
     margin-right : 15px;
     margin-left : 15px;
 }
@@ -77,11 +75,8 @@ ul, li{
             font-size: 15px;
             text-align: center;
             line-height: 35px;
->>>>>>> branch 'main' of https://github.com/Teamcheckin/checkin.git
             overflow: hidden;
         }
-        
-        
         
         
 /*     .slides{

@@ -35,13 +35,21 @@ window.addEventListener("load", function() {
 		selected.classList.toggle("selected");
 
 	}
-
+})
 
 window.addEventListener("load", function(){
 	
 	let addBtn = document.querySelector("")
 	
-	
-	
->>>>>>> branch 'main' of https://github.com/Teamcheckin/checkin.git
 })
+
+
+
+
+
+
+
+
+
+
+

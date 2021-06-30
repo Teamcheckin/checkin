@@ -2,7 +2,6 @@ package com.checkin.web.controller;
 
 import java.util.List;
 
-<<<<<<< HEAD
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -19,53 +18,6 @@ import com.checkin.web.entity.HashtagBookstore;
 import com.checkin.web.entity.Member;
 import com.checkin.web.service.RecService;
 
-//추천탭 컨트롤러
-@Controller
-@RequestMapping("/rec/")
-public class RecController {
-	
-	@Autowired
-	private RecService service;
-	
-	@RequestMapping("main")
-	public String main(Model model, HttpSession session) {
-		
-		Member member = (Member) session.getAttribute("member");
-		System.out.println(member);
-		
-		if(member==null) {
-			return "mypage/indexLogin";
-		}
-		
-		int id = member.getId();
-		
-		
-		
-		List<Hashtag> hlist = service.getList();
-		System.out.println(hlist);
-		model.addAttribute("hlist",hlist);
-		
-		List<BookStore> hlist1 = service.getListHashtagBookstore("#고양이");
-		model.addAttribute("hlist1",hlist1);
-		
-		List<BookStore> hlist2 = service.getListHashtagBookstore("#큐레이터");
-		model.addAttribute("hlist2",hlist2);
-		
-		List<BookStore> hlist3 = service.getListHashtagBookstore("#영화");
-		model.addAttribute("hlist3",hlist3);
-		
-=======
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.checkin.web.entity.BookStore;
-import com.checkin.web.entity.Hashtag;
-import com.checkin.web.entity.HashtagBookstore;
-import com.checkin.web.service.RecService;
 
 //추천탭 컨트롤러
 @Controller
@@ -90,7 +42,6 @@ public class RecController {
 		
 		List<BookStore> hlist3 = service.getListHashtagBookstore("#영화");
 		model.addAttribute("hlist3",hlist3);
->>>>>>> branch 'main' of https://github.com/Teamcheckin/checkin.git
 		return "rec/main";
 	}
 	
