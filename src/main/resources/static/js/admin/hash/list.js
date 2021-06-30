@@ -7,7 +7,6 @@ window.addEventListener("load", function() {
 	let selected = null;
 
 
-
 	addBtn.onclick = function(e) {
 		e.preventDefault();
 
