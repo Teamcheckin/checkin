@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'TmoneyRoundWindRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html {
     height: 100%;
     margin: 0px;
@@ -5,8 +12,7 @@ html {
 
 body {
     height: 100%;
-    font-family: 'Nanum Gothic', sans-serif;
-    margin: 0;
+    font-family: 'TmoneyRoundWindRegular';
 }
 
 ul, ol {
@@ -47,8 +53,7 @@ button {
 }
 
 .font {
-    font-family: 'Nanum Gothic', sans-serif;
-    font-size: 15px;
+    font-family: 'TmoneyRoundWindRegular';
 }
 
 .text-strong {
@@ -67,9 +72,41 @@ button {
 
 /* -------------------------------------------------------------- */
 
+#main {
+	padding: 70px 0 60px 0;
+}
+
+.gu-search-form {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .gu-list {
-	width: 80px;
-    height: 24px;
+	height: 30px;
+	font-size: 13px;
+	padding-left: 10px;
+}
+
+	.gu-list>option {
+		font-size: 13.3px;
+	}	
+	
+.gu-search-btn {
+	height: 30px;
+	font-size: 13px;
+}
+
+.reg-btn {
+	display: inline-block;
+	font-size: 13px;
+	color: white;
+ 	font-weight: bold;
+ 	width: 80px;
+	padding: 7px 0;
+	text-align: center;
+	border-radius: 3px;
+	background-color: rgb(224, 223, 223);
 }
 
 .review-container {
@@ -77,9 +114,10 @@ button {
 }
 
 .review-list {
-	width: 340px;
 	border: 1px solid black;
 	padding: 10px;
+	margin-bottom: 15px;
+	border-radius: 6px;
 }
 
 	.review-info {
@@ -94,19 +132,21 @@ button {
 
         .profile-img {
             background-color: rgb(224, 223, 223);
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
         }
 
         .nickname {
+        	font-size: 18px;
             margin-left: 10px;
-            line-height: 40px;
+            line-height: 35px;
         }
         
         .regdate {
+        	font-size: 12px;
             text-align: right;
-            line-height: 40px;
+            line-height: 35px;
         }         
         
 .img-section>div:nth-child(2) {
@@ -116,15 +156,15 @@ button {
  	.review-img {
 		display: inline-block;
 		position: relative;
-		width: 338px;
-		height: 265px;
+		width: 100%;
+		height: 230px;
 		background-color: rgb(224, 223, 223);
 	} 
 	
 	.review-img>img {
-		width: 338px;
-		height: 265px;
-		border-radius: 5px;
+		width: 100%;
+		height: 230px;
+		border-radius: 3px;
 	}
 	
 	.review-img>div {
@@ -133,40 +173,52 @@ button {
 		left: 7px;
 		bottom: 0px;
 		background-color: rgb(245, 245, 245);
-		margin: 5px 0 10px 0;
-		padding: 3px;
-		border-radius: 3px;
+		margin: 5px 0 6px 0;
+		padding: 5px;
+		border-radius: 5px;
 	} 
 		
 		.like {
-			width: 20px;
-			height: 20px;
-			margin: 0 6px 0 5px;
+			width: 15px;
+			height: 15px;
+			margin: 0 6px 0 3px;
 		}
 	
 	.bookstore-name {
-		line-height: 20px;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 15px;
 	}
 	
+.content-section>div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+	
 	.hashtag-list {
-		margin: 10px 0;
+		margin: 5px 0;
 	}	
 	
 		.hashtag {
 			display: inline-block;
 			border: 1px solid black;
 			padding: 3px 10px;
+			font-size: 13px;
 			border-radius: 10px;
 		}
 	
-.content-section>div:nth-child(2) {
-	text-align: center;    
-}
+	.edit-del-btn>a>img {
+		width: 20px;
+		height: 20px;
+	}
 
 	.review-content {
+		border: 1px solid black;
 		box-sizing: border-box;
 		resize: none;
-		width: 338px;
-		height: 40px;
-		padding: 10px;
+		width: 100%;
+		height: 45px;
+ 		font-size: 12px;
+		padding: 7px;
 	}

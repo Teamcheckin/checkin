@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.themeleaf.org">
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
 
 <head>
 <meta charset="UTF-8">
@@ -7,49 +9,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="/css/admin/member.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
+<script src="/js/admin/member.js"></script>
 <title>회원 관리 페이지</title>
 </head>
 
-<body>
-	<main>
+	<main layout:fragment="main">
 		<div class="title">ADMIN</div>
 		<nav class="mini-nav">
-			<a href="">서점</a> <a href="">회원</a> <a href="">스탬프 투어</a> <a href="">후기</a>
-			<a href="" class="mini-nav-page">해시태그</a>
+			<a href="">서점</a>
+			<a th:href="@{/admin/member}" class="mini-nav-page">회원</a>
+			<a href="">스탬프 투어</a>
+			<a href="">후기</a>
+			<a href="">해시태그</a>
 		</nav>
 
 
 		<section>
-			<div class="operation">
-				<!--select와 검색 중 하나만 하기 추천
-                    둘 다 구현은 너무 번거로움-->
-				<select>
-					<option>회원</option>
-					<option>서점지기</option>
-					<option>관리자</option>
-				</select> <input type="text" name="search" value=""> <a href=""
-					class="btn">검색</a>
-
-				<th:if text="position == null ||query == null">
-					<span th:text="${entireCount} 회원"></span>
-					<th:else>
-						<span th:text="${count} / ${entireCount} 회원"></span>
-				</th:if>
-			</div>
-
+			<form class="operation">
+					<select name="p">
+						<option value="">전체</option>
+						<option value="3">회원</option>
+						<option value="2">서점지기</option>
+						<option value="1">관리자</option>
+					</select>
+					<div>
+						<input type="text" name="q">
+						<input type="submit" class="btn" value="검색">
+					</div>
+				</form>
+					<th:if text="${position} == null || ${query} == null">
+						<span th:text="${count}+'명 /'"></span>
+					</th:if>
+						<span th:text="'총 '+${entireCount}+명"></span>
+					
 			<div th:each="m : ${member}" class="card">
-				<div th:text="" class="card-img"></div>
+				<img th:src="${m.profileImg}?:@{/images/profile.png}" class="card-img">
 				<div class="hi-span">
-					<span th:text="${m.nickname}">닉네임(직급)</span> <span
-						th:text="${m.email}">이메일</span>
+					<span th:text="'닉네임: '+${m.nickname}">닉네임</span>
+					<span th:text="'이메일: '+${m.email}">이메일</span>
+					<span th:text="'가입일: '+${#calendars.format(m.regDate, 'yyyy-MM-dd')}">가입일</span>
+					<span th:text="'권한: '+(${m.positionId} !='3'? (${m.positionId} !='2'? '관리자': '서점지기'): '회원')">직급</span>
 				</div>
 				<div class="btn-list">
-					<a href="" class="btn">서점지기 임명</a> <a href="" class="btn">편집</a>
+					<a class="btn assign-btn">임명</a>
+					<span class="assign-list d-none">
+						<a th:href="@{/admin/member/1(id=${m.id})}">관리자</a>
+						<a th:href="@{/admin/member/2(id=${m.id})}">서점지기</a>
+						<a th:href="@{/admin/member/3(id=${m.id})}">회원</a>
+					</span>
+					<a th:href="@{/admin/member/delete(id=${m.id})}" class="btn">탈퇴</a>
+					<input type="hidden" value="${m.id}">
 				</div>
 			</div>
 
 		</section>
 	</main>
-</body>
-
 </html>

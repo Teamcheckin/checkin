@@ -1,5 +1,12 @@
+@font-face {
+    font-family: 'TmoneyRoundWindRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
-    --primary: #287e19;
+    --primary: rgb(115, 168, 174);
     --secondary: #0d7785;
     --danger: #fb0603;
     --gray: #f8f9fa;
@@ -9,11 +16,21 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'TmoneyRoundWindRegular';
+}
+
+main{
+	padding: 40px 0 60px 0;
 }
 
 a {
     color: #181818;
     text-decoration: none;
+    background-color: initial;
+}
+
+ul,ol{
+    list-style: none;
 }
 
 .btn {

@@ -6,12 +6,23 @@
 
     
 <mapper namespace="com.checkin.web.dao.MemberDao">
+
+<resultMap type="com.checkin.web.entity.Member" id="MemberMap">
+    <result column="Profile_img" property="profileImg"/>
+    <result column="Position_id" property="positionId"/>
+    <result column="reg_date" property="regDate"/>
+</resultMap>
 	
-	<select id="getByEmail" resultType="com.checkin.web.entity.Member">
+	<select id="loginCheck" resultType="String">
+		select nickname from member
+		where email = #{email} and password = #{password}
+	</select>
+	
+	<select id="getByEmail" resultMap="MemberMap">
         select * from member where email = #{email}
      </select>
 	
-	<select id="get" resultType="com.checkin.web.entity.Member">
+	<select id="get" resultMap="MemberMap">
         select * from member where id = #{id}
      </select>
       
@@ -19,15 +30,15 @@
         select count(id) from member
       	   <where>
 	          <if test="query != null">nickname like '%${query}%'</if>
-	          <if test="position != null">and  position = '#{position}</if>
+	          <if test="positionId != null">and  position_id = #{positionId}</if>
     		</where>
      </select>
      
-     <select id="getList" resultType="com.checkin.web.entity.Member">
+     <select id="getList" resultMap="MemberMap">
         select * from member
 		   <where>  
 	          <if test="query != null">nickname like '%${query}%'</if>
-	          <if test="position != null">and  position = '#{position}</if>
+	          <if test="positionId != null">and  position_id = #{positionId}</if>
 		   </where>
      </select> 
         
@@ -37,7 +48,7 @@
      </insert>
      
      <update id="update" parameterType="com.checkin.web.entity.Member">
-     	update
+     	update member
      	<set>
 			<if test="nickname != null"> nickname = #{nickname},</if>
 			<if test="password != null"> password = #{password},</if>

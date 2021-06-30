@@ -1,4 +1,4 @@
-window.Kakao.init("41cefddc70d106e89cd2a27e1221cba6");
+/* window.Kakao.init("41cefddc70d106e89cd2a27e1221cba6");
 function kakaoLogin(){
 	window.Kakao.Auth.login({
 		scope: 'profile_nickname, profile_image, account_email',
@@ -15,3 +15,4 @@ function kakaoLogin(){
 	})
 }
 
+*/
