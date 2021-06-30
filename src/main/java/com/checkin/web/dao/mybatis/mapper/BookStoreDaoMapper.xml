@@ -30,7 +30,11 @@
         
      <select id="getNameList" resultType="com.checkin.web.entity.BookStore">
         select * from bookstore order by name
-     </select>    
+     </select>   
+     
+     <select id="getPosition" resultType="com.checkin.web.entity.BookStore">
+     	select name, latitude, longitude from bookstore;
+     </select> 
         
      <insert id="insert" parameterType="com.checkin.web.entity.BookStore">
      	insert into bookstore(Bg_img, Logo_img, Address, Instagram_url, Member_id,Name,Operating_time, Gu_name, Latitude, Longitude)

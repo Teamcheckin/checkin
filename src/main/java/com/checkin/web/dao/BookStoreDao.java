@@ -11,6 +11,7 @@ public interface BookStoreDao {
 	List<BookStore> getList();
 	List<BookStore> getList(String query);
 	List<BookStore> getNameList();
+	List<BookStore> getPosition();
 	public List<BookStore> getGu(String gu);
 	
 	int getCount();	
