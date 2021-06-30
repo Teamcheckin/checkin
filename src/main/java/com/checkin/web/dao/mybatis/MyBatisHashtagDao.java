@@ -51,7 +51,11 @@ public class MyBatisHashtagDao implements HashtagDao{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public int insert(String hashtag) {
+=======
+	public int insert(Hashtag hashtag) {
+>>>>>>> branch 'main' of https://github.com/Teamcheckin/checkin.git
 		// TODO Auto-generated method stub
 		return mapper.insert(hashtag);
 	}

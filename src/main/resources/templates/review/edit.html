@@ -27,7 +27,11 @@
 			<h1 class="d-none">리뷰 사진</h1>
 				<input class="img-name" type="hidden" th:value="${review.img}" />
 				<div class="img-upload-box">
+<<<<<<< HEAD
 					<img th:src="@{${review.imagePath}}" />
+=======
+					<img th:src="${review.imagePath}?:@{/images/location.png}">
+>>>>>>> branch 'main' of https://github.com/Teamcheckin/checkin.git
 	                <div class="img-upload-btn btn-sel center">이미지 업로드</div>
 	                <input class="btn-file d-none" name="image" type="file"> <!--사용자가 파일에 직접 접근할 수 있게 해야 함-->
 	            </div>			

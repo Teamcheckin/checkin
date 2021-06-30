@@ -44,7 +44,11 @@ public class ReviewView2 {
 	}
 
 	public void setImg(String img) {
+<<<<<<< HEAD
 		this.img = img;
+=======
+		this.img = img; // update
+>>>>>>> branch 'main' of https://github.com/Teamcheckin/checkin.git
 	}
 	
 	@Transient

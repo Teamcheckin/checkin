@@ -1,3 +1,4 @@
+
 window.addEventListener("load", function() {
 	let addBtn = document.querySelector(".addBtn");
 	let delBtn = document.querySelector(".delBtn");
@@ -36,4 +37,11 @@ window.addEventListener("load", function() {
 	}
 
 
+window.addEventListener("load", function(){
+	
+	let addBtn = document.querySelector("")
+	
+	
+	
+>>>>>>> branch 'main' of https://github.com/Teamcheckin/checkin.git
 })

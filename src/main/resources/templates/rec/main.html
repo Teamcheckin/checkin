@@ -53,6 +53,7 @@
 	<div class="slide_wrapper">
 		<ul class="slides">
 			<li th:each="l2:${hlist2}" class="bookstore">
+<<<<<<< HEAD
 				<div class="bs">
 					<div>
 						<img th:src="@{/upload/bookstore/}+${l2.bgImg}" src="/images/bs.jpg" alt="">
@@ -72,6 +73,27 @@
 				<div class="bs">
 					<div>
 						<img th:src="@{/upload/bookstore/}+${l3.bgImg}" src="/images/bs.jpg" alt="">
+=======
+				<div>
+					<div>
+						<img src="/images/bs.jpg" alt="">
+					</div>
+					<div class="bsInfo">
+						<span th:text="${l2.name}"> 책방이름</span> 
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="recTitle">#영화</div>
+	<div class="slide_wrapper">
+		<ul class="slides">
+			<li th:each="l3:${hlist3}" class="bookstore">
+				<div>
+					<div>
+						<img src="/images/bs.jpg" alt="">
+>>>>>>> branch 'main' of https://github.com/Teamcheckin/checkin.git
 					</div>
 					<div class="bsInfo">
 						<span th:text="${l3.name}"> 책방이름</span> 
