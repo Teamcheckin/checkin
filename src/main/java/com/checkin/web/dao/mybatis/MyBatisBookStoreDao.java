@@ -56,12 +56,6 @@ public class MyBatisBookStoreDao implements BookStoreDao {
 
 		return mapper.getNameList();
 	}
-	
-	@Override
-	public List<BookStore> getPosition() {
-		
-		return mapper.getPosition();
-	}
 
 	@Override
 	public int getCount() {

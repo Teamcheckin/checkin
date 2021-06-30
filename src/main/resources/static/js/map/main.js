@@ -7,7 +7,59 @@ window.addEventListener("load", function() {
     }; 
 
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		
+	// ------ 서점 여러 개 나타내기 ------
+	// 마커를 표시할 title과 위치 객체 배열입니다 
+/*	var positions = new Array();
+	var positionJson = new Object();
 	
+	for(var i=0; i<bookstore.length; i++) {
+		positionJson.title = "꽃피는책";
+		positionJson.latlng = new kakao.maps.LatLng(37.54373153567984, 126.8738357548018);
+		positions.push(positionJson);		
+	}*/
+	
+	
+	var positions = [
+	    {
+	        title: '꽃피는책', 
+	        latlng: new kakao.maps.LatLng(37.54373153567984, 126.8738357548018)
+	    },
+	    {
+	        title: '생태연못', 
+	        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
+	    },
+	    {
+	        title: '텃밭', 
+	        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
+	    },
+	    {
+	        title: '근린공원',
+	        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
+	    }
+	];
+	
+	// 마커 이미지의 이미지 주소입니다
+	var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+	
+	for (var i = 0; i < positions.length; i++) {
+    
+	    // 마커 이미지의 이미지 크기 입니다
+	    var imageSize = new kakao.maps.Size(24, 35); 
+	    
+	    // 마커 이미지를 생성합니다    
+	    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+	    
+	    // 마커를 생성합니다
+	    var marker = new kakao.maps.Marker({
+	        map: map, // 마커를 표시할 지도
+	        position: positions[i].latlng, // 마커를 표시할 위치
+	        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+	        image : markerImage // 마커 이미지 
+	    });
+	}
+
+	// ------ 현재 위치 나타내기 ------
 	// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 	if (navigator.geolocation) {
 	    
@@ -33,7 +85,7 @@ window.addEventListener("load", function() {
 	    displayMarker(locPosition, message);
 	}
 	
-	// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+	// 지도에 마커와 인포윈도우를 표시하는 함수
 	function displayMarker(locPosition, message) {
 	
 	    // 마커를 생성합니다
