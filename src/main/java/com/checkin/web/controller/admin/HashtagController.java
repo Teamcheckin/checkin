@@ -48,10 +48,6 @@ public class HashtagController {
 	}
 	
 	
-	
-	
-	
-	
 	@PostMapping("reg")
 	public String reg(Model model, @RequestParam(name="q" , required = false) String hashtag) {
 		
