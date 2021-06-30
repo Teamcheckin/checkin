@@ -5,8 +5,6 @@ window.addEventListener("load", function() {
 
 
 	let selected = null;
-	
-
 
 
 
