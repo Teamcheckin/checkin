@@ -51,7 +51,6 @@ public class HashtagController {
 	@PostMapping("reg")
 	public String reg(Model model, @RequestParam(name="q" , required = false) String hashtag) {
 		
-		
 		try {
 			int result = service.insert(hashtag);
 			System.out.println(result);
