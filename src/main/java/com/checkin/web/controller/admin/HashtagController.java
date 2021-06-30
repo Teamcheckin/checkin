@@ -69,12 +69,6 @@ public class HashtagController {
 	
 //등록 기능은 컨트롤러를 어떻게 해야 되지?
 	
-	@PostMapping("reg")
-	public String reg(String hashtag) {
-		service.insert(hashtag);
-		return null;
-	}
-	
 	@RequestMapping("delete")
 	public String del(int id) {
 		service.delete(id);
