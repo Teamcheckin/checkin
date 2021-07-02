@@ -71,14 +71,16 @@ public class MypageController {
 	public String myInfo(HttpSession session, Model model) {
 		Member member = (Member)session.getAttribute("member");
 		model.addAttribute("member", member);
-		System.out.println(member.getProfileImg());
 		
 		return "mypage/info";
 		
 	}
 	
 	@PostMapping("/mypage/info/update")
-	public String myInfo(HttpServletRequest request, @RequestParam(name="file", required=false) MultipartFile profileImg,  Member member, HttpSession session) {
+	public String myInfo(HttpServletRequest request, 
+						@RequestParam(name="file", required=false) MultipartFile profileImg, 
+						Member member, 
+						HttpSession session) {
 
 		String path ="/images/profile";
 		String fileName = profileImg.getOriginalFilename(); // 파일 이름
@@ -101,7 +103,6 @@ public class MypageController {
 			
 			
 		service.update(member);
-		System.out.println(member);
 		
 		member = service.get(member.getId());
 		session.setAttribute("member", member);

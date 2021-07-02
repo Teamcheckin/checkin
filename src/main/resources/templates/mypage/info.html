@@ -9,6 +9,7 @@
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/mypage/info.css" rel="stylesheet">
     <script src="/js/mypage/info.js"></script>
+    <script src="/js/login/kakao.js"></script>
     <title>my info</title>
 </head>
    <main layout:fragment="main">
@@ -50,6 +51,7 @@
 			
            		 <div class="btn-list">
 	                <a th:href="@{/bye(id=${member.id})}" class="btn">탈퇴</a>
+	                <input type="hidden" name="id" th:value=${member.id}>
 	                <input type="submit" class="btn" value="수정">
                 </div>
 	        </section>

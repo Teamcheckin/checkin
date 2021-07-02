@@ -31,14 +31,10 @@ public class DashController {
 		  Member member = (Member) session.getAttribute("member");
 		  System.out.println(member);
 			
-				
+			
 			if(member.getPositionId() == 2) {
 				model.addAttribute("member", member);
 				return "mypage/dashbook";
-				
-			} else if(member.getPositionId() == 1) {
-				model.addAttribute("member", member);
-				return "/admin/bookstore";
 				
 			} else {
 				model.addAttribute("member", member);

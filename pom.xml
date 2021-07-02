@@ -86,6 +86,13 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
 		
+		
+		<dependency>
+		  <groupId>junit</groupId>
+		  <artifactId>junit</artifactId>
+		  <version>4.7</version>
+		  <scope>test</scope>
+		</dependency> 
 	</dependencies>
 
 	<build>

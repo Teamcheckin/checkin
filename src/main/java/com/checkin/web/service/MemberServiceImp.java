@@ -74,6 +74,7 @@ public class MemberServiceImp implements MemberService{
 		return dao.update(member);
 	}
 	
+
 	@Override
 	public int level2(Member member) {
 		member.setPositionId(2);
@@ -94,7 +95,12 @@ public class MemberServiceImp implements MemberService{
 		return dao.delete(id);
 	}
 
-
+	@Override
+	public boolean nickTrue(String nickname) {
+		String nick = dao.nickTrue(nickname);
+		
+		return (nick == null) ? true : false;
+	}
 
 
 

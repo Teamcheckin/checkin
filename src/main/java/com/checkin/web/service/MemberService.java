@@ -22,5 +22,7 @@ public interface MemberService {
 	int level2(Member member);
 	int level3(Member member);
 	
+	boolean nickTrue(String nickname);
+	
 	int delete(int id);
 }

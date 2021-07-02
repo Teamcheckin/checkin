@@ -70,4 +70,8 @@ public class MyBatisMemberDao implements MemberDao{
 	}
 
 
+	@Override
+	public String nickTrue(String nickname) {
+		return mapper.nickTrue(nickname);
+	}
 }

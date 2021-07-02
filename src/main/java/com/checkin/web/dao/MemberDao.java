@@ -16,4 +16,5 @@ public interface MemberDao {
 	int delete(int id);
 	Member getByEmail(String email);
 	
+	String nickTrue(String nickname);
 }

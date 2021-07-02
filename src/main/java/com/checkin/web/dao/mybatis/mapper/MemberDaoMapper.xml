@@ -18,6 +18,11 @@
 		where email = #{email} and password = #{password}
 	</select>
 	
+	<select id="nickTrue" resultType="String">
+		select nickname from member
+		where nickname = #{nickname}
+	</select>
+	
 	<select id="getByEmail" resultMap="MemberMap">
         select * from member where email = #{email}
      </select>

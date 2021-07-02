@@ -68,7 +68,7 @@ public class LoginController {
 			
 			System.out.println(member);
 			
-			return "redirect:/mypage";
+			return "redirect:/index";
 		} else {
 			return "redirect:/login?error=1";
 		}

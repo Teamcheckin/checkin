@@ -50,7 +50,7 @@ window.addEventListener("load", function() {
 	let pwdBtn = document.querySelector(".pwd-type")
 	let btn = document.querySelector("input[type=submit]");
 	
-	let emailCheck = false;	let pwdCheck = false; let nicknameCheck = false;
+	let emailCheck = true;	let pwdCheck = true; let nicknameCheck = true;
 	
 	// 이메일 에러 메시지
 	email.onchange = function(){
@@ -102,34 +102,54 @@ window.addEventListener("load", function() {
 	
 
 	//닉네임 에러 메시지
-	nickBtn.onclick = function nickCheck(){
+	nick.onchange = function(){
 		nicknameCheck = false;
 		
-		if(nickError.classList.contains("d-none")){
-			nickError.classList.remove("d-none");
+		nickBtn.onclick = function(){
+			
+			if(nickError.classList.contains("d-none")){
+				nickError.classList.remove("d-none");
+			}
+			
+			let nickValue = nick.value;
+			let url = 'http://localhost:8080/api/member/'+nickValue;
+			console.log(`input: ${nickValue}, url: ${url}`)
+			fetch(url)
+	        .then(response=>{
+	            return response.text(); // false or true
+	        })
+	        .then(result=>{
+				console.log(result)
+				
+				//중복 체크
+				if(result == "false"){
+					nickError.classList.add("animation");
+					nick.focus(); // 화면 커서 이동
+					nick.style.border = "2px solid red";
+					nickError.textContent = '중복 닉네임입니다';
+				
+				//빈 문자열 체크
+				} else if(nickValue == ''){
+					nickError.textContent = '닉네임을 입력해 주세요';
+				
+				//성공
+				} else if(result == "true"){
+					nickError.classList.remove("animation");
+					nicknameCheck = true;
+					nick.style.border = "1px solid black";
+					nickError.textContent = '사용 가능한 닉네임입니다';
+				}
+			})
+			
+			validRemove();
+			}
 		}
-		
-		if(nick.value == '중복'){
-			nickError.classList.add("animation");
-			nick.focus(); // 화면 커서 이동
-			nick.style.border = "2px solid red";
-			nickError.textContent = '중복 닉네임입니다';
-		} else if(nick.value == ''){
-			nickError.textContent = '닉네임을 입력해 주세요';
-		} else {
-			nickError.classList.remove("animation");
-			nicknameCheck = true;
-			nick.style.border = "1px solid black";
-			nickError.textContent = '사용 가능한 닉네임입니다';
-		}
-		
-		validRemove();
-	}
+	
 	pwdBtn.onmouseover = function(){
 		pwd.type='text';
+		console.log(nicknameCheck);
 		console.log(emailCheck);
 		console.log(pwdCheck);
-		console.log(nicknameCheck);
 	}
 	
 	pwdBtn.onmouseleave = function(){
