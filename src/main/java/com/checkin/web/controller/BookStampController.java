@@ -48,7 +48,7 @@ public class BookStampController {
 		model.addAttribute("guName", gu);
 		model.addAttribute("bookstore", bookstore);
 		
-		return "bookstamp/detail";
+		return "/bookstamp/detail";
 		
 	}
 	

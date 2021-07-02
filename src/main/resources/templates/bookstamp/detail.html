@@ -6,9 +6,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <link href="/css/bookstamp/detail.css" type="text/css" rel="stylesheet">   
     <title>QR스탬프지도</title>
+    <link href="/css/bookstamp/detail.css" type="text/css" rel="stylesheet">   
+	<link href="/css/common.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41cefddc70d106e89cd2a27e1221cba6"></script>
+	<script src="/js/bookstamp/detail.js" type="text/javascript"></script>
 </head>
+<body>
 	<main layout:fragment="main">
 	<div class="title" th:text="${guName}"></div>
         <section>
@@ -22,8 +26,13 @@
 		
 		<section>
 			<div>
-			---------------지도 섹션---------------
+			독립서점 지도
 			</div>
+			
+				<div id="map"></div>
+							
+
+			
 		</section>
 		
 		<section>
@@ -35,4 +44,5 @@
 			</div>
 		</section>
     </main>
+</body>
 </html>
