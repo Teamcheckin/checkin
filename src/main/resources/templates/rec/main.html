@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/inc/layout">
+	
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,16 +33,17 @@
 	</section>
 
 	<section>
+	
 	<div class="recTitle">#고양이</div>
 	<div class="slide_wrapper">
-		<div class="slides"><!--  onClick="location.href='/bookstore/detail?id=${l1.id}'" -->
+		<div class="slides">
 			<div th:each="l1:${hlist1}" class="bookstore">
 				<div class="bs" >
 					<div>
 						<img th:src="@{/upload/bookstore/}+${l1.bgImg}">
 					</div>
 					<div class="bsInfo">
-						<span th:text="${l1.name}"> 책방이름</span> 
+						<span class="truncate" th:text="${l1.name}"> 책방이름</span> 
 					</div>
 				</div>
 			</div>
@@ -52,56 +54,36 @@
 	<div class="recTitle">#큐레이터</div>
 	<div class="slide_wrapper">
 		<ul class="slides">
-			<li th:each="l2:${hlist2}" class="bookstore">
-<<<<<<< HEAD
+			<div th:each="l2:${hlist2}" class="bookstore">
 				<div class="bs">
 					<div>
-						<img th:src="@{/upload/bookstore/}+${l2.bgImg}" src="/images/bs.jpg" alt="">
+						<img th:src="@{/upload/bookstore/}+${l2.bgImg}">
 					</div>
 					<div class="bsInfo">
-						<span th:text="${l2.name}"> 책방이름</span> 
+						<span class="truncate" th:text="${l2.name}"> 책방이름</span> 
 					</div>
 				</div>
-			</li>
+			</div>
 		</ul>
 	</div>
 	
 	<div class="recTitle">#영화</div>
 	<div class="slide_wrapper">
 		<ul class="slides">
-			<li th:each="l3:${hlist3}" class="bookstore">
+			<div th:each="l3:${hlist3}" class="bookstore">
 				<div class="bs">
 					<div>
 						<img th:src="@{/upload/bookstore/}+${l3.bgImg}" src="/images/bs.jpg" alt="">
-=======
-				<div>
-					<div>
-						<img src="/images/bs.jpg" alt="">
-					</div>
+				</div>
 					<div class="bsInfo">
-						<span th:text="${l2.name}"> 책방이름</span> 
+						<span class="truncate" th:text="${l3.name}"> 책방이름</span> 
 					</div>
 				</div>
-			</li>
+			</div>
 		</ul>
 	</div>
 	
-	<div class="recTitle">#영화</div>
-	<div class="slide_wrapper">
-		<ul class="slides">
-			<li th:each="l3:${hlist3}" class="bookstore">
-				<div>
-					<div>
-						<img src="/images/bs.jpg" alt="">
->>>>>>> branch 'main' of https://github.com/Teamcheckin/checkin.git
-					</div>
-					<div class="bsInfo">
-						<span th:text="${l3.name}"> 책방이름</span> 
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
 	</section>
+	
 </main>
 </html>

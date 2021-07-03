@@ -1,7 +1,10 @@
 package com.checkin.web.controller.admin;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +41,15 @@ public class HashtagController {
 	
 	@PostMapping("result")
 	public String result(Model model,
-			@RequestParam(name="q" , required = false) String query){
+			@RequestParam(name="q" , required = false) String query,
+			HttpServletResponse response) throws IOException{
+		try {
+			System.out.println(query);
+			List<Hashtag> list = service.getList(query);
+			model.addAttribute("list",list);
+		} catch (Exception e) {
 		
-		System.out.println(query);
-		List<Hashtag> list = service.getList(query);
-		model.addAttribute("list",list);
+		}
 		
 		return "admin/hashtag";
 	}
@@ -52,18 +59,27 @@ public class HashtagController {
 	
 	
 	@PostMapping("reg")
-	public String reg(Model model, @RequestParam(name="q" , required = false) String hashtag) {
+	public String reg(Model model, 
+			@RequestParam(name="q" , required = false) String hashtag) {
 		
+		int result=0;
 		try {
-			int result = service.insert(hashtag);
+			
+			result = service.insert(hashtag);
+			System.out.println(result);
+			
+		} catch (Exception e) { //result = 0;
+			
 			System.out.println(result);
 			model.addAttribute("result",result);
-		} catch (Exception e) {
-			return "admin/redirect";
-		}	
+			
+		}
+		
+		//model.addAttribute("result",result);
 		
 		
 		return "redirect:list";
+			
 	}
 
 	

@@ -31,6 +31,7 @@ public class RecController {
 	public String main(Model model) {
 		
 		List<Hashtag> hlist = service.getList();
+		
 		System.out.println(hlist);
 		model.addAttribute("hlist",hlist);
 		
@@ -42,6 +43,7 @@ public class RecController {
 		
 		List<BookStore> hlist3 = service.getListHashtagBookstore("#영화");
 		model.addAttribute("hlist3",hlist3);
+		
 		return "rec/main";
 	}
 	

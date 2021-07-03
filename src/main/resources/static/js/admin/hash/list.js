@@ -1,11 +1,30 @@
 
 window.addEventListener("load", function() {
+	
+	fetch('/api/hash/error')
+	.then(response=>response.text())
+	.then(text=>{
+				console.log(text);
+				
+			});
+			
+	(async() => {
+		try{
+			var list = await f();
+		}catch{
+			
+		}
+	})
+	
+});
+
+
+window.addEventListener("load", function() {
 	let addBtn = document.querySelector(".addBtn");
 	let delBtn = document.querySelector(".delBtn");
 
-
-
 	let selected = null;
+	
 	addBtn.onclick = function(e) {
 		e.preventDefault();
 
@@ -35,11 +54,10 @@ window.addEventListener("load", function() {
 		selected.classList.toggle("selected");
 
 	}
-})
-
-window.addEventListener("load", function(){
 	
-	let addBtn = document.querySelector("")
+	
+	
+	
 	
 })
 

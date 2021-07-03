@@ -9,11 +9,12 @@
 <link href="/css/admin/member.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
 <title>알림창</title>
-</head>
-<body>
-	<script th:if="${result}===null">
-		alret('${param.q}는 이미 존재하는 해시태그입니다.');
+	<script>
+	console.log("testest")
+		confirm('이미 존재하는 해시태그입니다.');
 		location.href='admin/hashtag';
 	</script>
+</head>
+<body>
 </body>
 </html>
