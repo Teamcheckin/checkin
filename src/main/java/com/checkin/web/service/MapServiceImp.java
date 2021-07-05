@@ -26,7 +26,8 @@ public class MapServiceImp implements MapService {
 
 	@Override
 	public List<BookStore> getList() {
-		// TODO Auto-generated method stub
+
+		// List<BookStore> bookstore = get
 		return null;
 	}
 

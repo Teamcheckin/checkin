@@ -8,58 +8,106 @@ window.addEventListener("load", function() {
 
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 		
-	// ------ 서점 여러 개 나타내기 ------
-	// 마커를 표시할 title과 위치 객체 배열입니다 
-/*	var positions = new Array();
-	var positionJson = new Object();
+	// *------ 서점 여러 개 나타내기 ------*
+	// 1. 서점 정보 얻어내기		
+	function getBookstore() {
+		const response = fetch("http://localhost:8080/api/bookstore/list");
+		return response
+		.then(res => 
+			res.json())
+		.then(bookstore => {
+			var list = bookstore.list;
+			return list;			
+		})
+	}
 	
-	for(var i=0; i<bookstore.length; i++) {
-		positionJson.title = "꽃피는책";
-		positionJson.latlng = new kakao.maps.LatLng(37.54373153567984, 126.8738357548018);
-		positions.push(positionJson);		
-	}*/
+	// 2. 마커를 표시할 title과 위치 객체 배열
+	var bookstores = new Array();
 	
-	
-	var positions = [
-	    {
-	        title: '꽃피는책', 
-	        latlng: new kakao.maps.LatLng(37.54373153567984, 126.8738357548018)
-	    },
-	    {
-	        title: '생태연못', 
-	        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-	    },
-	    {
-	        title: '텃밭', 
-	        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-	    },
-	    {
-	        title: '근린공원',
-	        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-	    }
-	];
-	
-	// 마커 이미지의 이미지 주소입니다
+	// 마커 이미지의 이미지 주소
 	var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
 	
-	for (var i = 0; i < positions.length; i++) {
+	(async() => {
+		try {
+		    var list = await getBookstore();
+		    
+			for(var i=0; i<list.length; i++) {
+				
+				var bookstoreJson = new Object();
+				
+				bookstoreJson.title = list[i].name;
+				bookstoreJson.latlng = new kakao.maps.LatLng(list[i].latitude, list[i].longitude);
+				
+				bookstores.push(bookstoreJson);	
+				console.log(bookstoreJson);
+				console.log(list);
+			}
+			
+			// 3. 마커 이미지 표시하기
+			for (var i = 0; i < bookstores.length; i++) {
     
-	    // 마커 이미지의 이미지 크기 입니다
-	    var imageSize = new kakao.maps.Size(24, 35); 
-	    
-	    // 마커 이미지를 생성합니다    
-	    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-	    
-	    // 마커를 생성합니다
-	    var marker = new kakao.maps.Marker({
-	        map: map, // 마커를 표시할 지도
-	        position: positions[i].latlng, // 마커를 표시할 위치
-	        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-	        image : markerImage // 마커 이미지 
-	    });
-	}
+			    // 마커 이미지의 이미지 크기 입니다
+			    var imageSize = new kakao.maps.Size(24, 35); 
+			    
+			    // 마커 이미지를 생성합니다    
+			    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+			    
+			    // 마커를 생성합니다
+			    var marker = new kakao.maps.Marker({
+			        map: map, // 마커를 표시할 지도
+			        position: bookstores[i].latlng, // 마커를 표시할 위치
+			        title : bookstores[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+			        image : markerImage // 마커 이미지 
+			    });
+			    
+				// 커스텀 오버레이에 표시할 컨텐츠
+				let content = '<div class="wrap">' + 
+				            '    <div class="info">' + 
+				            '        <div class="title">' + 
+				            			 list[i].name +  
+				            '            <div class="close" title="닫기"></div>' + 
+				            '        </div>' + 
+				            '        <div class="body">' + 
+				            '            <div class="img">' + 
+				            '                <img src="/upload/bookstore/cih.jpg" width="73" height="70">' +
+				            '           </div>' + 
+				            '            <div class="desc">' + 
+				            '                <div class="ellipsis">' + list[i].address + '</div>' + 
+				            '                <div><a href="#" target="_blank" class="link">Instagram에 방문해보세요!</a></div>' + 
+				            '            </div>' + 
+				            '        </div>' + 
+				            '    </div>' +    
+				            '</div>';
+		
+				// 마커 클릭 시 커스텀 오버레이 표시
+				(function(marker, bookstore) {
+					kakao.maps.event.addListener(marker, 'click', function() {
+						var overlay = new kakao.maps.CustomOverlay({
+						    content: content,
+						    map: map,
+						    position: marker.getPosition()
+						});
+						
+						// X 버튼 클릭 시 커스텀 오버레이를 닫기
+						var closeBtn = document.querySelector(".close");
+						closeBtn.onclick = function() {
+							overlay.setMap(null);     
+						}	
+						
+						let bookstoreImg = document.querySelector(".wrap img");
+						console.log(bookstoreImg+"Az");
+						//bookstoreImg.src = "/upload/bookstore" + list[i].bgImg;					
+					});
+				})(marker, bookstores[i]);
+			}
+		}
+		catch(error){
+		    console.log(error);
+		}
+	})();
+		
 
-	// ------ 현재 위치 나타내기 ------
+	// *------ 현재 위치 나타내기 ------*
 	// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 	if (navigator.geolocation) {
 	    
