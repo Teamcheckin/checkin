@@ -19,6 +19,8 @@
         select * from bookstore 
 		   <where>  
 		   		<if test="query != null">Name like '%${query}%'</if>
+		   		<if test="gu != null">and gu_name = #{gu}</if>
+		   		
 		   </where>
      </select> 
      <select id="getGu" resultType="com.checkin.web.entity.BookStore">

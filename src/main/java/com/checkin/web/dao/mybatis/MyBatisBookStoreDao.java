@@ -35,7 +35,7 @@ public class MyBatisBookStoreDao implements BookStoreDao {
 	@Override
 	public List<BookStore> getList() {
 		 
-		return getList(null);
+		return getList(null, null);
 		 
 	}
 	@Override
@@ -46,9 +46,9 @@ public class MyBatisBookStoreDao implements BookStoreDao {
 	}
 
 	@Override
-	public List<BookStore> getList(String query) {
+	public List<BookStore> getList(String query, String gu) {
 		 
-		return mapper.getList(query);
+		return mapper.getList(query, gu);
 	}
 	
 	@Override

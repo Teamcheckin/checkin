@@ -64,3 +64,16 @@ input[type="text"]{
     .card .btn-list{
         text-align: right;
     }
+    
+section{
+	position: relative;
+}
+
+.popup{
+	position: absolute;
+	top: 15%;
+	left: 50%;
+	 transform: translate(-50%, -50%);
+	margin: auto;
+	background-color: white;
+}
