@@ -1,6 +1,15 @@
 
 window.addEventListener("load", function() {
 	
+	let subBtn = document.querySelector("input[value='등록']")
+	
+	
+	/*subBtn.onclick = function(e){
+		e.preventDefault();
+		console.log("subbtn");
+		
+	}*/
+	
 	fetch('/api/hash/error')
 	.then(response=>response.text())
 	.then(text=>{
@@ -8,13 +17,6 @@ window.addEventListener("load", function() {
 				
 			});
 			
-	(async() => {
-		try{
-			var list = await f();
-		}catch{
-			
-		}
-	})
 	
 });
 

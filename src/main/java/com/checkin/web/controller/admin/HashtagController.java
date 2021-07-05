@@ -48,7 +48,7 @@ public class HashtagController {
 			List<Hashtag> list = service.getList(query);
 			model.addAttribute("list",list);
 		} catch (Exception e) {
-		
+			return "admin/error";
 		}
 		
 		return "admin/hashtag";
@@ -60,19 +60,15 @@ public class HashtagController {
 	
 	@PostMapping("reg")
 	public String reg(Model model, 
-			@RequestParam(name="q" , required = false) String hashtag) {
-		
+			HttpServletResponse response,
+			@RequestParam(name="q" , required = false) String hashtag) throws IOException {
 		int result=0;
 		try {
-			
-			result = service.insert(hashtag);
-			System.out.println(result);
+			result=service.insert(hashtag);
 			
 		} catch (Exception e) { //result = 0;
-			
-			System.out.println(result);
 			model.addAttribute("result",result);
-			
+			return "/api/hash/error";
 		}
 		
 		//model.addAttribute("result",result);

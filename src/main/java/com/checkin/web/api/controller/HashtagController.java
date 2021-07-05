@@ -36,13 +36,14 @@ public class HashtagController {
 		return map;
 	}
 	
-	
-	  @RequestMapping("error") 
-	  public int reg() {
-	  
-		  int result = 0; System.out.println("error"); 
-		  return result; 
-	  
-	  }
+//	@RequestMapping("error")
+//	public int error(@RequestParam(name="q" , required = false) int result){
+//		
+//		int r = result;
+//		//map.put("result", result);
+//		
+//		return r;
+//	}
+//	
 	 
 }
