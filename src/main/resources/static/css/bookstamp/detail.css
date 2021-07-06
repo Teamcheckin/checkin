@@ -1,13 +1,31 @@
 .img{
-	width: 100px;
-	height: 100px;
+	width: 20%;
+	height: 20%;
 	border-radius: 50px;
+	float:left;
 }
-.map{
-	width: 250px;
+#map{
+	width: 100%;
 	height: 250px;
 }
+.store-name{
+	border-bottom: solid 1px ;
+	padding-bottom: 15px;
+	padding-top: 10px;
+	
+	
+} 
 
+.span-title{
+	font-weight: bold;
+}
+.span-adress{
+	font-size: small;
+}
+.span-bottom{
+	border-bottom: 20px;
+}
+                                      
 
 /* .map-section>div {
 	font-size: 15px;
