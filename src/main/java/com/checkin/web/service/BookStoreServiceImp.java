@@ -31,9 +31,9 @@ public class BookStoreServiceImp implements BookStoreService {
 	}
 
 	@Override
-	public List<BookStore> getList(String query) {
+	public List<BookStore> getList(String query, String gu) {
 		 
-		return dao.getList(query);
+		return dao.getList(query, gu);
 	}
 
 	@Override
