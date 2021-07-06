@@ -50,8 +50,11 @@ public class BookmarkController {
 			List<BookStore> bookstore = new ArrayList<>();
 			
 			/*--서점 정보 담기--*/
-			for(int eachId : storeId)
-				bookstore.add(bookService.get(eachId));
+			for(int eachId : storeId) {
+				BookStore eachBookstore = bookService.get(eachId);
+				bookstore.add(eachBookstore);
+			}
+			
 			
 			System.out.println(bookstore);
 			System.out.println(count);

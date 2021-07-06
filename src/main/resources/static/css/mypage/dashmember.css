@@ -47,12 +47,46 @@
         }
 
 .dash-board{
+	display: inline-block;
 	margin:15px 0;
     padding:20px;
     border: 1px solid black;
     border-radius: 20px;
     text-align: center;
-    cursor: pointer;
+}
+
+.hash-board .hash-board-count{
+	padding-bottom: 15px;
+	display:flex;
+	justify-content: space-around;
+}
+.hash-board .hash-board-count span{
+	line-height: 30px;
+}
+
+.hash-board .hash-btn, .my-hash-btn{
+	background-color: var(--secondary);
+}
+.hash-board .hash-card{
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: var(--secondary); 
+	padding: 4px 7px;
+	margin: 5px 3px;
+	
+	color: white;
+	font-size: 13px;
+	font-weight: lighter;
+	opacity: 0.6;
+}
+
+.hash-edit-list{
+	cursor: pointer;
+}
+
+.hash-board .hash-card.selected{
+	opacity: 1;
 }
 
 .mypage-menu{

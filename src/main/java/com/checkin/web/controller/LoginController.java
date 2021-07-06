@@ -50,7 +50,6 @@ public class LoginController {
 		
 		return "login/index";
 	}
-	
 	@PostMapping("/login")
 	public String login(HttpSession session, HttpServletRequest request, Member member) {
 		session = request.getSession();
@@ -59,7 +58,9 @@ public class LoginController {
 			return "redirect:/mypage";
 		
 		// 유효성 검사
+		System.out.println(member);
 		boolean result = service.loginCheck(member);
+		System.out.println(result);
 
 		// 유효하면 세션에 넣기
 		if(result) {
