@@ -60,8 +60,11 @@ window.addEventListener("load", function() {
 			        image : markerImage // 마커 이미지 
 			    });
 			    
+			    let bookstoreImg = list[i].bgImg;
+			    console.log(list[i].bgImg);
+			    
 				// 커스텀 오버레이에 표시할 컨텐츠
-				let content = '<div class="wrap">' + 
+				/*let content = `<div class="wrap">' + 
 				            '    <div class="info">' + 
 				            '        <div class="title">' + 
 				            			 list[i].name +  
@@ -71,16 +74,45 @@ window.addEventListener("load", function() {
 				            '            <div class="img">' + 
 				            '                <img src="/upload/bookstore/cih.jpg" width="73" height="70">' +
 				            '           </div>' + 
-				            '            <div class="desc">' + 
-				            '                <div class="ellipsis">' + list[i].address + '</div>' + 
-				            '                <div><a href="#" target="_blank" class="link">Instagram에 방문해보세요!</a></div>' + 
+				            '           <div class="desc">' + 
+				            '                <div class="ellipsis">' +  
+				            '					<a href="https://map.kakao.com/link/map/{list[i].latitude}, {list[i].longitude}" target="_blank">' + list[i].address + '</a>'
+				            '				 </div>' + 
+				            /*onclick="location.href=this.href+${list[i].latitude}, ${list[i].longitude}*/
+				            /*'                <div><a href="http://www.naver.com" target="_blank" class="link">Instagram에 방문해보세요!</a></div>' + 
 				            '            </div>' + 
 				            '        </div>' + 
 				            '    </div>' +    
-				            '</div>';
+				            '</div>`;*/
+				            
+				  let url = "https://map.kakao.com/link/map/" + list[i].name + ',' + list[i].latitude + ',' + list[i].longitude; 
+				  console.log(url);
+				            
+				  let content = `<div class="wrap">
+				                <div class="info">
+				                    <div class="title">
+				            			 ${list[i].name}  
+				                        <div class="close" title="닫기"></div>
+				                    </div>
+				                    <div class="body"> 
+				                        <div class="img">
+				                            <img src="/upload/bookstore/${list[i].bgImg}" width="73" height="70">
+				                       </div> 
+				                       <div class="desc">
+				                            <div class="ellipsis">
+				            					<a href="${url}" target="_blank">${list[i].address}</a>
+				            				 </div>
+				            				 <div>
+				            				 	<a href="${list[i].instagramUrl}" target="_blank" class="link">Instagram에 방문해보세요!</a>
+				            				 </div>
+				                        </div>
+				                    </div>
+				                </div>  
+				            </div>`;
 		
 				// 마커 클릭 시 커스텀 오버레이 표시
 				(function(marker, bookstore) {
+					
 					kakao.maps.event.addListener(marker, 'click', function() {
 						var overlay = new kakao.maps.CustomOverlay({
 						    content: content,
@@ -88,17 +120,30 @@ window.addEventListener("load", function() {
 						    position: marker.getPosition()
 						});
 						
+						
+						
 						// X 버튼 클릭 시 커스텀 오버레이를 닫기
 						var closeBtn = document.querySelector(".close");
 						closeBtn.onclick = function() {
 							overlay.setMap(null);     
 						}	
 						
-						let bookstoreImg = document.querySelector(".wrap img");
-						console.log(bookstoreImg+"Az");
-						//bookstoreImg.src = "/upload/bookstore" + list[i].bgImg;					
+						/*var mapBtn = document.querySelector(".ellipsis>a");
+						mapBtn.onclick = function() {
+							location.href=this.href+list[i].latitude, list[i].longitude
+						}*/
+						
+						/*bookstoreImg = document.querySelector(".wrap img");
+						bookstoreImg.src = "/upload/bookstore/" + list[i].bgImg;		
+						console.log(bookstoreImg);
+						console.log(list[i]);*/
+							
 					});
 				})(marker, bookstores[i]);
+				
+/*				console.log(list[i]);
+*//*				bookstoreImg.src = "/upload/bookstore/" + list[i].bgImg;
+				console.log(bookstoreImg.src);*/
 			}
 		}
 		catch(error){

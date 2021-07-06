@@ -38,6 +38,7 @@ public class BookStampController {
 		return "bookstamp/main";
 		 
 	}
+	
 	@GetMapping("/bookstamp/detail")
 	public String detail(Model model, @RequestParam Integer id) {
 		List<Gu> guList = guService.getList();
@@ -51,8 +52,5 @@ public class BookStampController {
 		return "/bookstamp/detail";
 		
 	}
-	
-	
-	
 
 }
