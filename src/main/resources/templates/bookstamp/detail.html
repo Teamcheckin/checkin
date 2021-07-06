@@ -36,11 +36,11 @@
 		</section>
 		
 		<section>
-			<div th:each="b:${bookstore}">
+			<div class="store-name" th:each="b:${bookstore}">
 				<img class="img" th:src="${b.logoImg}?:@{/images/books.png}">
-				<span th:text="${b.name}"></span>
-				<span th:text="${b.address}"></span>
-				<span th:text="${b.operatingTime}"></span>
+				<span class="span-title" th:text="${b.name}"></span><br>
+				<span class="span-adress" th:text="${b.address}"></span><br>
+				<!-- <span class="span-bottom" th:text="${b.operatingTime}"></span>  -->
 			</div>
 		</section>
     </main>

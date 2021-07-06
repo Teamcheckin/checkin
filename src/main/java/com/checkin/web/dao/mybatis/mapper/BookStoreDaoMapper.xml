@@ -7,9 +7,16 @@
     
 <mapper namespace="com.checkin.web.dao.BookStoreDao">
 	
-	<select id="get" resultType="com.checkin.web.entity.BookStore">
+	 <select id="get" resultType="com.checkin.web.entity.BookStore">
         select * from bookstore where id = #{id}
      </select>
+     
+     <select id="getBookstore" resultType="com.checkin.web.entity.BookStore">
+        select * from bookstore 
+		   <where>  
+		   		<if test="query != null">name = #{query}</if>		   		
+		   </where>
+     </select> 
       
      <select id="getCount" resultType="int">
         select count(id) from bookstore
@@ -19,6 +26,8 @@
         select * from bookstore 
 		   <where>  
 		   		<if test="query != null">Name like '%${query}%'</if>
+		   		<if test="gu != null">and gu_name = #{gu}</if>
+		   		
 		   </where>
      </select> 
      <select id="getGu" resultType="com.checkin.web.entity.BookStore">

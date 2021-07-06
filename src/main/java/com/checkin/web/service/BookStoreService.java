@@ -7,8 +7,10 @@ import com.checkin.web.entity.BookStore;
 public interface BookStoreService {
 	
 	BookStore get(int id);
+	BookStore getBookstore(String name);
 	List<BookStore> getList();
-	List<BookStore> getList(String query);
+	List<BookStore> getList(String query, String gu);
+	
 	List<BookStore> getGu(String gu);
 	
 //	int MasterReg(int id);
