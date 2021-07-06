@@ -13,7 +13,7 @@ public interface BookStoreService {
 	
 //	int MasterReg(int id);
 	int getCount();	
-	int insert(BookStore bookStore);
+	int insert(BookStore bookStore, Integer hashId);
 	int update(BookStore bookStore);
 	int delete(int id);
 	

@@ -1,22 +1,26 @@
 package com.checkin.web.service;
 
+import java.sql.Connection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.checkin.web.dao.BookStoreDao;
+import com.checkin.web.dao.HashtagBookstoreDao;
 import com.checkin.web.entity.BookStore;
 
 @Service
 public class BookStoreServiceImp implements BookStoreService {
-
-	
-	
-	
+	private BookStoreDao dao;
+	private HashtagBookstoreDao hashdao;
 	
 	@Autowired
-	private BookStoreDao dao;
+	public BookStoreServiceImp(BookStoreDao dao, HashtagBookstoreDao hashdao) {
+		this.dao = dao;
+		this.hashdao = hashdao;
+	}
 	
 	@Override
 	public BookStore get(int id) {
@@ -41,10 +45,23 @@ public class BookStoreServiceImp implements BookStoreService {
 		 
 		return dao.getCount();
 	}
+	
 
+	@Transactional()
 	@Override
-	public int insert(BookStore bookStore) {
-		 
+	public int insert(BookStore bookStore, Integer hashId) {
+		Connection con = getConnection();
+		 try {
+             con.setAutoCommit(false);
+
+             Integer bookstoreId = bookStore.getId();
+             dao.insert(bookStore);
+             hashdao.insert(hashId, bookstoreId);
+
+             con.commit();  
+     } catch (Exception e) {
+             con.rollback();
+     }
 		return dao.insert(bookStore);
 	}
 

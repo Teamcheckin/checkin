@@ -13,6 +13,8 @@ public class BookStore {
 	private String guName;
 	private Float latitude;
 	private Float longitude;
+	
+	public BookStore(){}
 	public BookStore(Integer id, String bgImg, String logoImg, String address, String instagramUrl, Integer memberId,
 			String name, String operatingTime, String guName, Float latitude, Float longitude) {
 	
