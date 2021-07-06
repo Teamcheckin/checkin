@@ -10,10 +10,6 @@ import com.checkin.web.entity.BookStore;
 
 @Service
 public class BookStoreServiceImp implements BookStoreService {
-
-	
-	
-	
 	
 	@Autowired
 	private BookStoreDao dao;
@@ -22,6 +18,12 @@ public class BookStoreServiceImp implements BookStoreService {
 	public BookStore get(int id) {
 		 
 		return dao.get(id);
+	}
+	
+	@Override
+	public BookStore getBookstore(String name) {
+
+		return dao.getBookstore(name);
 	}
 
 	@Override
@@ -65,6 +67,5 @@ public class BookStoreServiceImp implements BookStoreService {
 		
 		return dao.getGu(gu);
 	}
-
 
 }

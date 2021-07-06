@@ -31,6 +31,12 @@ public class MyBatisBookStoreDao implements BookStoreDao {
 		return mapper.get(id);
 	}
 	
+	@Override
+	public BookStore getBookstore(String name) {
+
+		return mapper.getBookstore(name);
+	}
+	
 	//기본페이지를 불러옴
 	@Override
 	public List<BookStore> getList() {

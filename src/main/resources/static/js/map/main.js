@@ -1,16 +1,16 @@
 window.addEventListener("load", function() {
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 5 // 지도의 확대 레벨 
-    }; 
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        level: 5 // 지도의 확대 레벨 
+	    }; 
 
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 		
-	// *------ 서점 여러 개 나타내기 ------*
+	// *------ 지도에 서점 나타내기 ------*
 	// 1. 서점 정보 얻어내기		
-	function getBookstore() {
+	function getBookstores() {
 		const response = fetch("http://localhost:8080/api/bookstore/list");
 		return response
 		.then(res => 
@@ -29,7 +29,7 @@ window.addEventListener("load", function() {
 	
 	(async() => {
 		try {
-		    var list = await getBookstore();
+		    var list = await getBookstores();
 		    
 			for(var i=0; i<list.length; i++) {
 				
@@ -39,8 +39,6 @@ window.addEventListener("load", function() {
 				bookstoreJson.latlng = new kakao.maps.LatLng(list[i].latitude, list[i].longitude);
 				
 				bookstores.push(bookstoreJson);	
-				console.log(bookstoreJson);
-				console.log(list);
 			}
 			
 			// 3. 마커 이미지 표시하기
@@ -59,36 +57,11 @@ window.addEventListener("load", function() {
 			        title : bookstores[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 			        image : markerImage // 마커 이미지 
 			    });
-			    
-			    let bookstoreImg = list[i].bgImg;
-			    console.log(list[i].bgImg);
-			    
+				            
+				let url = "https://map.kakao.com/link/map/" + list[i].name + ',' + list[i].latitude + ',' + list[i].longitude; 
+				            
 				// 커스텀 오버레이에 표시할 컨텐츠
-				/*let content = `<div class="wrap">' + 
-				            '    <div class="info">' + 
-				            '        <div class="title">' + 
-				            			 list[i].name +  
-				            '            <div class="close" title="닫기"></div>' + 
-				            '        </div>' + 
-				            '        <div class="body">' + 
-				            '            <div class="img">' + 
-				            '                <img src="/upload/bookstore/cih.jpg" width="73" height="70">' +
-				            '           </div>' + 
-				            '           <div class="desc">' + 
-				            '                <div class="ellipsis">' +  
-				            '					<a href="https://map.kakao.com/link/map/{list[i].latitude}, {list[i].longitude}" target="_blank">' + list[i].address + '</a>'
-				            '				 </div>' + 
-				            /*onclick="location.href=this.href+${list[i].latitude}, ${list[i].longitude}*/
-				            /*'                <div><a href="http://www.naver.com" target="_blank" class="link">Instagram에 방문해보세요!</a></div>' + 
-				            '            </div>' + 
-				            '        </div>' + 
-				            '    </div>' +    
-				            '</div>`;*/
-				            
-				  let url = "https://map.kakao.com/link/map/" + list[i].name + ',' + list[i].latitude + ',' + list[i].longitude; 
-				  console.log(url);
-				            
-				  let content = `<div class="wrap">
+				let content = `<div class="wrap">
 				                <div class="info">
 				                    <div class="title">
 				            			 ${list[i].name}  
@@ -112,7 +85,6 @@ window.addEventListener("load", function() {
 		
 				// 마커 클릭 시 커스텀 오버레이 표시
 				(function(marker, bookstore) {
-					
 					kakao.maps.event.addListener(marker, 'click', function() {
 						var overlay = new kakao.maps.CustomOverlay({
 						    content: content,
@@ -120,30 +92,14 @@ window.addEventListener("load", function() {
 						    position: marker.getPosition()
 						});
 						
-						
-						
-						// X 버튼 클릭 시 커스텀 오버레이를 닫기
-						var closeBtn = document.querySelector(".close");
+						// X 버튼 클릭 시 커스텀 오버레이 닫기
+						let closeBtn = document.querySelector(".close");
 						closeBtn.onclick = function() {
 							overlay.setMap(null);     
-						}	
-						
-						/*var mapBtn = document.querySelector(".ellipsis>a");
-						mapBtn.onclick = function() {
-							location.href=this.href+list[i].latitude, list[i].longitude
-						}*/
-						
-						/*bookstoreImg = document.querySelector(".wrap img");
-						bookstoreImg.src = "/upload/bookstore/" + list[i].bgImg;		
-						console.log(bookstoreImg);
-						console.log(list[i]);*/
-							
+						}
 					});
 				})(marker, bookstores[i]);
 				
-/*				console.log(list[i]);
-*//*				bookstoreImg.src = "/upload/bookstore/" + list[i].bgImg;
-				console.log(bookstoreImg.src);*/
 			}
 		}
 		catch(error){
@@ -201,5 +157,48 @@ window.addEventListener("load", function() {
 	    
 	    // 지도 중심좌표를 접속위치로 변경합니다
 	    map.setCenter(locPosition);      
-	}    
+	}   
+	
+	
+	// *------ 검색한 서점으로 지도 중심 좌표 이동하기 ------*	
+	let moveMapBtn = document.querySelector(".moveToBookstore");
+	moveMapBtn.onclick = function(e) {
+		let bookstoreName = document.querySelector("input[name=b]").value;
+		console.log(bookstoreName);
+		let url = "http://localhost:8080/api/bookstore/search/" + bookstoreName; 
+		console.log(url);
+		
+		function getBookstore() {
+			const response = fetch(url);
+			return response
+			.then(res => 
+				res.json())
+			.then(bookstore => {
+				console.log(bookstore);
+				console.log(bookstore.bookstore);	
+				let store = bookstore.bookstore		
+				return store;
+			})
+		}
+		
+		(async() => {
+			try {
+			    var store = await getBookstore();
+			   
+			    // 이동할 위도 경도 위치를 생성합니다 
+			    var moveLatLon = new kakao.maps.LatLng(store.latitude, store.longitude);
+			    
+			    // 지도 중심을 부드럽게 이동시킵니다
+			    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+			    map.panTo(moveLatLon);            		
+				
+			}
+			catch(error){
+			    console.log(error);
+			}
+		})();
+		
+		
+	}
+ 
 });
