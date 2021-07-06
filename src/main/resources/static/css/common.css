@@ -5,6 +5,17 @@
     font-style: normal;
 }
 
+select{
+	font-family: 'TmoneyRoundWindRegular';
+	border-radius: 10px;
+	padding: 2px 0 2px 5px;
+}
+
+input{
+		border-radius: 10px;
+		border: 1px solid gray;
+}
+	
 :root {
     --primary: rgb(115, 168, 174);
     --secondary: #0d7785;
