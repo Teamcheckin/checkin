@@ -161,12 +161,11 @@ window.addEventListener("load", function() {
 	
 	
 	// *------ 검색한 서점으로 지도 중심 좌표 이동하기 ------*	
+	// 1. 검색 버튼 클릭 시 검색한 서점 이름에 해당하는 서점 정보 가져오는 apiController 실행
 	let moveMapBtn = document.querySelector(".moveToBookstore");
 	moveMapBtn.onclick = function(e) {
 		let bookstoreName = document.querySelector("input[name=b]").value;
-		console.log(bookstoreName);
 		let url = "http://localhost:8080/api/bookstore/search/" + bookstoreName; 
-		console.log(url);
 		
 		function getBookstore() {
 			const response = fetch(url);
@@ -174,13 +173,12 @@ window.addEventListener("load", function() {
 			.then(res => 
 				res.json())
 			.then(bookstore => {
-				console.log(bookstore);
-				console.log(bookstore.bookstore);	
-				let store = bookstore.bookstore		
+				let store = bookstore.bookstore;		
 				return store;
 			})
 		}
 		
+		// 2. 서점 위치로 지도 중심좌표 이동하기
 		(async() => {
 			try {
 			    var store = await getBookstore();
@@ -191,14 +189,11 @@ window.addEventListener("load", function() {
 			    // 지도 중심을 부드럽게 이동시킵니다
 			    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
 			    map.panTo(moveLatLon);            		
-				
 			}
 			catch(error){
 			    console.log(error);
 			}
-		})();
-		
-		
+		})();	
 	}
  
 });
