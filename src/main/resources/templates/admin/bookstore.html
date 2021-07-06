@@ -1,4 +1,7 @@
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
 
 <head>
 	<meta charset="UTF-8">
@@ -12,7 +15,7 @@
 </head>
 
 <body>
-	<main>
+	<main layout:fragment="main">
 		<div class="title">ADMIN</div>
 		<nav class="mini-nav">
 			<a href="" class="mini-nav-page">서점</a>
@@ -20,10 +23,11 @@
 			<a href="">스탬프 투어</a>
 			<a href="">후기</a>
 			<a href="">해시태그</a>
-		</nav>s
+		</nav>
 
 
 		<section>
+			<a th:href="@{/admin/bookstore/insert}" class="btn create-btn"> Create</a>
 			<form>
 				<div class="operation">
 					<!--select와 검색 중 하나만 하기 추천
@@ -46,18 +50,19 @@
 						<span th:text="${b.operatingTime}">서점 오픈시간</span>
 						<span th:text="'서점지기: '+ ${b.memberId?:'없음'}">서점지기</span>
 						<div class="popup d-none">
+							<div>
 							<div th:each="m : ${member}" class="card">
 								<img th:src="${m.profileImg}?:@{/images/profile.png}" class="card-img">
 								<div class="hi-span">
-									<span th:text="'닉네임: '+${m.nickname}">닉네임</span>
-									<span th:text="'이메일: '+${m.email}">이메일</span>
-									<span th:text="'가입일: '+${#calendars.format(m.regDate, 'yyyy-MM-dd')}">가입일</span>
+									<span th:text="${m.nickname}+'('+${m.email} +')'">닉네임(email)</span>
+									<span th:text="'가입: '+${#calendars.format(m.regDate, 'yy-MM-dd')}">가입일</span>
 								</div>
 								<div class="btn-list">
 									<a th:href="@{admin/bookstore/update}" class="btn assign-btn">임명</a>
 									<input type="hidden" name="memberId" value="${m.id}">
 									<input type="hidden" name="bookstoreId" value="${b.id}">
 								</div>
+							</div>
 							</div>
 						</div>
 					</div>
