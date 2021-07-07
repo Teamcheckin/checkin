@@ -32,7 +32,8 @@ public class MapController {
 //	@GetMapping
 //	public String stampList() {
 //		
-//		service.getList()
+//		//List<BookStore> = bookstoreService.getList();
+//		return null;
 //	}
 	
 }
