@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.checkin.web.entity.BookStore;
+import com.checkin.web.service.BookStoreService;
 import com.checkin.web.service.MapService;
 
 @Controller
@@ -17,6 +18,9 @@ public class MapController {
 	@Autowired
 	private MapService service;
 	
+	@Autowired
+	private BookStoreService bookstoreService;
+	
 	@GetMapping("")
 	public String main(String bookstore/* , Model model */) {
 		
@@ -24,5 +28,11 @@ public class MapController {
 		
 		return "map/main";
 	}
+	
+//	@GetMapping
+//	public String stampList() {
+//		
+//		service.getList()
+//	}
 	
 }

@@ -37,6 +37,8 @@ public class RecController {
 		
 		List<BookStore> hlist1 = service.getListHashtagBookstore("#고양이");
 		model.addAttribute("hlist1",hlist1);
+		System.out.println("AA" + hlist1);
+
 		
 		List<BookStore> hlist2 = service.getListHashtagBookstore("#큐레이터");
 		model.addAttribute("hlist2",hlist2);

@@ -10,7 +10,7 @@
         <result column="Bg_img" property="bgImg"/>
 </resultMap>
 	<!-- 서점 정보를 불러오는거니까 resultType은 BookStore!!! -->
-	<select id="getList" resultType="com.checkin.web.entity.BookStore">
+	<select id="getList" resultMap="getList">
 		select b1.*
 		from bookstore b1
 		join hashtag_bookstore b2 on b1.id = b2.Bookstore_id
