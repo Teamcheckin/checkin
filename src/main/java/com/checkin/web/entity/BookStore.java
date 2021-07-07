@@ -14,6 +14,10 @@ public class BookStore {
    private Double latitude;
    private Double longitude;
    
+   public BookStore() {
+	   
+   }	
+   
    public BookStore(Integer id, String bgImg, String logoImg, String address, String instagramUrl, Integer memberId,
          String name, String operatingTime, String guName, Double latitude, Double longitude) {
       super();
@@ -30,7 +34,8 @@ public class BookStore {
       this.longitude = longitude;
    }
 
-   public Integer getId() {
+
+public Integer getId() {
       return id;
    }
 
