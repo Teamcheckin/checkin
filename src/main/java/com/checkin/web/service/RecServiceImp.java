@@ -39,7 +39,7 @@ public class RecServiceImp implements RecService{
 	}
 
 	@Override
-	public List<BookStore> getListBooktStore(String query) {
+	public List<BookStore> getListBooktStore(String query, String gu) {
 		return bookstoredao.getList(query, null);
 	}
 

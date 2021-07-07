@@ -1,9 +1,8 @@
-package com.checkin.web.controller;
+package com.checkin.web.api.controller;
 
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,62 +10,47 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.Hashtag;
-import com.checkin.web.entity.HashtagBookstore;
-import com.checkin.web.entity.Member;
+import com.checkin.web.service.BookStoreService;
+import com.checkin.web.service.HashtagService;
 import com.checkin.web.service.RecService;
 
-
-//추천탭 컨트롤러
-@Controller
-@RequestMapping("/rec/")
+@Controller("apiRecController")
+@RequestMapping("/api/rec/")
 public class RecController {
-	
+
 	@Autowired
 	private RecService service;
+	//@RequestParam(name:q) String query
+	//초기페이지와 검색했을 때의 페이지는 컨트로러 작성을 어떻게?
 	
-	@RequestMapping("main")
-	public String main(Model model) {
-		
-		List<Hashtag> hlist = service.getList();
-		
-		System.out.println(hlist);
-		model.addAttribute("hlist",hlist);
-		
-		List<BookStore> hlist1 = service.getListHashtagBookstore("#고양이");
-		model.addAttribute("hlist1",hlist1);
-		System.out.println("AA" + hlist1);
-
-		
-		List<BookStore> hlist2 = service.getListHashtagBookstore("#큐레이터");
-		model.addAttribute("hlist2",hlist2);
-		
-		List<BookStore> hlist3 = service.getListHashtagBookstore("#영화");
-		model.addAttribute("hlist3",hlist3);
-		
-		return "rec/main";
-	}
 	
 	@PostMapping("result")
-	public String list(	Model model,	
+	public Map<String, Object> result(	Model model,	
 						@RequestParam(name="q", required = false) String query, 
 						@RequestParam(name="f", required = false) String field) {
-		List<Hashtag> hlist = service.getList();
 		
-		model.addAttribute("hlist",hlist);
+			List<Hashtag> hlist = service.getList();
+			model.addAttribute("hlist",hlist);
 		
-		
+			Map<String, Object> map;
+			
 		if(field.equals("1")||query.equals("")) {
 			//서점 검색
 			System.out.println(query);
 			System.out.println(field);
 			
 			List<BookStore> list = service.getListBooktStore(query, null);
+			map = new HashMap<>();
+			
 			System.out.println(list);
 			System.out.println(list.isEmpty());
-			model.addAttribute("list",list);
+			
+			map.put("list",list);
 			
 		}else {
 			//해시태그 검색
@@ -74,15 +58,22 @@ public class RecController {
 			System.out.println(field);
 			
 			List<BookStore> list = service.getListHashtagBookstore(query);
-			System.out.println(list);
+			map = new HashMap<>();
 			
-			model.addAttribute("list",list);
+			map.put("list",list);
 		}
 			
 		
-		return "rec/result";
+		return map;
 	}
-
 	
-	
+//	@RequestMapping("error")
+//	public int error(int result){
+//		
+//		//int r = result;
+//		//map.put("result", result);
+//		int r = result;
+//		return r;
+//	}
+	 
 }

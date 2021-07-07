@@ -10,6 +10,8 @@
 <link href="/css/common.css" rel="stylesheet">
 <link href="/css/admin/hash/list.css" rel="stylesheet">
 <script src="/js/admin/hash/list.js"></script>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 <title>해시태그 관리 페이지</title>
 </head>
 <body>
@@ -38,20 +40,19 @@
 			
 			<form class="d-none" action="/admin/hash/reg" method="post">
 				<div>
-					<input type="text" value="#" name="q"> 
-					<input type="submit" onClick="" class="btn" value="등록">
+					<input type="text" value="#" name="q">
+					<input type="submit" class="btn" value="등록">
 				</div>
-			</form>
-			
-			<form class="d-none" action="/admin/hash/del" method="post">
-				
 			</form>
 		</div>
 
 
 		<div class="card" th:each="h:${list}">
 			<div class="hi-span">
-				<span th:text="${h.name}">#해시태그</span>
+				<span th:text="${h.name}"></span>
+				<a th:href="@{/admin/hash/del(id=${h.id})}">
+					<img src="/images/times-solid.svg" class="d-none img" />
+				</a>
 			</div>
 		</div>
 	</main>

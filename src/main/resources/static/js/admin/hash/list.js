@@ -1,31 +1,12 @@
 
-window.addEventListener("load", function() {
-	
-	let subBtn = document.querySelector("input[value='등록']")
-	
-	
-	/*subBtn.onclick = function(e){
-		e.preventDefault();
-		console.log("subbtn");
-		
-	}*/
-	
-	fetch('/api/hash/error')
-	.then(response=>response.text())
-	.then(text=>{
-				console.log(text);
-				
-			});
-			
-	
-});
 
 
 window.addEventListener("load", function() {
 	let addBtn = document.querySelector(".addBtn");
 	let delBtn = document.querySelector(".delBtn");
-
-	let selected = null;
+	let xBtn = document.querySelectorAll(".img");
+	
+	let selected = null; //버튼 중 하나만 눌리게 하려면 사용
 	
 	addBtn.onclick = function(e) {
 		e.preventDefault();
@@ -44,32 +25,22 @@ window.addEventListener("load", function() {
 	}
 
 
-	delBtn.onclick = function(e) {
-		e.preventDefault();
-
-		if (selected != e.target && selected != null) {
-			selected.classList.remove("selected");
+	delBtn.onclick = function() {
+		
+		delBtn.classList.toggle("selected");
+		
+		for(let i=0; i<xBtn.length; i++){ //모든 해시태그 카드에 X버튼 할당
+			xBtn[i].classList.toggle("d-none");
+			console.log(xBtn[i])
 		}
-
-		selected = e.target;
-		console.log(selected)
-		selected.classList.toggle("selected");
-
+		
 	}
 	
 	
-	
-	
+/*	function popUp(sentence){
+		window.open("/admin/hash/popUp.html")
+	}*/
+
 	
 })
-
-
-
-
-
-
-
-
-
-
 

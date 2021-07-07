@@ -8,17 +8,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="/css/rec/result.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
+<script type="text/javascript" src="/js/rec/result.js"></script>
  
 <title>추천탭 검색 결과 페이지</title>
 </head>
 
 
 <main layout:fragment="main">
-
-    <section id="search">
-        <input type="text" value="">
-        <input type="submit" value="검색">
-    </section>
+<div class="title"></div>
+    <section>
+	<form action="/api/rec/result" method="post">
+		<select name="f">
+			<option value="1">일반 검색</option>
+			<option value="2">해시태그</option>
+		</select> 
+		<input type="text" name="q"> 
+		<input type="submit" class="btn" value="검색"> 
+		<select name="h">
+			<option selected value="0">해시태그 목록</option>
+			<option th:each="h:${hlist}" th:value="${h.id}" value="1" th:text="${h.name}">일반 검색</option>
+		</select>
+	</form>
+	</section>
     
     <section th:if="${#lists.isEmpty(list)}">
     	<span><img src="/images/ndg.gif" style="width:290px">존재하지 않는 서점입니다</span>

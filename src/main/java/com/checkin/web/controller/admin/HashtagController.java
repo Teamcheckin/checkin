@@ -63,12 +63,31 @@ public class HashtagController {
 			HttpServletResponse response,
 			@RequestParam(name="q" , required = false) String hashtag) throws IOException {
 		int result=0;
+
 		try {
 			result=service.insert(hashtag);
+			response.setContentType("text/html; charset=UTF-8"); 
+			
+			PrintWriter out = response.getWriter(); 
+			out.println("<script>popUp('해시태그가 등록되었습니다'); "
+					+ "location.href='/admin/hash/list';</script>"); 
+			out.flush();
+
+//			out.println("<script>alert('해시태그가 등록되었습니다.'); "
+//					+ "location.href='/admin/hash/list';</script>"); 
+//			out.flush();
+
 			
 		} catch (Exception e) { //result = 0;
-			model.addAttribute("result",result);
-			return "/api/hash/error";
+
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter out = response.getWriter(); 
+
+			out.println("<script>alert('이미 존재하는 해시태그입니다.'); "
+					+ "location.href='/admin/hash/list';</script>"); 
+			out.flush();
+			//여기다 내가 만든 모달창 넣으면 된다 
+
 		}
 		
 		//model.addAttribute("result",result);
@@ -81,7 +100,7 @@ public class HashtagController {
 	
 //등록 기능은 컨트롤러를 어떻게 해야 되지?
 	
-	@RequestMapping("delete")
+	@RequestMapping("del")
 	public String del(int id) {
 		service.delete(id);
 		return "redirect:list";
