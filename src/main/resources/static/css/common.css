@@ -8,7 +8,12 @@
 select{
 	font-family: 'TmoneyRoundWindRegular';
 	border-radius: 10px;
+	background-color: white;
 	padding: 2px 0 2px 5px;
+}
+
+.font {
+	font-family: 'TmoneyRoundWindRegular';
 }
 
 input{
