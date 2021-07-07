@@ -23,8 +23,8 @@
 			<option value="1">일반 검색</option>
 			<option value="2">해시태그</option>
 		</select> 
-		<input type="text" name="q"> 
-		<input type="submit" class="font btn" value="검색"> 
+		<input class="search" type="text" name="q"> 
+		<input type="submit" class="btn" value="검색"> 
 		<select name="h">
 			<option selected value="0">해시태그 목록</option>
 			<option th:each="h:${hlist}" th:value="${h.id}" value="1" th:text="${h.name}">일반 검색</option>
