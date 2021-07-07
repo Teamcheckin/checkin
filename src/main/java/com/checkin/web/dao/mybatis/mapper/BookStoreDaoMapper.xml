@@ -6,12 +6,21 @@
 
     
 <mapper namespace="com.checkin.web.dao.BookStoreDao">
+
+	<resultMap type="com.checkin.web.entity.BookStore" id="bookstoreMap">
+        <result column="bg_img" property="bgImg"/>
+        <result column="logo_img" property="logoImg"/>
+        <result column="instagram_url" property="instagramUrl"/>
+        <result column="member_id" property="memberId"/>
+        <result column="operating_time" property="operatingTime"/>
+        <result column="gu_name" property="guName"/>
+	</resultMap>
 	
-	 <select id="get" resultType="com.checkin.web.entity.BookStore">
+	 <select id="get" resultMap="bookstoreMap">
         select * from bookstore where id = #{id}
      </select>
      
-     <select id="getBookstore" resultType="com.checkin.web.entity.BookStore">
+     <select id="getBookstore" resultMap="bookstoreMap">
         select * from bookstore 
 		   <where>  
 		   		<if test="query != null">name = #{query}</if>		   		
@@ -22,7 +31,7 @@
         select count(id) from bookstore
      </select>
      
-     <select id="getList" resultType="com.checkin.web.entity.BookStore">
+     <select id="getList" resultMap="bookstoreMap">
         select * from bookstore 
 		   <where>  
 		   		<if test="query != null">Name like '%${query}%'</if>
@@ -30,14 +39,14 @@
 		   		
 		   </where>
      </select> 
-     <select id="getGu" resultType="com.checkin.web.entity.BookStore">
+     <select id="getGu" resultMap="bookstoreMap">
         select * from bookstore 
 		   <where>  
 		   		<if test="gu != null">gu_name = #{gu}</if>
 		   </where>
      </select> 
         
-     <select id="getNameList" resultType="com.checkin.web.entity.BookStore">
+     <select id="getNameList" resultMap="bookstoreMap">
         select * from bookstore order by name
      </select>   
         
