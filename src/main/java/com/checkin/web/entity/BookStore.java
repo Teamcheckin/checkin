@@ -1,5 +1,7 @@
 package com.checkin.web.entity;
 
+import java.beans.Transient;
+
 public class BookStore {
 
    private Integer id;
@@ -50,6 +52,14 @@ public Integer getId() {
    public void setBgImg(String bgImg) {
       this.bgImg = bgImg;
    }
+   
+   @Transient
+	public String getBgImagePath() {
+		if(bgImg == null)
+			return null;
+		
+		return "/upload/bookstore/" + bgImg;
+	}
 
    public String getLogoImg() {
       return logoImg;
@@ -58,6 +68,14 @@ public Integer getId() {
    public void setLogoImg(String logoImg) {
       this.logoImg = logoImg;
    }
+   
+//   @Transient
+//	public String getLogoImagePath() {
+//		if(img == null)
+//			return null;
+//		
+//		return "/upload/review/" + img;
+//	}
 
    public String getAddress() {
       return address;

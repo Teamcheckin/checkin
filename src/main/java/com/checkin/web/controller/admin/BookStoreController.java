@@ -16,7 +16,7 @@ import com.checkin.web.service.BookStoreService;
 import com.checkin.web.service.GuService;
 import com.checkin.web.service.MemberService;
 
-@Controller
+@Controller("adminBookstoreController")
 @RequestMapping("/admin/bookstore")
 public class BookStoreController {
 	@Autowired

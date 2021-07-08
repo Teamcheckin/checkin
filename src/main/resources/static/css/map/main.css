@@ -130,6 +130,7 @@ button {
 	}
 	
 	.stamptour-info {
+		display: flex;
 		position: relative;
 		justify-content: center;
 		width: 100%;
@@ -139,16 +140,16 @@ button {
 	}
 	
 		.stamptour-img {
-			height: 85%;
+			height: 95%;
 			border-radius: 5px;
-			margin: 0 5px;
+			margin: 0 5px;		
 		}
 	
 		.stamptour-content {
 			position: absolute;
-			bottom: 0%;
+			bottom: 6.5%;
 			color: white;
-			font-size: 12px;
+			font-size: 11px;
 		}
 		
 .wrap {position: absolute;left: 26px;bottom: 33px;width: 240px;height: 112px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'TmoneyRoundWindRegular';line-height: 1.5;}

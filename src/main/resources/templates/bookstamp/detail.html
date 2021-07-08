@@ -37,8 +37,12 @@
 		
 		<section>
 			<div class="store-name" th:each="b:${bookstore}">
-				<img class="img" th:src="${b.logoImg}?:@{/images/books.png}">
-				<span class="span-title" th:text="${b.name}"></span><br>
+				<a th:href="@{/bookstore/detail(id=${b.id})}">
+					<img class="img" th:src="${b.logoImg}?:@{/images/books.png}">
+				</a>
+				<a th:href="@{/bookstore/detail(id=${b.id})}">
+					<span class="span-title" th:text="${b.name}"></span><br>
+				</a>				
 				<span class="span-adress" th:text="${b.address}"></span><br>
 				<!-- <span class="span-bottom" th:text="${b.operatingTime}"></span>  -->
 			</div>

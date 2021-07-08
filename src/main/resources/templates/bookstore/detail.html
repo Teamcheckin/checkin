@@ -2,18 +2,50 @@
 <html xmlns:th="http://www.themeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/inc/layout">
+	
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>스탬프루트</title>
+    <title>책크인</title>
+   	<link href="/css/common.css" type="text/css" rel="stylesheet">
+   	<link href="/css/bookstore/detail.css" type="text/css" rel="stylesheet">
 </head>
 <body>
    	<main layout:fragment="main">
-    	<section>
-    
-
+    	<section class="bookstore-title">
+	    	<div th:each="b:${bookstore}">
+	    	<h1 th:text="${bookstore}"></h1>
+	    		<img class="bookstore-img" th:src="@{/upload/bookstore/${b.bgImg}}?:@{/images/bookstore.png}">
+	    		<div>
+		    		<img class="logo-img">
+	    			<div class="name"></div>
+	    			<div class="hashtag"></div>
+	    		</div>
+	    	</div>
 	    </section>    
+	    <section class="bookstore-info">
+	    	<div>
+	    		<div class="info">
+	    			<div class="address"></div>
+	    			<div class="instagram"></div>
+	    			<div class="time"></div>
+	    		</div>
+	    		<div id="map"></div>
+	    		<div class="rating"></div>
+	    		<div class="review-list">
+	    			<div class="review">
+	    				<img class="img">
+	    				<div>
+							<img class="profile-img">
+	                        <span class="nickname font">치치</span>						
+						</div>
+	    				<div class="review-hashtag"></div>
+	    				<div class="content"></div>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </section>
     </main>	
 </body>
 </html>
