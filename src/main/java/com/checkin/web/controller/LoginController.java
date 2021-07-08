@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +26,7 @@ public class LoginController {
 	}
 	
 
-	@RequestMapping("/signup")
+	@GetMapping("/signup")
 	public String signup() {
 		
 		return "login/signup";
@@ -44,7 +45,7 @@ public class LoginController {
 	}
 	
 	
-	@RequestMapping("/login")
+	@GetMapping("/login")
 	public String login(HttpServletRequest request, Model model) {
 
 		
@@ -75,31 +76,6 @@ public class LoginController {
 		}
 	}
 	
-	@RequestMapping("/login/kakao")
-	public String kakaoLogin(HttpSession session, HttpServletRequest request,
-							@RequestParam(required=false) Map<String, Object> kakao){
-
-		System.out.println(kakao.get("profile"));
-		System.out.println(kakao.get("email_needs_agreement"));
-		System.out.println(kakao.get("email"));
-		
-//		Member member = new Member();
-//		member.setEmail(account_email);
-//		member.setNickname(profile_nickname);
-//		member.setProfileImg(profile_image);
-//		
-//		service.insert(member);
-//		
-//		member = service.getByEmail(member.getEmail());
-//		session.setAttribute("member", member);
-//		if(account_email != null) {
-//			
-//			
-//		} else {
-//			
-//		}
-		return "mypage";
-	}
 	
 
     
