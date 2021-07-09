@@ -46,4 +46,19 @@ public class BookstoreController {
 		
 		return map;
 	}
+	
+	@RequestMapping("searchgu/{id}")
+	public Map<String, Object> guBookstore(
+		@PathVariable(name="id", required=false) String name,
+			Model model) {
+		
+		List<BookStore> bookstore = service.getGu(name);
+		
+		Map<String, Object> map = new HashMap<>(); 
+		map.put("bookstore", bookstore);
+		
+		return map;
+	}
+	
+	
 }
