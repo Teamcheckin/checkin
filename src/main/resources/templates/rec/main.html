@@ -17,14 +17,14 @@
 
 <main layout:fragment="main">
 	<div class="title"></div>
-	<section>
+	<section id="search">
 	<form action="/rec/result" method="post">
 		<select name="f">
 			<option value="1">일반 검색</option>
 			<option value="2">해시태그</option>
 		</select> 
 		<input class="search" type="text" name="q"> 
-		<input type="submit" class="btn" value="검색"> 
+		<input type="submit" class="btn subBtn" value="검색"> 
 		<select name="h">
 			<option selected value="0">해시태그 목록</option>
 			<option th:each="h:${hlist}" th:value="${h.id}" value="1" th:text="${h.name}">일반 검색</option>
@@ -32,8 +32,7 @@
 	</form>
 	</section>
 
-	<section>
-	
+	<section id="recContent">
 	<div class="recTitle">#고양이</div>
 	<div class="slide_wrapper">
 		<div class="slides">
@@ -73,7 +72,7 @@
 			<div th:each="l3:${hlist3}" class="bookstore">
 				<div class="bs">
 					<div>
-						<img th:src="@{/upload/bookstore/}+${l3.bgImg}" src="/images/bs.jpg" alt="">
+					<img th:src="@{/upload/bookstore/}+${l3.bgImg}" src="/images/bs.jpg" alt="">
 				</div>
 					<div class="bsInfo">
 						<span class="truncate" th:text="${l3.name}"> 책방이름</span> 
@@ -82,7 +81,6 @@
 			</div>
 		</ul>
 	</div>
-	
 	</section>
 	
 </main>

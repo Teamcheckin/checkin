@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +21,7 @@ import com.checkin.web.service.BookStoreService;
 import com.checkin.web.service.HashtagService;
 import com.checkin.web.service.RecService;
 
-@Controller("apiRecController")
+@RestController("apiRecController")
 @RequestMapping("/api/rec/")
 public class RecController {
 
@@ -28,16 +30,18 @@ public class RecController {
 	//@RequestParam(name:q) String query
 	//초기페이지와 검색했을 때의 페이지는 컨트로러 작성을 어떻게?
 	
-	
-	@PostMapping("result")
+	@RequestMapping("result/{f}/{q}")
 	public Map<String, Object> result(	Model model,	
-						@RequestParam(name="q", required = false) String query, 
-						@RequestParam(name="f", required = false) String field) {
+			@PathVariable(name="q", required = false) String query, 
+			@PathVariable(name="f", required = false) String field) {
+		
 		
 			List<Hashtag> hlist = service.getList();
 			model.addAttribute("hlist",hlist);
 		
-			Map<String, Object> map;
+			Map<String, Object> map = new HashMap<>();
+			
+			
 			
 		if(field.equals("1")||query.equals("")) {
 			//서점 검색
@@ -45,7 +49,6 @@ public class RecController {
 			System.out.println(field);
 			
 			List<BookStore> list = service.getListBooktStore(query, null);
-			map = new HashMap<>();
 			
 			System.out.println(list);
 			System.out.println(list.isEmpty());
@@ -56,12 +59,12 @@ public class RecController {
 			//해시태그 검색
 			System.out.println(query);
 			System.out.println(field);
-			
 			List<BookStore> list = service.getListHashtagBookstore(query);
-			map = new HashMap<>();
 			
 			map.put("list",list);
 		}
+		
+		
 			
 		
 		return map;
