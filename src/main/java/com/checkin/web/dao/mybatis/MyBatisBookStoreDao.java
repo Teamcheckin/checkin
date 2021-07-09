@@ -2,7 +2,7 @@ package com.checkin.web.dao.mybatis;
 
 import java.util.List;
 
-
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
  
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
  
 import com.checkin.web.dao.BookStoreDao;
 import com.checkin.web.entity.BookStore;
+import com.checkin.web.entity.HashtagBookstore;
 
 @Repository
 public class MyBatisBookStoreDao implements BookStoreDao {
@@ -25,6 +26,7 @@ public class MyBatisBookStoreDao implements BookStoreDao {
 		mapper = sqlSession.getMapper(BookStoreDao.class);
 	}
 	
+
 	@Override
 	public BookStore get(int id) {
 		 
@@ -69,11 +71,12 @@ public class MyBatisBookStoreDao implements BookStoreDao {
 		return mapper.getCount();
 	}
 
-	@Override
-	public int insert(BookStore bookStore) {
-		 
-		return mapper.insert(bookStore);
-	}
+//	@Override
+//	public int insert(@Param("bookStore") BookStore bookStore,
+//					  @Param("hashBookstore") HashtagBookstore hashBookstore) {
+//		 
+//		return mapper.insert(bookStore, hashBookstore);
+//	}
 
 	@Override
 	public int update(BookStore bookStore) {
@@ -85,6 +88,25 @@ public class MyBatisBookStoreDao implements BookStoreDao {
 	public int delete(int id) {
 		 
 		return mapper.delete(id);
+	}
+
+	@Override
+	public int insert(BookStore bookStore) {
+		
+		return mapper.insert(bookStore);
+	}
+
+	@Override
+	public int inserthash(HashtagBookstore hashBookstore) {
+		
+		return mapper.inserthash(hashBookstore);
+	}
+
+
+	@Override
+	public Integer[] getBookstoreIdArray() {
+	
+		return mapper.getBookstoreIdArray();
 	}
 
 }

@@ -25,4 +25,5 @@ public interface MemberService {
 	boolean nickTrue(String nickname);
 	
 	int delete(int id);
+	boolean emailValid(String email);
 }

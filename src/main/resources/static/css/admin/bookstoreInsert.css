@@ -112,7 +112,7 @@
 		text-align: right;
 	}
 
-.error-message{
+.error-message, .rerror-message{
 	display: inline-block;
 	text-align: right;
 	font-size: 13px;

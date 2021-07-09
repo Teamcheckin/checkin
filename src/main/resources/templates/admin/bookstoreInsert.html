@@ -29,7 +29,7 @@
 		            <input type="file" name="bg-img" class="d-none real-btn" value="로고 이미지 업로드">
 		        </div>
 		        
-		        
+		          <div class="rerror-message animation" th:if="${param.error}">존재하지 않는 회원입니다</div>
     	       		<label>Name</label>
 	           		<span class="height">
 		                <input type="text" class="input" name="Name" value="">
@@ -40,13 +40,13 @@
 	                <a class="address-btn btn">주소 찾기</a>
 	                <br>
 	                <span class="height .hash-board-count">
-	                	<input type="text" class="input" name="address" disabled>
+	                	<input type="text" class="input" name="address">
 	                    <span class="error-message"> 주소를 선택하세요</span>
 	                </span>
 	                
 	                <label>Gu</label>
                		 <select name="guName">
-               			<option value="">선택</option>
+               			<option>선택</option>
 	                    <option th:each="gu:${guList}" th:text="${gu.name}">구</option>
 	                </select>
 	                <span class="gu-align">
@@ -62,7 +62,7 @@
                 	<label>Instagram URL</label>
 	           		<span class="height">
 		                <input type="text" class="input" name="instagramUrl" value="">
-		                <span class="error-message">주소 형식으로 입력하세요</span>
+		                <span class="error-message">url 형식으로 입력하세요</span>
 	                </span>
 	
 					<br>

@@ -10,4 +10,5 @@ public interface StampViewDao {
 	Integer getStampCount(Integer memberId);
 	Integer getStampAdminCount(Integer bookstoreId);
 	Integer insert(Integer memberId, Integer bookestoreId);
+	List<StampView> getStampList();
 }

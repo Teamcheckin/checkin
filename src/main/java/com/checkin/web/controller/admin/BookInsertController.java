@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.Gu;
 import com.checkin.web.entity.Hashtag;
+import com.checkin.web.entity.HashtagBookstore;
 import com.checkin.web.service.BookStoreService;
 import com.checkin.web.service.GuService;
 import com.checkin.web.service.HashtagBookstoreService;
@@ -49,14 +50,13 @@ public class BookInsertController {
 		return "admin/bookstoreInsert";
 	}
 	
-	@PostMapping("bookstore/insert")
+	@PostMapping("/bookstore/insert")
 	public String BookinsertPost(
 				HttpServletRequest request
 				,@RequestParam(name="bg-img", required=false) MultipartFile bgImg
 				,@RequestParam(name="logo-img", required=false) MultipartFile logoImg
+				,BookStore bookstore
 				,Integer hashId) {
-
-		BookStore bookstore = new BookStore();
 		String path ="/images/bgImg";
 		
 		// 배경 이미지 저장
@@ -98,13 +98,17 @@ public class BookInsertController {
 			}
 		}
 		
+		HashtagBookstore hashBookstore = new HashtagBookstore();
+		hashBookstore.setHashtagId(hashId);
+
 		
 		if(bookstore.getName() == null)
-			return "redirect:/admin/bookstoreInsert?error=1";
-
-		service.insert(bookstore, hashId);
+			return "redirect:/bookstore/insert?error";
+		
+		System.out.println(bookstore);
+		service.insert(bookstore, hashBookstore);
 			
-		return "redirect:/admin/bookstore/{id}";
+		return "redirect:/index";
 	}
 	
 	

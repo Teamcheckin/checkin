@@ -5,57 +5,20 @@
     font-size: 30px;
 }
 
-.profile-box{
-    border: 1px solid black;
-    padding: 20px;
-    position:relative;
-    border-radius: 30px;
-}
-    .profile-box .modify-btn{
-        top: 20px;
-        right: 20px;
-        position: absolute;
-    }
-    
-    .profile-box .profile-img{
-        width:80px;
-        height:80px;
-        background-color: gray;
-        border-radius:50px;
-    }
-
-    .profile-box .my-info{
-        position: absolute;
-        top: 30px;
-        left: 120px;
-        display: flex;
-        flex-direction: column;
-    }
-        .profile-box .my-info span{
-            padding: 5px;
-        }
-
-
-    .profile-box .my-activity{
-        text-align: center;
-        margin-top: 25px;
-    }
-
-        .profile-box .my-activity span{
-            padding: 0 5px;
-            font-size: 12px;
-        }
-
 .dash-board{
 	display: inline-block;
+	display:flex;
+	justify-content: center;
 	margin:15px 0;
     padding:20px;
     border: 1px solid black;
     border-radius: 20px;
     text-align: center;
 }
-
-.hash-board .hash-board-count{
+.my-hash{
+	width: 100%;
+}
+.hash-board-count{
 	padding-bottom: 15px;
 	display:flex;
 	justify-content: space-around;
@@ -67,7 +30,7 @@
 .hash-board .hash-btn, .my-hash-btn{
 	background-color: var(--secondary);
 }
-.hash-board .hash-card{
+.hash-card, .my-hash-card{
 	display: inline-block;
 	border: 1px solid black;
 	border-radius: 10px;
@@ -78,14 +41,14 @@
 	color: white;
 	font-size: 13px;
 	font-weight: lighter;
-	opacity: 0.6;
+	opacity: 0.4;
 }
 
 .hash-edit-list{
 	cursor: pointer;
 }
 
-.hash-board .hash-card.selected{
+.hash-board .hash-card.selected, .my-hash-card{
 	opacity: 1;
 }
 
