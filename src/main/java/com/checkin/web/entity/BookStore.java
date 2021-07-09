@@ -69,13 +69,13 @@ public Integer getId() {
       this.logoImg = logoImg;
    }
    
-//   @Transient
-//	public String getLogoImagePath() {
-//		if(img == null)
-//			return null;
-//		
-//		return "/upload/review/" + img;
-//	}
+   @Transient
+   public String getLogoImagePath() {
+		if(logoImg == null)
+			return null;
+		
+		return "/upload/bookstore/" + logoImg;
+	}
 
    public String getAddress() {
       return address;

@@ -12,24 +12,23 @@
    	<link href="/css/bookstore/detail.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-   	<main layout:fragment="main">
+   	<main id="main" layout:fragment="main">
     	<section class="bookstore-title">
 	    	<div th:each="b:${bookstore}">
-	    	<h1 th:text="${bookstore}"></h1>
-	    		<img class="bookstore-img" th:src="@{/upload/bookstore/${b.bgImg}}?:@{/images/bookstore.png}">
+	    		<img class="bookstore-img" th:src="${b.bgImagePath}?:@{/images/bookstore.png}">
 	    		<div>
-		    		<img class="logo-img">
-	    			<div class="name"></div>
+		    		<img class="logo-img" th:src="${b.logoImagePath}?:@{/images/books.png}">
+	    			<div class="name" th:text="${b.name}"></div>
 	    			<div class="hashtag"></div>
 	    		</div>
 	    	</div>
 	    </section>    
 	    <section class="bookstore-info">
-	    	<div>
+	    	<div th:each="b:${bookstore}"> 
 	    		<div class="info">
-	    			<div class="address"></div>
-	    			<div class="instagram"></div>
-	    			<div class="time"></div>
+	    			<div class="address" th:text="${b.address}"></div>
+	    			<div class="instagram" th:text="${b.instagramUrl}"></div>
+	    			<div class="time" th:text="${b.operatingTime}"></div>
 	    		</div>
 	    		<div id="map"></div>
 	    		<div class="rating"></div>
