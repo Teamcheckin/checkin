@@ -28,7 +28,7 @@
 	    	</div>
 	    </section>    
 	    <section class="tap-menu">
-	    	<span>정보</span>
+	    	<span class="selected">정보</span>
 	    	<span>후기</span>
 	    </section>
 	    <section class="bookstore-section">
@@ -72,10 +72,7 @@
 			    				<span>평가</span>
 					    		<div class="rating" th:text="${r.ratingName}"></div>	    					
 	    					</div>
-	    					<div>
-					    		<span>후기</span>
-			    				<div class="content" th:text="${r.content}"></div>	    					
-	    					</div>
+		    				<div class="content" th:text="${r.content}"></div>	    					
 						</div>
 	    			</div>
 	    		</div>	 
