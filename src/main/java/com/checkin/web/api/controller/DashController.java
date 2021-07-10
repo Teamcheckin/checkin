@@ -22,13 +22,27 @@ public class DashController {
 	private HashtagMemberService hashmemService;
 	
 	@RequestMapping("/api/hashUpdate")
-	public String hashUpdate(@RequestBody Map<Object, Object> selected, final HttpSession session, Model model){
+	public String hashUpdate(@RequestBody String selectArray, final HttpSession session, Model model){
 		 Member member = (Member) session.getAttribute("member");
 		 Integer memberId = member.getId();
 
-		 Object object = selected.get("selected");
-		 String objectString = String.valueOf(object);
-		 System.out.println(objectString);
+		 System.out.println(selectArray);
+//		 Object object = selected.get("selected");
+//		 int length =(int) selected.get("length");
+//	
+//		 
+//		System.out.println(object);
+//		System.out.println(length);
+		// object[] array to string[] #1
+//		 String[] stringArray = Arrays.copyOf(object, length, String[].class);
+//		 System.out.println(Arrays.toString(stringArray));
+		 
+		// object[] array to string[] #2
+//	     String[] stringArray = Arrays.asList(object).toArray(new String[length]);
+             // .toArray(new String[objectArray.length]);
+//	     System.out.println(Arrays.toString(stringArray));
+		 
+		 
 //		 for() {
 //			 Integer id = (Integer)value;
 //			 boolean hashTrue= hashmemService.hashCheck(id, memberId);

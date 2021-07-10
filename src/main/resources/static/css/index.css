@@ -1,3 +1,7 @@
+section .title{
+    margin: 40px 0 30px 0;
+    font-size: 25px;
+}
 
 /* 이 서점은 어떠세요? */
 .bookstore-card{
@@ -23,36 +27,29 @@
 	}
 	
 	.bookstore-card .hi-span{
-		text-align:center;
 		display: flex;
-		justify-content: space-around;
-		align-content: center;
-		padding-left: 80px;
+		justify-content: space-between;
+		margin: 0 5px 0 110px;
 	}
-	
+	.bookstore-card .hi{
+		margin-right: 5px;
+	}
 
 /* 사람들이 스탬프를 찍고 있어요 */
 .stamp-card{
-	
 }
 
 .each-stamp-card{
 	width: 100%;
-	border-bottom: 1px solid black;
-	padding: 0px;
-	display: flex;
-	justify-content: space-between;
+	border-bottom: 1px solid var(--primary);
+	padding: 3px;
 }
-	.each-stamp-card span{
-	
-	}
-	
-	.big-name{
-		width: 100px;
-	}
-	
-	.small-name{
-		width: auto;
+.each-stamp-card span{
+	padding: 5px;
+}
+
+	.right{
+		float: right;
 	}
 
 /* 최근 리뷰 */
@@ -64,10 +61,10 @@
 }
 	.each-review-card{
 		margin: 3px;
-		border-radius: 5px;
 	}
 	
 	.review-img{
+		border-radius: 7px;
 		width: 150px;
 		height: 150px;
 	}
@@ -78,6 +75,5 @@
 	}
 	
 .small-font{
-	font-size: 9px;
-	line-height: 9px;
+	font-size: 11px;
 }

@@ -57,10 +57,10 @@ public class BookInsertController {
 				,@RequestParam(name="logo-img", required=false) MultipartFile logoImg
 				,BookStore bookstore
 				,Integer hashId) {
-		String path ="/images/bgImg";
 		
 		// 배경 이미지 저장
 		if(bgImg != null) {
+			String path ="/upload/bookstore";
 			String bgName = bgImg.getOriginalFilename();
 			System.out.println(bgName);
 			
@@ -81,6 +81,7 @@ public class BookInsertController {
 		
 		//로고 이미지 저장
 		if(logoImg != null) {
+			String path ="/images/logoImg";
 			String logoName = bgImg.getOriginalFilename();
 			System.out.println(logoName);
 			

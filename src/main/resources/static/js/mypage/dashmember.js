@@ -21,15 +21,15 @@ window.addEventListener("load", function(){
 	hashBtn.addEventListener("click", function(){
 		hash.classList.add("d-none");
 		myHash.classList.remove("d-none");
+		console.log(selected);
 		let selectArray = Array.from(selected);
+		console.log(selectArray);
 		fetch('/api/hashUpdate', {
 			method: "POST",
 			headers: {
 			     'Content-Type': 'application/json'
 		    },
-			body: JSON.stringify({
-				"selected": selectArray
-			})
+			body: JSON.parse({selectArray})
 		})
 		.then(res => res.text())
 		.then(text => {

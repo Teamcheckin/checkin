@@ -11,9 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.checkin.web.entity.BookStore;
+import com.checkin.web.entity.BookStoreView;
 import com.checkin.web.entity.Member;
-import com.checkin.web.entity.Review;
 import com.checkin.web.entity.ReviewView2;
 import com.checkin.web.entity.StampList;
 import com.checkin.web.service.BookStoreService;
@@ -39,13 +38,12 @@ public class HomeController {
 		Integer[] bookStoreArray = service.getBookstoreIdArray();
 		System.out.println(bookStoreArray);
 		//Integer[] id = shuffle(bookStoreArray);
-		BookStore bookstore= service.get(bookStoreArray[0]);
+		BookStoreView bookstore= service.getView(bookStoreArray[0]);
+		System.out.println(bookstore);
 		model.addAttribute("b", bookstore);
 		
 		// 사람들이 스탬프를 찍고 있어요
 		List<StampList> stampList = stampService.getStampList();
-
-		System.out.println(stampList);
 		model.addAttribute("stamp", stampList);
 		
 		// 최근 리뷰
