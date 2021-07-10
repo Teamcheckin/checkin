@@ -27,6 +27,7 @@
 		<!-- view를 생성?, 중복제거 -->
 	</select>
 	
+	
 	<select id="getListByView" resultMap="bookstoreMap">
 		select b1.*
 		from bookstore_view b1

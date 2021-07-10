@@ -46,6 +46,7 @@
         </where>
      </select>
      
+     
      <select id="getBookstore" resultMap="bookstoreMap">
         select * from bookstore 
 		   <where>  
