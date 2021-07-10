@@ -42,6 +42,15 @@ input {
     font-size: 10px;
     margin: 0 0 8px 5px;
 	display: flex;
+	width: 80%;
+	
+}
+
+.info div div{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	display: block;
 }
 
                                   
