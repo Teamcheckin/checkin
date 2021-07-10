@@ -35,7 +35,7 @@
 	</section>
 
 	<section id="content">
-	<div class="recTitle">#고양이</div>
+	<div class="recTitle" th:text="${hlist1Name}"></div>
 	<div class="slide_wrapper">
 		<div class="slides">
 			<div th:each="l1:${hlist1}" class="bookstore">
@@ -52,7 +52,7 @@
 	</div>
 	
 	
-	<div class="recTitle">#큐레이터</div>
+	<div class="recTitle" th:text="${hlist2Name}">#큐레이터</div>
 	<div class="slide_wrapper">
 		<ul class="slides">
 			<div th:each="l2:${hlist2}" class="bookstore">
@@ -68,7 +68,7 @@
 		</ul>
 	</div>
 	
-	<div class="recTitle">#영화</div>
+	<div class="recTitle" th:text="${hlist3Name}">#영화</div>
 	<div class="slide_wrapper">
 		<ul class="slides">
 			<div th:each="l3:${hlist3}" class="bookstore">

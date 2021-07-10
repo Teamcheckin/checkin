@@ -23,12 +23,12 @@ ul, li{
 #bookstore>div{
 	border: 1px black solid;
     width: 80%;
-    height: 200px;
+    height: 250px;
     border-radius: 20px;
 }
     
     #bookstore>div>div{
-		height: 59%;
+		height: 65%;
 	}
 	
 	#bookstore>div>div>img{
@@ -39,6 +39,7 @@ ul, li{
     
 
 .BS{
+	margin:10px;
 	line-height: 17px;
     text-align: start;
     font-size: 13px;
@@ -51,9 +52,34 @@ ul, li{
 }
 
 .title{
+	margin-bottom: 3px;
 	font-weight: bold;
 	font-size: 15px ! important;
 }
+
+.hashtag{
+	display: flex;
+    align-items: center;
+    margin-top: 6px;
+}
+
+	.hashtag>img{
+		width: 20px;
+    	height: 20px;
+    	padding-right: 5px;
+	}
+	
+
+.address{
+	display:flex;
+}
+
+	.address>img{
+		padding-right: 5px;
+	    width: 15px;
+	    height: 15px;
+	    padding-left: 2px;
+	}
 /*=====================================================================*/
 
 .recTitle{
