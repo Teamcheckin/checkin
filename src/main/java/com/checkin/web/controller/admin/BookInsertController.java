@@ -106,8 +106,8 @@ public class BookInsertController {
 		System.out.println(bookstore);
 		service.insert(bookstore, hashBookstore);
 		
-		int returnId = bookstore.getId();
-		return "redirect:/bookstore/detail/{returnId}";
+//		int returnId = bookstore.getId();
+		return "redirect:/index";
 	}
 	
 	
