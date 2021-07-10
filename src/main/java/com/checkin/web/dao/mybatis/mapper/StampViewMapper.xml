@@ -12,8 +12,13 @@
     <result column="Member_id" property="memberId"/>
 </resultMap>
     
-   	<select id="getStampList" resultMap="StampMap">
-       select * from stamp_route_member order by reg_date desc
+ <resultMap type="com.checkin.web.entity.StampList" id="StampListMap">
+    <result column="Gu_name" property="guName"/>
+    <result column="reg_date" property="regDate"/>
+</resultMap>
+
+   	<select id="getStampList" resultMap="StampListMap">
+       select * from stamp_list order by reg_date desc
     </select> 
     
 	<select id="get" resultType="Date">

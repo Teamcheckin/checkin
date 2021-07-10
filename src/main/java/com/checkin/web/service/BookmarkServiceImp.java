@@ -1,5 +1,6 @@
 package com.checkin.web.service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.checkin.web.dao.MyStoreDao;
 import com.checkin.web.dao.StampViewDao;
-import com.checkin.web.entity.StampView;
 import com.checkin.web.entity.MyStore;
+import com.checkin.web.entity.StampList;
 
 @Service
 public class BookmarkServiceImp implements BookmarkService{
@@ -72,7 +73,6 @@ public class BookmarkServiceImp implements BookmarkService{
 	public Integer getStampCount(Integer memberId) {
 		
 		return viewDao.getStampCount(memberId);
-	
 	}
 
 	@Override
@@ -88,7 +88,17 @@ public class BookmarkServiceImp implements BookmarkService{
 	}
 
 	@Override
-	public List<StampView> getStampList() {
-		return viewDao.getStampList();
+	public List<StampList> getStampList(){
+		List<StampList> list = viewDao.getStampList();
+		String format = null;
+		for(StampList i : list) {
+			Date regDate = i.getRegDate();
+	
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			format = formatter.format(regDate);
+			i.setNewRegDate(format);
+		}	
+		
+		return list;
 	}
 }

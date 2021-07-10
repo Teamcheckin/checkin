@@ -1,5 +1,6 @@
 package com.checkin.web.controller;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Random;
 
@@ -14,7 +15,7 @@ import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.Member;
 import com.checkin.web.entity.Review;
 import com.checkin.web.entity.ReviewView2;
-import com.checkin.web.entity.StampView;
+import com.checkin.web.entity.StampList;
 import com.checkin.web.service.BookStoreService;
 import com.checkin.web.service.BookmarkService;
 import com.checkin.web.service.ReviewService;
@@ -42,8 +43,10 @@ public class HomeController {
 		model.addAttribute("b", bookstore);
 		
 		// 사람들이 스탬프를 찍고 있어요
-		List<StampView> stampview = stampService.getStampList();
-		model.addAttribute("stamp", stampview);
+		List<StampList> stampList = stampService.getStampList();
+
+		System.out.println(stampList);
+		model.addAttribute("stamp", stampList);
 		
 		// 최근 리뷰
 		List<ReviewView2> review = reviewService.getViewList();

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.checkin.web.dao.StampViewDao;
-import com.checkin.web.entity.StampView;
+import com.checkin.web.entity.StampList;
 
 @Repository
 public class MyBatisStampViewDao implements StampViewDao {
@@ -47,7 +47,7 @@ public class MyBatisStampViewDao implements StampViewDao {
 	}
 
 	@Override
-	public List<StampView> getStampList() {
+	public List<StampList> getStampList() {
 		
 		return mapper.getStampList();
 	}

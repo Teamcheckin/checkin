@@ -12,29 +12,33 @@
 </head>
 <body>
       <main layout:fragment="main">
-      	 <div class="title">Home</div>
       	<section> 
 			<div class="title">이 서점은 어떠세요?</div>
 				<div class="bookstore-card">
-					<img th:src="${b.bgImg}?:@{/images/bookstore.png}" class="bookstore-bg">
-					<img th:src="${b.logoImg}?:@{/images/books.png}">
-					<span th:text="${b.name}"></span>
-					<span th:text="${b.guName}"></span>
+					<img th:src="${b.bgImg}?:@{/images/books.png}" class="bookstore-bg">
+					<img th:src="${b.logoImg}?:@{/images/books.png}" class="bookstore-logo">
+					<span class="hi-span">
+						<span th:text="${b.name}"></span>
+						<span th:text="${b.guName}"></span>
+					</span>
 				</div>
-			<div class="title">사람들이 스탬프를 찍고 있어요</div>
+			<div class="title">실시간 스탬프 현황</div>
 				<div class="stamp-card">
-					<div th:each="s:${stamp}">
-						<span th:text="${s.memberId}"></span>
-						<span th:text="${s.bookstoreId}"></span>
-						<span th:text="${s.regDate}"></span>
+					<div th:each="s:${stamp}" class="each-stamp-card">
+						<span th:text="${s.name}" class="big-name"></span>
+						<span th:text="${s.guName}" class="small-name"></span>
+						<span th:text="${s.nickname}" class="small-name  small-font"></span>
+						<span th:text="${s.newRegDate}" class="small-name small-font"></span>
 					</div>
 				</div>
     		<div class="title">최근 리뷰</div>
 				<div class="review-card">
-					<div th:each="r:${review}">
-						<img th:src="${r.img}">
-						<span th:text="${r.nickName}"></span>
-						<span th:text="${r.bookstoreId}"></span>
+					<div th:each="r:${review}" class="each-review-card">
+						<img th:src="${r.img}?:@{/images/bs.jpg}" class="review-img">
+						<span class="hi-span">
+							<span th:text="${r.bookstoreName}"></span>
+							<span th:text="${r.nickName}" class="small-font"></span>
+						</span>
 					</div>
 				</div>
 		</section>

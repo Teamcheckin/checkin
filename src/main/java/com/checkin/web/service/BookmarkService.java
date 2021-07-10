@@ -1,10 +1,12 @@
 package com.checkin.web.service;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
 import com.checkin.web.entity.StampView;
 import com.checkin.web.entity.MyStore;
+import com.checkin.web.entity.StampList;
 
 public interface BookmarkService {
 	Integer[] getStoreList(Integer id);
@@ -19,6 +21,6 @@ public interface BookmarkService {
 	Integer getStampCount(Integer memberId);
 	Integer getStampAdminCount(Integer bookstoreId);
 	Integer insert(Integer bookestoreId, Integer memberId);
-	List<StampView> getStampList();
+	List<StampList> getStampList();
 
 }
