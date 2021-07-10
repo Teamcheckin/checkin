@@ -38,6 +38,12 @@ public class MyBatisReviewDao implements ReviewDao {
 	}
 	
 	@Override
+	public List<ReviewView2> getBookStoreList(Integer bookstoreId) {
+
+		return mapper.getBookStoreList(bookstoreId);
+	}
+	
+	@Override
 	public ReviewView2 get(int id) {
 		return mapper.get(id);
 	}

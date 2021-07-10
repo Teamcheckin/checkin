@@ -55,6 +55,14 @@ public class ReviewServiceImp implements ReviewService {
 	}
 	
 	@Override
+	public List<ReviewView2> getBookStoreList(Integer bookstoreId) {
+		
+		List<ReviewView2> list = reviewDao.getBookStoreList(bookstoreId);
+
+		return list;
+	}
+	
+	@Override
 	public ReviewView2 get(int id) {
 
 		ReviewView2 review = reviewDao.get(id);

@@ -35,6 +35,16 @@
     	order by regdate desc
     </select>
     
+    <select id="getBookStoreList" resultMap="review2Map"> <!-- 반환할 때 사용되는 그릇의 형식 적기 -->
+    	select * from review_view2
+    	<where>
+    	<if test="bookstoreId != null"> 
+    		bookstore_id = #{bookstoreId}  	
+    	</if>    	
+    	</where>
+    	order by regdate desc
+    </select>
+    
     <select id="get" resultMap="review2Map">
 		select * from review_view2 where id = #{id}
     </select>

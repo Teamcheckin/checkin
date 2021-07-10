@@ -52,14 +52,6 @@ public Integer getId() {
    public void setBgImg(String bgImg) {
       this.bgImg = bgImg;
    }
-   
-   @Transient
-	public String getBgImagePath() {
-		if(bgImg == null)
-			return null;
-		
-		return "/upload/bookstore/" + bgImg;
-	}
 
    public String getLogoImg() {
       return logoImg;
@@ -68,14 +60,6 @@ public Integer getId() {
    public void setLogoImg(String logoImg) {
       this.logoImg = logoImg;
    }
-   
-   @Transient
-   public String getLogoImagePath() {
-		if(logoImg == null)
-			return null;
-		
-		return "/upload/bookstore/" + logoImg;
-	}
 
    public String getAddress() {
       return address;

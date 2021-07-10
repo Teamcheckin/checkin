@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
  
 import com.checkin.web.dao.BookStoreDao;
 import com.checkin.web.entity.BookStore;
+import com.checkin.web.entity.BookStoreView;
 
 @Repository
 public class MyBatisBookStoreDao implements BookStoreDao {
@@ -29,6 +30,12 @@ public class MyBatisBookStoreDao implements BookStoreDao {
 	public BookStore get(int id) {
 		 
 		return mapper.get(id);
+	}
+	
+	@Override
+	public BookStoreView getView(int id) {
+		 
+		return mapper.getView(id);
 	}
 	
 	@Override

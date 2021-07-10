@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.checkin.web.dao.BookStoreDao;
 import com.checkin.web.entity.BookStore;
+import com.checkin.web.entity.BookStoreView;
 
 @Service
 public class BookStoreServiceImp implements BookStoreService {
@@ -20,6 +21,13 @@ public class BookStoreServiceImp implements BookStoreService {
        
       return dao.get(id);
    }
+   
+   @Override
+   public BookStoreView getView(int id) {
+       
+      return dao.getView(id);
+   }
+   
    
    @Override
    public BookStore getBookstore(String name) {

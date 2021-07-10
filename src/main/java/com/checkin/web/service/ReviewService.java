@@ -16,6 +16,7 @@ public interface ReviewService {
 
 	List<ReviewView2> getViewList();
 	List<ReviewView2> getViewList(String gu); 
+	List<ReviewView2> getBookStoreList(Integer bookstoreId);
 	ReviewView2 get(int id);
 	List<Gu> getGu();
 	List<BookStore> getBookstore();

@@ -16,8 +16,23 @@
         <result column="gu_name" property="guName"/>
 	</resultMap>
 	
+	<resultMap type="com.checkin.web.entity.BookStoreView" id="bookstoreViewMap">
+        <result column="bg_img" property="bgImg"/>
+        <result column="logo_img" property="logoImg"/>
+        <result column="instagram_url" property="instagramUrl"/>
+        <result column="member_id" property="memberId"/>
+        <result column="operating_time" property="operatingTime"/>
+        <result column="gu_name" property="guName"/>
+        <result column="hashtag_id" property="hashtagId"/>
+        <result column="hashtag_name" property="hashtagName"/>        
+	</resultMap>
+	
 	 <select id="get" resultMap="bookstoreMap">
         select * from bookstore where id = #{id}
+     </select>
+     
+     <select id="getView" resultMap="bookstoreViewMap">
+        select * from bookstore_view where id = #{id}
      </select>
      
      <select id="getBookstore" resultMap="bookstoreMap">
