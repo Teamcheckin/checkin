@@ -20,36 +20,67 @@
 	    		<img class="bookstore-img" th:src="${b.bgImagePath}?:@{/images/bookstore.png}">
 	    		<div class="bookstore-title-info">
 		    		<img class="logo-img" th:src="${b.logoImagePath}?:@{/images/books.png}">
-	    			<div class="name" th:text="${b.name}"></div>
-	    			<div class="hashtag" th:text="${b.hashtagName}"></div>
+	    			<div>
+		    			<span class="name" th:text="${b.name}"></span>
+		    			<span class="hashtag" th:text="${b.hashtagName}"></span>	    			
+	    			</div>
 	    		</div>
 	    	</div>
 	    </section>    
-	    <section class="bookstore-info">
-	    	<div th:each="b:${bookstore}"> 
-	    		<div class="info">
-	    			<input type="hidden" th:value="${b.latitude}">
-	    			<input type="hidden" th:value="${b.longitude}">
-	    			<div class="address" th:text="${b.address}"></div>
-	    			<div class="instagram" th:text="${b.instagramUrl}"></div>
-	    			<div class="time" th:text="${b.operatingTime}"></div>
-	    		</div>
-	    		<div id="map"></div>
-	    		<div th:each="r:${review}">
-		    		<div class="rating" th:text="${r.ratingName}"></div>
-		    		<div class="review-list">
-		    			<div class="review">
-		    				<img class="img" th:src="${r.imagePath}?:@{/images/location.png}">
-		    				<div>
-								<img class="profile-img" th:src="${r.profileImg}" >
-		                        <span class="nickname font" th:text="${r.nickName}">치치</span>						
-							</div>
-		    				<div class="review-hashtag" th:text="${r.hashtagName}"></div>
-		    				<div class="content" th:text="${r.content}"></div>
+	    <section class="tap-menu">
+	    	<span>정보</span>
+	    	<span>후기</span>
+	    </section>
+	    <section>
+		    <div class="bookstore-info">
+		    	<div th:each="b:${bookstore}"> 
+		    		<div class="info">
+		    			<input type="hidden" th:value="${b.latitude}">
+		    			<input type="hidden" th:value="${b.longitude}">
+		    			<div>
+							<img src="/images/home.png">
+			    			<div class="address" th:text="${b.address}"></div>	    			
 		    			</div>
-		    		</div>	    		
-	    		</div>
-	    	</div>
+		    			<div>
+							<img src="/images/instagram.png">
+		    				<div class="instagram" th:text="${b.instagramUrl}"></div>
+		    			</div>
+		    			<div>
+							<img src="/images/clock.png">
+		    				<div class="time" th:text="${b.operatingTime}"></div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
+	    	<div id="map"></div>
+	    </section>
+	    <section class="review-section">	    
+    		<div th:each="r:${review}">
+	    		<div class="review-list">
+	    			<div class="review">
+	    				<img class="review-img" th:src="${r.imagePath}?:@{/images/location.png}">
+	    				<div class="review-content">
+	    					<div class="profile">
+								<img class="profile-img" th:src="${r.profileImg}" >
+		                        <div class="nickname font" th:text="${r.nickName}">치치</div>							    					
+	    					</div>
+	    					<div>	    					
+		    					<span>카테고리</span>
+			    				<div class="review-hashtag" th:text="${r.hashtagName}"></div>
+	    					</div>
+	    					<div>
+			    				<span>평가</span>
+					    		<div class="rating" th:text="${r.ratingName}"></div>	    					
+	    					</div>
+	    					<div>
+					    		<span>후기</span>
+			    				<div class="content" th:text="${r.content}"></div>	    					
+	    					</div>
+						</div>
+	    			</div>
+	    		</div>	 
+	    		<hr>   		
+    		</div>
 	    </section>
     </main>	
 </body>

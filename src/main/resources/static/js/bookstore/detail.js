@@ -2,6 +2,8 @@ window.addEventListener("load", function() {
 	var title = document.querySelector(".name").innerHTML;
 	var latitude = document.querySelectorAll(".info>input")[0].value;
 	var longitude = document.querySelectorAll(".info>input")[1].value;
+	var information = document.querySelectorAll(".tap-menu>span")[0];
+	var review = document.querySelectorAll(".tap-menu>span")[1];
 	
 	console.log(latitude);
 	console.log(longitude);
@@ -25,30 +27,23 @@ window.addEventListener("load", function() {
     
     // 마커 이미지를 생성합니다    
     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+    markerImage
     
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
         map: map, // 마커를 표시할 지도
         position: markerPosition, // 마커를 표시할 위치
-        image : markerImage // 마커 이미지 
+        image : markerImage, // 마커 이미지 
+        clickable: true
     });
     
    	var url = "https://map.kakao.com/link/map/" + title + ',' + latitude + ',' + longitude; 
     
-    var content = `<div class="wrap">
-		                <div class="info">
-		                    <div class="title">
-		            			 ${title}  
-		                    </div>
-		                    <div class="body"> 
-		                       <div class="desc">
-		                            <div class="ellipsis">
-		            					<a href="${url}" target="_blank">카카오맵으로 검색하기</a>
-		            				 </div>
-		                        </div>
-		                    </div>
-		                </div>  
-		            </div>`;
+    // 마커에 클릭이벤트를 등록합니다
+	kakao.maps.event.addListener(marker, 'click', function() {
+	      // 마커 위에 인포윈도우를 표시합니다
+	      window.open(`${url}`);
+	});
 
 	// 마커 위에 커스텀오버레이를 표시합니다
 	// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
@@ -57,4 +52,7 @@ window.addEventListener("load", function() {
 	    map: map,
 	    position: marker.getPosition()       
 	});
+	
+	
+	
 });

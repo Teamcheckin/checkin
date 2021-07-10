@@ -70,43 +70,149 @@ button {
     --border-color-light: #E4E6E8;
 }
 
+hr {
+	margin: 20px 0;
+}
+
 /* -------------------------------------------------------------- */
 
 #main {
 	padding: 70px 0 60px 0;
 }
 
+.bookstore-title>div {
+	position: relative;	
+}
+
 .bookstore-img {
-	display: inline-block;
-	position: relative;
 	width: 100%;
 	height: 180px;
 }
 
 .bookstore-title-info {
+	display: flex;
 	position: absolute;
-	left: 0px;
-	top: 0px;
+	left: 5px;
+	bottom: 9px;
+}
+
+.bookstore-title-info>div {
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 3px;
 }
  
 	.logo-img {
-		display: inline-block;
-		width: 100px;
-		height: 100px;
+		background-color: white;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		border: 2px solid black;
 	} 
+	
+	.name, .hashtag {
+		background-color: white;
+		padding: 2px 3px;
+		border-radius: 6px;
+		border: 1px solid black;
+	}
+	
+	.name {
+		font-size: 14px;
+	}
+	
+	.hashtag {
+		align-self: flex-start;
+		font-size: 12px;
+		margin-top: 3px;
+	}
+	
+.tap-menu {
+	display: flex;
+	justify-content: center;
+	margin: 7px 20px 10px;
+}
+	
+.tap-menu>span {
+	text-align: center;
+	background-color: #d0e2e2;
+	padding: 3px 50px;
+    width: 100%;
+	border: 1px solid black;
+}
+
+.tap-menu>span:nth-child(1) {
+	border-right: none;
+}
+
+	.bookstore-info .info>div {
+		display: flex;
+		line-height: 20px;
+	}
+			
+	.bookstore-info .info img {
+		width: 20px;
+		height: 20px;
+	}
+	
+	.bookstore-info .info div {
+		font-size: 12px;
+		margin: 0 0 2px 5px;
+	}
 
 #map {
 	width: 100%; 
-	height: 350px;
+	height: 180px;
+	border-radius: 10px;
+	margin-top: 10px;
 }
 
-.wrap {position: absolute;left: 0;bottom: 37px;width: 210px;height: 91px;margin-left: -102px;text-align: left;overflow: hidden;font-size: 12px;    font-family: 'TmoneyRoundWindRegular';line-height: 1.5;}
-.wrap * {padding: 0;margin: 0;}
-.wrap .info {width: 210px;height: 80px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
-.wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-.info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
-.info .body {position: relative;overflow: hidden;}
-.info .desc {position: relative;margin-top: 13px;height: 75px;}
-.desc .ellipsis {text-align: center;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-.info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-.info .link {color: #5085BB;}
+.review-section {
+	margin-top: 20px;
+}
+
+.review {
+	display: flex;
+	align-items: center;
+}
+
+.review-content>div {
+	display: flex;
+	margin-bottom: 1.5px;
+	font-size: 13px;
+	align-items: center;
+}
+
+	.review>.review-img {
+		width: 100px;
+		height: 100px;
+		margin-right: 15px;
+		border-radius: 5px;
+	}
+	
+	.profile {
+		display: flex;
+    	align-items: center;
+    	margin-bottom: 5px !important;
+	}
+	
+		.profile-img {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			margin-right: 7px;
+		}
+		
+		.nickname {
+			font-size: 15px;
+		}
+	
+		.review-content>div>span {
+			background-color: #e0ebeb;
+			margin-right: 7px;
+			padding: 2px 3px;
+			border-radius: 7px;
+		}
+	
