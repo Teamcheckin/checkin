@@ -113,7 +113,8 @@ public class RecController {
 			
 			model.addAttribute("list",list);
 		}
-			
+		
+
 		
 		return "rec/result";
 	}

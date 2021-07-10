@@ -39,6 +39,13 @@
         select * from bookstore_view where id = #{id}
      </select>
      
+      <select id="getBookstoreByQuery" resultMap="bookstoreViewMap">
+        select * from bookstore_view 
+        <where>
+	        <if test="query != null">Name like '%${query}%'</if>
+        </where>
+     </select>
+     
      <select id="getBookstore" resultMap="bookstoreMap">
         select * from bookstore 
 		   <where>  
