@@ -1,7 +1,9 @@
 package com.checkin.web.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -46,47 +48,36 @@ public class DashController {
 				
 			// --- Hash, 나의 Hash, Hash count ---
 			Integer[] hashId = hashmemService.getList(memberId);
-			List<Hashtag> hashList = new ArrayList<>();
+			List<Hashtag> list= hashService.getList(); // 전체 목록
+			List<Hashtag> hashList = new ArrayList<>(); // 내 거 목록
+			Map<String, Integer> selected = new HashMap<String, Integer>(); // 셀렉트 클래스 추가 목록
 			for (int eachId : hashId) {
 				Hashtag eachHash = hashService.get(eachId);
 				hashList.add(eachHash);
+			
+				for (Hashtag eachList : hashList) {
+					String eachListName = eachList.getName();
+					Integer eachListId = eachList.getId();
+					
+					if(eachListId == eachId) {
+						selected.put(eachListName, eachListId);
+					}
+				}
 			}
-			List<Hashtag> list= hashService.getList();
 			Integer hashCount = hashService.getCount();
 			Integer myHashCount = hashmemService.getCount(memberId);
-			
+
 			model.addAttribute("hashList", list);
 			model.addAttribute("hashCount", hashCount);
 			model.addAttribute("myHashCount", myHashCount);
 			model.addAttribute("myHashList", hashList);
+			model.addAttribute("selected", selected);
 			
 			return "mypage/dashmember";
 			
 	}
 	
-	@RequestMapping("/mypage/dashboard/update")
-	public String hashUpdate(final HttpSession session, Model model, Integer[] hashId){
-		 Member member = (Member) session.getAttribute("member");
-		 Integer memberId = member.getId();
-		 for(Integer id : hashId) {
-			 
-			 boolean hashTrue= hashmemService.hashCheck(id, memberId);
-			 if(!hashTrue) {
-				 hashmemService.insert(id, memberId);
-			 }
-			 
-			 Integer[] myHash = hashmemService.getList(memberId);
-			 for(Integer hash: myHash)
-				 if(hash == id) {
-					 return null;
-				 } else {
-					 hashmemService.delete(hash, memberId);
-				 }
-		 }
-			 
-		 
-		return "mypage/dashmember";
-	}
+
 	
 
 	

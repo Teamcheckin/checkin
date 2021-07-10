@@ -6,11 +6,17 @@
 
     
 <mapper namespace="com.checkin.web.dao.HashtagBookstoreDao">
-<resultMap type="com.checkin.web.entity.BookStore" id="getList">
-        <result column="Bg_img" property="bgImg"/>
-</resultMap>
+<resultMap type="com.checkin.web.entity.BookStore" id="bookstoreMap">
+        <result column="bg_img" property="bgImg"/>
+        <result column="logo_img" property="logoImg"/>
+        <result column="instagram_url" property="instagramUrl"/>
+        <result column="member_id" property="memberId"/>
+        <result column="operating_time" property="operatingTime"/>
+        <result column="gu_name" property="guName"/>
+	</resultMap>
+	
 	<!-- 서점 정보를 불러오는거니까 resultType은 BookStore!!! -->
-	<select id="getList" resultMap="getList">
+	<select id="getList" resultMap="bookstoreMap">
 		select b1.*
 		from bookstore b1
 		join hashtag_bookstore b2 on b1.id = b2.Bookstore_id

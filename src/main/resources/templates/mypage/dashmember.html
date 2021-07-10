@@ -33,7 +33,10 @@
 	           			<span th:text="'내 해시태그 '+${myHashCount}+' 개'"></span>
 		          	 	<input type="button" class="btn my-hash-btn" value="편집">
 	          	 	</div>
-	          	 	<span class="hash-card" th:each="myhash:${myHashList}" th:text="${myhash.name}"></span>
+	          	 	<span th:each="myhash:${myHashList}">
+	          	 		<span class="my-hash-card"  th:text="${myhash.name}"></span>
+	          	 		<input type="hidden" name="hashId" th:value="${myhash.id}">
+          	 		</span>
 	          	 </div>
 	          	 
 	          	 <div class="hash-board hash d-none">
@@ -41,7 +44,10 @@
 	           			<span th:text="'전체 '+${hashCount}+' 개'"></span>
 	           			<input type="button" class="btn hash-btn" value="완료">
            			</div>
-	          	 	<span class="hash-card hash-edit-list" th:each="hash:${hashList}" th:text="${hash.name}">
+           			<span th:each="hash:${hashList}">
+		          	 	<span class="hash-card hash-edit-list"
+		          	 			th:text="${hash.name}" th:classappend="${selected.get(hash.name)}?selected:''">
+	          	 		</span>
           	 			<input type="hidden" name="hashId" th:value="${hash.id}">
           	 		</span>
 	          	 </div>

@@ -18,11 +18,15 @@
         <section>
         <form>
 	        <select name="id">
-	            <option th:each="gu:${gu}" th:text = "${gu.name}" th:value="${gu.id}" th:selected="${param.id}==${gu.id}"></option>
+	            <option th:each="gu:${gu}" th:text = "${gu.name}" th:value="${gu.name}" th:selected="${param.id}==${gu.id}"></option>
 	        </select>
 	        <input type="submit" class="btn" value="검색">
         </form>
 		</section>
+		<span th:each="gu:${gu}" th:if="${gu.name} == ${guName}" >
+			<input type="hidden" th:value = "${gu.latitude}" >
+			<input type="hidden" th:value = "${gu.longitude}">
+		</span>
 		
 		<section>
 			<!-- <div>

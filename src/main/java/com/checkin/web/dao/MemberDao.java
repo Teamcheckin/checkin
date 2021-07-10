@@ -17,4 +17,5 @@ public interface MemberDao {
 	Member getByEmail(String email);
 	
 	String nickTrue(String nickname);
+	String emailValid(String email);
 }

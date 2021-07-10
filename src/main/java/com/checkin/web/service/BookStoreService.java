@@ -4,9 +4,10 @@ import java.util.List;
 
 import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.BookStoreView;
+import com.checkin.web.entity.HashtagBookstore;
 
 public interface BookStoreService {
-	
+	Integer[] getBookstoreIdArray();
 	BookStore get(int id);
 	BookStoreView getView(int id);
 	BookStore getBookstore(String name);
@@ -17,7 +18,7 @@ public interface BookStoreService {
 	
 //	int MasterReg(int id);
 	int getCount();	
-	int insert(BookStore bookStore, Integer hashId);
+	int insert(BookStore bookStore, HashtagBookstore hashBookstore);
 	int update(BookStore bookStore);
 	int delete(int id);
 	

@@ -86,4 +86,9 @@ public class BookmarkServiceImp implements BookmarkService{
 
 		return viewDao.insert(bookestoreId, memberId);
 	}
+
+	@Override
+	public List<StampView> getStampList() {
+		return viewDao.getStampList();
+	}
 }

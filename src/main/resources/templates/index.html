@@ -7,15 +7,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
     <title>Home</title>
 </head>
 <body>
       <main layout:fragment="main">
       	 <div class="title">Home</div>
       	<section> 
-			스탬프 루트 홍보
-			지도
-			가까운 서점 목록
+			<div class="title">이 서점은 어떠세요?</div>
+				<div class="bookstore-card">
+					<img th:src="${b.bgImg}?:@{/images/bookstore.png}" class="bookstore-bg">
+					<img th:src="${b.logoImg}?:@{/images/books.png}">
+					<span th:text="${b.name}"></span>
+					<span th:text="${b.guName}"></span>
+				</div>
+			<div class="title">사람들이 스탬프를 찍고 있어요</div>
+				<div class="stamp-card">
+					<div th:each="s:${stamp}">
+						<span th:text="${s.memberId}"></span>
+						<span th:text="${s.bookstoreId}"></span>
+						<span th:text="${s.regDate}"></span>
+					</div>
+				</div>
+    		<div class="title">최근 리뷰</div>
+				<div class="review-card">
+					<div th:each="r:${review}">
+						<img th:src="${r.img}">
+						<span th:text="${r.nickName}"></span>
+						<span th:text="${r.bookstoreId}"></span>
+					</div>
+				</div>
 		</section>
 	</main>
 </body>

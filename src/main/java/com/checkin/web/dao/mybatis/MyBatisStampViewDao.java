@@ -1,6 +1,7 @@
 package com.checkin.web.dao.mybatis;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,12 @@ public class MyBatisStampViewDao implements StampViewDao {
 	public Integer insert(Integer bookestoreId, Integer memberId) {
 
 		return mapper.insert(bookestoreId, memberId);
+	}
+
+	@Override
+	public List<StampView> getStampList() {
+		
+		return mapper.getStampList();
 	}
 
 

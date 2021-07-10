@@ -8,11 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.checkin.web.entity.BookStore;
-import com.checkin.web.entity.Hashtag;
 import com.checkin.web.service.BookStoreService;
 
 
@@ -47,5 +45,17 @@ public class BookstoreController {
 		return map;
 	}
 	
+	@RequestMapping("searchgu/{id}")
+	public Map<String, Object> guBookstore(
+		@PathVariable(name="id", required=false) String name,
+			Model model) {
+		
+		List<BookStore> bookstore = service.getGu(name);
+		
+		Map<String, Object> map = new HashMap<>(); 
+		map.put("bookstore", bookstore);
+		
+		return map;
+	}
 	
 }
