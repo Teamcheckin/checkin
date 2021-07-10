@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'TmoneyRoundWindRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    height: 100%;
+    margin: 0px;
+}
+
+body {
+    height: 100%;
+    font-family: 'TmoneyRoundWindRegular';
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    cursor: pointer;
+    color: initial;
+    text-decoration: initial;
+}
+
+.d-none {
+    display: none !important;
+}
+
+button {
+    border: 0;
+    outline: 0;
+}
+
+/* -------------------------------------------------------------- */
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.font {
+    font-family: 'TmoneyRoundWindRegular';
+}
+
+/* -------------------------------------------------------------- */
+
+select {
+    border-radius: 10px;
+}
+
+/*--mini nav--*/
+.mini-nav {
+    margin-top: 40px;
+    border-top: 1px solid black;
+    display: flex;
+}
+
+    .mini-nav a {
+        padding: 10px 5px;
+        flex-basis: 1;
+        text-align: center;
+        width: 100%;
+        font-size: 12px;
+    }
+    
+    .mini-nav .mini-nav-page {
+        color: black;
+        border-bottom: 1px solid black;
+    }
+    
+.gu-container {
+	margin-top: 10px;
+}
+    
+.gu-list {
+	height: 30px;
+    font-size: 13px;
+    padding-left: 5px;
+}    
+
+	.gu-list>option {
+	    font-size: 11px;
+	}
+    
+.gu-search-btn {
+	height: 30px;
+}
+    
+    
+    
+    
+    
+    

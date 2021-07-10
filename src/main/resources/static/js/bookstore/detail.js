@@ -55,11 +55,15 @@ window.addEventListener("load", function() {
 	information.onclick = function(e) {
 		bookstoreSection.classList.toggle("d-none");
 		reviewSection.classList.toggle("d-none");
+		information.classList.toggle("selected");
+		review.classList.toggle("selected");
 	}
 	
 	review.onclick = function(e) {
-		bookstoreSection.classList.toggle("d-none");
 		reviewSection.classList.toggle("d-none");
+		bookstoreSection.classList.toggle("d-none");
+		review.classList.toggle("selected");
+		information.classList.toggle("selected");
 	} 
 	
 });
