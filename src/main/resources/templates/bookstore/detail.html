@@ -31,7 +31,7 @@
 	    	<span>정보</span>
 	    	<span>후기</span>
 	    </section>
-	    <section>
+	    <section class="bookstore-section">
 		    <div class="bookstore-info">
 		    	<div th:each="b:${bookstore}"> 
 		    		<div class="info">
@@ -54,7 +54,7 @@
 		    </div>
 	    	<div id="map"></div>
 	    </section>
-	    <section class="review-section">	    
+	    <section class="review-section d-none">	    
     		<div th:each="r:${review}">
 	    		<div class="review-list">
 	    			<div class="review">

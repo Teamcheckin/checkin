@@ -4,9 +4,8 @@ window.addEventListener("load", function() {
 	var longitude = document.querySelectorAll(".info>input")[1].value;
 	var information = document.querySelectorAll(".tap-menu>span")[0];
 	var review = document.querySelectorAll(".tap-menu>span")[1];
-	
-	console.log(latitude);
-	console.log(longitude);
+	var bookstoreSection = document.querySelector(".bookstore-section");
+	var reviewSection = document.querySelector(".review-section");
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 
@@ -48,11 +47,19 @@ window.addEventListener("load", function() {
 	// 마커 위에 커스텀오버레이를 표시합니다
 	// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
 	var overlay = new kakao.maps.CustomOverlay({
-	    content: content,
 	    map: map,
 	    position: marker.getPosition()       
 	});
 	
+	// 탭 메뉴에 따라 정보, 후기 내용 출력하기
+	information.onclick = function(e) {
+		bookstoreSection.classList.toggle("d-none");
+		reviewSection.classList.toggle("d-none");
+	}
 	
+	review.onclick = function(e) {
+		bookstoreSection.classList.toggle("d-none");
+		reviewSection.classList.toggle("d-none");
+	} 
 	
 });
