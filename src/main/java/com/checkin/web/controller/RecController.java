@@ -42,30 +42,47 @@ public class RecController {
 		System.out.println(hlist);
 		model.addAttribute("hlist",hlist);
 		
+		String h2="#술";
+		String h3="#독서모임";
+		
 		//로그인한 사용자 id 얻어서 사용자가 고른 해시태그 얻어오기
-//		Member member = (Member)session.getAttribute("member");
-//		Integer memberId = member.getId();
-		//Integer[] hIdlist = service.getHashIdByMemberId(9);
-//		System.out.println(hIdlist[0]);
-//		System.out.println(hIdlist.length);
-		
-		
-		List<Hashtag> memberHlist = service.getHashNamegByMemberId(9);
-		System.out.println(memberHlist);
-		
+		Member member = (Member)session.getAttribute("member");
+		Integer memberId = 10;
+		if(member!=null) {
+			 memberId = member.getId();
+		}
 
-		List<BookStore> hlist1 = service.getListHashtagBookstore("#고양이");
+		List<Hashtag> memberHlist = service.getHashNamegByMemberId(memberId);
+		System.out.println(memberHlist);
+		System.out.println(memberHlist.get(0).getName());
+		
+		List<BookStore> hlist1 = service.getListHashtagBookstore(memberHlist.get(0).getName());
 		model.addAttribute("hlist1",hlist1);
+		model.addAttribute("hlist1Name",memberHlist.get(0).getName());
 		
-		List<BookStore> hlist2 = service.getListHashtagBookstore("#큐레이터");
+		if(memberHlist.size()>1) {
+			h2 = memberHlist.get(1).getName();
+		}
+		
+		List<BookStore> hlist2 = service.getListHashtagBookstore(h2);
 		model.addAttribute("hlist2",hlist2);
+		model.addAttribute("hlist2Name", h2);
 		
-		List<BookStore> hlist3 = service.getListHashtagBookstore("#영화");
+		if(memberHlist.size()>2) {
+			h3 = memberHlist.get(2).getName();
+		}
+		
+		List<BookStore> hlist3 = service.getListHashtagBookstore(h3);
 		model.addAttribute("hlist3",hlist3);
-		
-		
+		model.addAttribute("hlist3Name",h3);
 		return "rec/main";
 	}
+	
+	
+	
+	
+	
+	
 	
 	@PostMapping("result")
 	public String list(	Model model,	

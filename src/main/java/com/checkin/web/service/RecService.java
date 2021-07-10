@@ -7,7 +7,6 @@ import com.checkin.web.entity.Hashtag;
 import com.checkin.web.entity.HashtagBookstore;
 
 public interface RecService {
-	
 	List<Hashtag> getList();
 	List<Hashtag> getList(String query);
 	

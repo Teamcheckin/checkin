@@ -4,7 +4,6 @@
  *ul li> div , onClick
  */
 
-
 window.addEventListener("load", function() {
 
 	let subBtn = document.querySelector(".subBtn");
@@ -51,8 +50,14 @@ window.addEventListener("load", function() {
 					            </div>
 					            <div class="BS">
 					                <span class="title">${store[i].name}</span>
-					                <span>#해시태그</span>
-					                <span>${store[i].address}</span>
+					                <div class="hashtag">
+					                	<img src='/images/hashtag.png'>
+						                <span>#해시태그</span>
+					                </div>
+					                <div class="address">
+						                <img src='/images/clock.png'>
+						                <span class="truncate">${store[i].address}</span>
+					                </div>
 					            </div>
 					        </div>
 					    </section>`;

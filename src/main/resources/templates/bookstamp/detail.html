@@ -18,7 +18,7 @@
         <section>
         <form>
 	        <select name="id">
-	            <option th:each="gu:${gu}" th:text = "${gu.name}" th:value="${gu.name}" th:selected="${param.id}==${gu.id}"></option>
+	            <option th:each="gu:${gu}" th:text = "${gu.name}" th:value="${gu.id}" th:selected="${param.id}==${gu.id}"></option>
 	        </select>
 	        <input type="submit" class="btn" value="검색">
         </form>
@@ -44,11 +44,25 @@
 				<a th:href="@{/bookstore/detail/{id}(id=${b.id})}">
 					<img class="img" th:src="${b.logoImg}?:@{/images/books.png}">
 				</a>
-				<a th:href="@{/bookstore/detail/{id}(id=${b.id})}">
-					<span class="span-title" th:text="${b.name}"></span><br>
-				</a>				
-				<span class="span-adress" th:text="${b.address}"></span><br>
-				<!-- <span class="span-bottom" th:text="${b.operatingTime}"></span>  -->
+				<a th:href="@{/bookstore/detail/{id}(id=${b.id})}"></a>
+				<div class="stamp-info">
+					<div class="span-title" th:text="${b.name}"></div><br>
+					<div class="info">
+						<div>
+							<img src="/images/home.png">
+							<div class="address" th:text="${b.address}"></div>	    			
+						</div>
+						<div>
+							<img src="/images/instagram.png">
+							<div class="instagram" th:text="${b.instagramUrl}"></div>
+						</div>
+						<!-- <div>
+							<img src="/images/clock.png">
+							<div class="time" th:text="${b.operatingTime}"></div>
+						</div> -->
+					</div>
+				</div>
+
 			</div>
 		</section>
     </main>
