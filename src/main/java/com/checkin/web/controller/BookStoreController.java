@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.checkin.web.entity.BookStoreView;
@@ -23,8 +24,9 @@ public class BookStoreController {
 	@Autowired
 	private ReviewService reviewService;
 	
-	@GetMapping("detail")
-	public String detail(int id, Model model) {
+	@GetMapping("detail/{id}")
+	public String detail(
+			@PathVariable int id, Model model) {
 		
 		BookStoreView bookstore = service.getView(id);
 		List<ReviewView2> review = reviewService.getBookStoreList(id);

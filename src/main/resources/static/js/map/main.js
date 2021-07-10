@@ -69,7 +69,7 @@ window.addEventListener("load", function() {
 				                    </div>
 				                    <div class="body"> 
 				                        <div class="img">
-				                            <img src="/upload/bookstore/${list[i].bgImg}" width="73" height="70">
+				                            <img src="${list[i].bgImg}" width="73" height="70">
 				                       </div> 
 				                       <div class="desc">
 				                            <div class="ellipsis">
