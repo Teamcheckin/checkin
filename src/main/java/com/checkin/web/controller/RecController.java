@@ -45,16 +45,15 @@ public class RecController {
 		//로그인한 사용자 id 얻어서 사용자가 고른 해시태그 얻어오기
 //		Member member = (Member)session.getAttribute("member");
 //		Integer memberId = member.getId();
-		Integer[] hIdlist = service.getHashIdByMemberId(9);
-		System.out.println(hIdlist[0]);
-		System.out.println(hIdlist.length);
+		//Integer[] hIdlist = service.getHashIdByMemberId(9);
+//		System.out.println(hIdlist[0]);
+//		System.out.println(hIdlist.length);
 		
 		
-		//List<Hashtag> memberHlist = 
-//		System.out.println(memberHlist);
+		List<Hashtag> memberHlist = service.getHashNamegByMemberId(9);
+		System.out.println(memberHlist);
 		
-		
-		
+
 		List<BookStore> hlist1 = service.getListHashtagBookstore("#고양이");
 		model.addAttribute("hlist1",hlist1);
 		

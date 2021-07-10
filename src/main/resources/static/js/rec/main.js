@@ -47,7 +47,7 @@ window.addEventListener("load", function() {
 					resultContent = resultContent + `<section id="bookstore">
 					        <div>
 					            <div>
-					                <img src='/upload/bookstore/${store[i].bgImg}'>
+					                <img src='${store[i].bgImg}'>
 					            </div>
 					            <div class="BS">
 					                <span class="title">${store[i].name}</span>

@@ -62,5 +62,10 @@ public class MyBatisHashtagDao implements HashtagDao{
 		return mapper.delete(id);
 	}
 
+	@Override
+	public List<Hashtag> getListById(int id) {
+		return mapper.getListById(id);
+	}
+
 
 }

@@ -1,5 +1,6 @@
 package com.checkin.web.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,8 +54,18 @@ public class RecServiceImp implements RecService{
 	}
 
 	@Override
-	public Integer[] getHashIdByMemberId(int id) {
-		return hashtagMemberdao.getList(id);
+	public List<Hashtag> getHashNamegByMemberId(int id) {
+		Integer[] hIdList = hashtagMemberdao.getList(id);
+		System.out.println(hIdList);
+		
+		List<Hashtag> hNameList =  new ArrayList();
+		
+		for(int i=0; i<hIdList.length; i++) {
+			hNameList.add(dao.get(hIdList[i]));
+		}
+		System.out.println(hNameList);
+		
+		return hNameList;
 	}
 
 }
