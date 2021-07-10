@@ -11,6 +11,51 @@ ul, li{
 	padding:0;
 }
 
+/*===================result CSS===============*/
+#bookstore{
+	 display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+#bookstore>div{
+	border: 1px black solid;
+    width: 80%;
+    height: 200px;
+    border-radius: 20px;
+}
+    
+    #bookstore>div>div{
+		height: 59%;
+	}
+	
+	#bookstore>div>div>img{
+	width: 100%;
+	    height: 100%;
+    border-radius: 20px 20px 0 0/ 20px 20px 0 0;
+}
+    
+
+.BS{
+	line-height: 17px;
+    text-align: start;
+    font-size: 13px;
+}
+
+.BS>span{
+	margin: 0;
+    display: block;
+    text-align: start;
+}
+
+.title{
+	font-weight: bold;
+	font-size: 15px ! important;
+}
+/*=====================================================================*/
+
 .recTitle{
 	margin-top:30px;
 }
@@ -58,8 +103,8 @@ input {
             font-size: 15px;
             text-align: center;
             line-height: 30px;
-    margin-right : 15px;
-    margin-left : 15px;
+    		margin-right : 15px;
+   			 margin-left : 15px;
 }
 
     .bookstore>div{
@@ -77,15 +122,6 @@ input {
             border-radius: 20px 20px 0 0/ 20px 20px 0 0;
         }
 
-
-        .bsInfo{
-            display: flex; 
-            flex-direction: column;
-            font-size: 15px;
-            text-align: center;
-            line-height: 35px;
-            overflow: hidden;
-        }
         
         
 /*     .slides{

@@ -20,6 +20,9 @@ import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.Hashtag;
 import com.checkin.web.entity.HashtagBookstore;
 import com.checkin.web.entity.Member;
+import com.checkin.web.service.HashtagBookstoreService;
+import com.checkin.web.service.HashtagMemberService;
+import com.checkin.web.service.HashtagService;
 import com.checkin.web.service.RecService;
 
 
@@ -32,12 +35,25 @@ public class RecController {
 	private RecService service;
 	
 	@RequestMapping("main")
-	public String main(Model model) {
-		
+	public String main(Model model, HttpSession session) {
+
 		List<Hashtag> hlist = service.getList();
 		
 		System.out.println(hlist);
 		model.addAttribute("hlist",hlist);
+		
+		//로그인한 사용자 id 얻어서 사용자가 고른 해시태그 얻어오기
+//		Member member = (Member)session.getAttribute("member");
+//		Integer memberId = member.getId();
+		Integer[] hIdlist = service.getHashIdByMemberId(9);
+		System.out.println(hIdlist[0]);
+		System.out.println(hIdlist.length);
+		
+		
+		//List<Hashtag> memberHlist = 
+//		System.out.println(memberHlist);
+		
+		
 		
 		List<BookStore> hlist1 = service.getListHashtagBookstore("#고양이");
 		model.addAttribute("hlist1",hlist1);
@@ -47,6 +63,7 @@ public class RecController {
 		
 		List<BookStore> hlist3 = service.getListHashtagBookstore("#영화");
 		model.addAttribute("hlist3",hlist3);
+		
 		
 		return "rec/main";
 	}

@@ -22,7 +22,7 @@ import com.checkin.web.service.HashtagService;
 import com.checkin.web.service.RecService;
 
 @RestController("apiRecController")
-@RequestMapping("/api/rec/")
+@RequestMapping("/api/recommend/")
 public class RecController {
 
 	@Autowired
@@ -30,11 +30,11 @@ public class RecController {
 	//@RequestParam(name:q) String query
 	//초기페이지와 검색했을 때의 페이지는 컨트로러 작성을 어떻게?
 	
-	@RequestMapping("result/{f}/{q}")
-	public Map<String, Object> result(	Model model,	
-			@PathVariable(name="q", required = false) String query, 
-			@PathVariable(name="f", required = false) String field) {
-		
+	@RequestMapping("list")
+	public Map<String, Object> list(
+			Model model,	
+			@RequestParam(name="q", required = false) String query, 
+			@RequestParam(name="f", required = false) String field) {
 		
 			List<Hashtag> hlist = service.getList();
 			model.addAttribute("hlist",hlist);

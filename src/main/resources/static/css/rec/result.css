@@ -12,33 +12,39 @@ body{
     margin-top: 5%;
 }*/
 
+
 #bookstore{
-    display: flex; 
-    flex-direction: column; 
+	 display: flex;
+    flex-direction: column;
     align-items: center;
+    margin-top: 20px;
 }
 
-    #bookstore>div{
-        border: 1px black solid; 
-        width: 80%; 
-        height: 250px; 
-        margin-top: 10%; 
-        border-radius: 30px;
-    }
+
+#bookstore>div{
+	border: 1px black solid;
+    width: 80%;
+    height: 230px;
+    border-radius: 20px;
+}
     
     #bookstore>div>div{
 		height: 59%;
 	}
+	
+	#bookstore>div>img{
+	width: 100%;
+    border-radius: 20px 20px 0 0/ 20px 20px 0 0;
+}
     
 
-       img{
-            width:100%; 
-            border-radius: 30px 30px 0 0/ 30px 30px 0 0;
-        }
+.BS{
+	    line-height: 17px;
+    text-align: start;
+    font-size: 13px;
+}
 
-        .bsInfo{
-            display: flex; 
-            flex-direction: column;
-            border-top: 1px black solid; 
-            font-size: 15px;
-        }
+
+.title{
+	font-weight: bold;
+}

@@ -10,6 +10,7 @@
 <title>추천탭 메인 페이지</title>
 <link href="/css/rec/main.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
+
 <script type="text/javascript" src="/js/rec/main.js"></script>
 </head>
 
@@ -17,22 +18,23 @@
 
 <main layout:fragment="main">
 	<div class="title"></div>
+	
 	<section id="search">
-	<form action="/rec/result" method="post">
-		<select name="f">
-			<option value="1">일반 검색</option>
-			<option value="2">해시태그</option>
-		</select> 
-		<input class="search" type="text" name="q"> 
-		<input type="submit" class="btn subBtn" value="검색"> 
-		<select name="h">
-			<option selected value="0">해시태그 목록</option>
-			<option th:each="h:${hlist}" th:value="${h.id}" value="1" th:text="${h.name}">일반 검색</option>
-		</select>
-	</form>
+		<form method="post">
+			<select name="f">
+				<option value="1">일반 검색</option>
+				<option value="2">해시태그</option>
+			</select> 
+			<input class="search" type="text" name="q"> 
+			<input type="submit" class="btn subBtn" value="검색"> 
+			<select name="h">
+				<option selected value="0">해시태그 목록</option>
+				<option th:each="h:${hlist}" th:value="${h.id}" value="1" th:text="${h.name}">일반 검색</option>
+			</select>
+		</form>
 	</section>
 
-	<section id="recContent">
+	<section id="content">
 	<div class="recTitle">#고양이</div>
 	<div class="slide_wrapper">
 		<div class="slides">
