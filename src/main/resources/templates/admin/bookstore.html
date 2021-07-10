@@ -43,7 +43,7 @@
          </form>
          <form method="post">
             <div class="card" th:each=" b : ${bookstore}">
-               <img th:src="${b.logoImg}" class="card-img">
+               <img th:src="${b.logoImg}?:@{/images/books.png}" class="card-img">
                <div class="hi-span">
                   <span th:text="${b.name}">서점 이름</span>
                   <span th:text="${b.address}">서점 위치</span>
