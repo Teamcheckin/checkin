@@ -110,16 +110,21 @@ window.addEventListener("load", function() {
 
 	// *------ 구 위치 나타내기 ------*
 	// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-    let
+    let input = document.querySelectorAll("input[type=hidden]")
+	let latitude = input[0].value
+	let longitude = input[1].value
+
+	console.log(latitude, longitude);
+
+
+
 	if (navigator.geolocation) {
 	    
 	    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
 	    navigator.geolocation.getCurrentPosition(function(position) {
 	        
-	        var lat = position.coords.latitude, // 위도
-	            lon = position.coords.longitude; // 경도
-	        
-	        var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+	       
+	        var locPosition = new kakao.maps.LatLng(latitude, longitude), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
 	            message = '<div style="padding:5px; font-size: 12px; font-weight: normal;">독립서점을 찾아보세요!</div>'; // 인포윈도우에 표시될 내용입니다
 	        
 	        // 마커와 인포윈도우를 표시합니다
@@ -159,42 +164,5 @@ window.addEventListener("load", function() {
 	    // 지도 중심좌표를 접속위치로 변경합니다
 	    map.setCenter(locPosition);      
 	}   
-	
-	
-	// *------ 검색한 서점으로 지도 중심 좌표 이동하기 ------*	
-	// 1. 검색 버튼 클릭 시 검색한 서점 이름에 해당하는 서점 정보 가져오는 apiController 실행
-	let moveMapBtn = document.querySelector(".moveToBookstore");
-	moveMapBtn.onclick = function(e) {
-		let bookstoreName = document.querySelector("input[name=b]").value;
-		let url = "http://localhost:8080/api/bookstore/search/" + bookstoreName; 
-		
-		function getBookstore() {
-			const response = fetch(url);
-			return response
-			.then(res => 
-				res.json())
-			.then(bookstore => {
-				let store = bookstore.bookstore;		
-				return store;
-			})
-		}
-		
-		// 2. 서점 위치로 지도 중심좌표 이동하기
-		(async() => {
-			try {
-			    var store = await getBookstore();
-			   
-			    // 이동할 위도 경도 위치를 생성합니다 
-			    var moveLatLon = new kakao.maps.LatLng(store.latitude, store.longitude);
-			    
-			    // 지도 중심을 부드럽게 이동시킵니다
-			    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
-			    map.panTo(moveLatLon);            		
-			}
-			catch(error){
-			    console.log(error);
-			}
-		})();	
-	}
- 
+
 });

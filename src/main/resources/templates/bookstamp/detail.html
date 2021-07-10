@@ -23,9 +23,9 @@
 	        <input type="submit" class="btn" value="검색">
         </form>
 		</section>
-		<span th:each="gu:${gu}" >
+		<span th:each="gu:${gu}" th:if="${gu.name} == ${guName}" >
 			<input type="hidden" th:value = "${gu.latitude}" >
-			<input type="hidden" th:value =  "${gu.longitude}">
+			<input type="hidden" th:value = "${gu.longitude}">
 		</span>
 		
 		<section>
