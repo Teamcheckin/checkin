@@ -49,7 +49,7 @@
 				
 			
            		 <div class="btn-list">
-	                <a th:href="@{/bye(id=${member.id})}" class="btn">탈퇴</a>
+	                <a th:href="@{/bye(id=${member.id})}" class="btn"  onclick="if(!confirm('정말 탈퇴하시겠습니까?')) return false;" >탈퇴</a>
 	                <input type="hidden" name="id" th:value=${member.id}>
 	                <input type="submit" class="btn" value="수정">
                 </div>

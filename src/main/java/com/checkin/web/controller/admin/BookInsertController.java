@@ -107,7 +107,7 @@ public class BookInsertController {
 		service.insert(bookstore, hashBookstore);
 		
 		int returnId = bookstore.getId();
-		return "redirect:/bookstore/detail(id=${returnId})";
+		return "redirect:/bookstore/detail/{returnId}";
 	}
 	
 	

@@ -1,5 +1,6 @@
 window.addEventListener("load", function(){
 	
+	
 	let fileBtn = document.querySelectorAll(".fake-btn");
     let realBtn = document.querySelectorAll(".real-btn");
     let logoImg = document.querySelector(".logo-img");
@@ -66,52 +67,49 @@ window.addEventListener("load", function(){
 	
 	let errorMessage = document.querySelectorAll(".error-message");
 	let input = document.querySelectorAll(".input");
+
 	
-	let nameCheck = false; let guCheck = false; let timeCheck = false; let instaCheck = false; let hashCheck = false;
+	let nameCheck = false; let addressCheck = false; /* let guCheck = false; */ let timeCheck = false; let instaCheck = false; let hashCheck = false;
 	
 
 		let nameError = errorMessage[0];
 		let nameInput = input[0];
-
 		nameInput.addEventListener("change", ()=>{
-			if(nameInput.value == ''){
-				nameCheck = false;
-				nameError.classList.add("animation");
-				nameInput.focus(); // 화면커서이동
-				nameInput.style.border = "2px solid red";
-			} else {
+			if(nameInput.value != ''){
 				nameCheck = true;
 				nameError.classList.remove("animation");
 				nameInput.style.border = "1px solid black";
 			}
 		})
 		
-		let guError = errorMessage[2];
-		let selectOption = document.querySelector("select[name=guName]");
-		let option = selectOption.options[selectOption.selectedIndex].text;
-		selectOption.addEventListener("change", ()=>{
-
-				console.log(option);
-			if(option == '선택'){
-				guCheck = false;
-				guError.classList.add("animation");
-				selectOption.style.border = "2px solid red";
-			} else {
-				guCheck = true;
-				guError.classList.remove("ß");
-				selectOption.style.border = "1px solid black";
+		let addressError = errorMessage[1];
+		let addressInput = input[1];
+		addressInput.addEventListener("change", ()=>{
+			if(addressInput.value != ''){
+				addressCheck = true;
+				addressError.classList.remove("animation");
+				addressInput.style.border = "1px solid black";
 			}
 		})
 		
+		/*
+		let guError = errorMessage[2];
+		let selectOption = document.querySelector("select[name=guName]");
+		let option = selectOption.options[selectOption.selectedIndex].value;
+		selectOption.addEventListener("change", ()=>{
+			
+			if(option != '선택'){
+				guCheck = true;
+				guError.classList.remove("animation");
+				selectOption.style.border = "1px solid black";
+			}
+		})
+		*/
+		
 		let timeError = errorMessage[3];
 		let timeInput = input[2];
-		let timePattern = '';
 		timeInput.addEventListener("change", ()=>{
-			if(timeInput.value.match(timePattern) == null){
-				timeCheck = false;
-				timeError.classList.add("animation");
-				timeInput.style.border = "2px solid red";
-			} else {
+			if(timeInput.value != null){
 				timeCheck = true;
 				timeError.classList.remove("animation");
 				timeInput.style.border = "1px solid black";
@@ -120,33 +118,66 @@ window.addEventListener("load", function(){
 		
 		let instaError = errorMessage[4];
 		let instaInput = input[3];
-		let instaPattern = '/(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/';
-
+		let instaPattern = /^http[s]?\:\/\//i;
 		instaInput.addEventListener("change", ()=>{
-			console.log(nameCheck, guCheck, timeCheck, instaCheck, hashCheck);
-			if(instaInput.value.match(instaPattern) == null){
-				instaCheck = false;
-				instaError.classList.add("animation");
-				instaInput.style.border = "2px solid red";
-			} else {
+			console.log(nameCheck, addressCheck, timeCheck, instaCheck, hashCheck);
+			if(instaInput.value.match(instaPattern)){
 				instaCheck = true;
 				instaError.classList.remove("animation");
 				instaInput.style.border = "1px solid black";
 			}
 		})
 		
-		let rerror = document.querySelector(".rerror-message");
-		submitBtn.addEventListener("click", (e)=>{
-			if(nameCheck && guCheck && timeCheck && instaCheck && hashCheck){
-				return true;	
-			} else{
-				e.preventDefault();
-				rerror.classList.remove("d-none");
-				
-				window.scrollTo({
-					top: 80, 
-					behavior:'smooth'
-				});
+		let hashError = errorMessage[5];
+		let hashBoard = document.querySelector(".hash-board");
+		hashBoard.addEventListener("click", (e)=>{
+			if(e.target.classList.contains("hash-input")){
+				hashCheck = true;
+				hashError.classList.remove("animation");
 			}
 		})
+		
+		let rerror = document.querySelector(".rerror-message");
+		submitBtn.addEventListener("click", (e)=>{
+		if(nameCheck && timeCheck && instaCheck && hashCheck && addressCheck){
+			return true;	
+		} else{
+			e.preventDefault();
+			rerror.classList.remove("d-none");
+			
+			window.scrollTo({
+				top: 320, 
+				behavior:'smooth'
+			});
+			
+			if(instaCheck == false){
+				instaError.classList.add("animation");
+				instaInput.style.border = "2px solid red";
+			}
+			
+			if(hashCheck == false){
+				hashError.classList.add("animation");
+			}
+			if(addressCheck == false){
+				addressError.classList.add("animation");
+				addressInput.style.border = "2px solid red";
+			}
+			
+			if(timeCheck == false){
+				timeError.classList.add("animation");
+				timeInput.style.border = "2px solid red";
+			}
+			/* 
+			if(guCheck == false){
+				guError.classList.add("animation");
+				selectOption.style.border = "2px solid red";
+			}
+			*/
+			if(nameCheck == false){
+				nameError.classList.add("animation");
+				nameInput.style.border = "2px solid red";
+			}
+		}
 	})
+	
+})

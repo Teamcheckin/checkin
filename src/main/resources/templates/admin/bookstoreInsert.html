@@ -28,19 +28,18 @@
 		            <a class="btn fake-btn">로고 업로드</a>
 		            <input type="file" name="bg-img" class="d-none real-btn" value="로고 이미지 업로드">
 		        </div>
-		        <span>
-		          <span class="rerror-message animation d-none">조건에 맞지 않는 항목이 있습니다</span>
-	         	 </span>
-		          <br>
+		       	<div class="whynotright">
+		        	  <span class="rerror-message animation d-none">조건에 맞지 않는 항목이 있습니다</span>
+	         	 </div>
     	       		<label>Name</label>
 	           		<span class="height">
-		                <input type="text" class="input" name="Name" value="">
+		                <input type="text" class="input" name="name" value="">
 		                <span class="error-message">서점 이름을 입력하세요</span>
 	                </span>
 	                
 	                <div class="address">
 	               		<label>Address</label>
-		                <a class="address-btn btn">주소 찾기</a>
+		                <a class="address-btn btn" th:href="@{/addressPopup}" onclick="window.open(this.href,'팝업', width=500, height=500, top=500, left=500); return false;">주소 찾기</a>
 	                </div>
 	                <span class="height .hash-board-count">
 	                	<input type="text" class="input" name="address">
@@ -50,8 +49,7 @@
 	                <div class="gu">
 		                <label>Gu</label>
 	               		 <select name="guName">
-	               			<option>선택</option>
-		                    <option th:each="gu:${guList}" th:text="${gu.name}">구</option>
+		                    <option th:each="gu:${guList}" th:text="${gu.name}" th:value="${gu.name}">구</option>
 		                </select>
 						<br>
                      <span class="error-message">구를 선택하세요</span>
@@ -59,8 +57,8 @@
 	                
 					<label>Operation time</label>
 	           		<span class="height">
-		                <input type="text" class="input" name="operatingTime" value="">
-		                <span class="error-message"> 요일과 운영 시간을 명시적으로 입력하세요</span>
+		                <input type="text" class="input" name="operatingTime" placeholder="Tue-Sat 10:00 ~ 23:00, Sun 12:00 ~ 21:00">
+		                <span class="error-message"> 요일과 운영 시간을 입력하세요</span>
 	                </span>
 	                
                 	<label>Instagram URL</label>
@@ -75,7 +73,7 @@
 		           			<span class="error-message">대표 해시태그를 선택하세요</span>
 	           			</div>
 	           			<span th:each="hash:${hashList}" >
-		          	 		<input type="radio" name="hashId" th:value="${hash.id}"/>
+		          	 		<input type="radio" name="hashId" th:value="${hash.id}" class="hash-input"/>
 		           			<label th:text=${hash.name}></label>
 		          	 	</span>
 		          	 </div>
