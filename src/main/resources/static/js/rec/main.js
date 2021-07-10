@@ -35,6 +35,7 @@ window.addEventListener("load", function() {
 					return store;
 				})
 		}
+		
 
 		(async () => {
 			try {
