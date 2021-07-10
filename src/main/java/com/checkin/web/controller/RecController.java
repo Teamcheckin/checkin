@@ -51,10 +51,7 @@ public class RecController {
 		if(member!=null) {
 			 memberId = member.getId();
 		}
-		//Integer[] hIdlist = service.getHashIdByMemberId(9);
-//		System.out.println(hIdlist[0]);
-//		System.out.println(hIdlist.length);
-		
+
 		List<Hashtag> memberHlist = service.getHashNamegByMemberId(memberId);
 		System.out.println(memberHlist);
 		System.out.println(memberHlist.get(0).getName());

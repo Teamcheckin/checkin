@@ -4,7 +4,6 @@
  *ul li> div , onClick
  */
 
-
 window.addEventListener("load", function() {
 
 	let subBtn = document.querySelector(".subBtn");
