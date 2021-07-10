@@ -116,4 +116,10 @@ public class MyBatisBookStoreDao implements BookStoreDao {
 		return mapper.getBookstoreIdArray();
 	}
 
+
+	@Override
+	public List<BookStoreView> getBookstoreByQuery(String query) {
+		return mapper.getBookstoreByQuery(query);
+	}
+
 }

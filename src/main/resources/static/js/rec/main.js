@@ -52,7 +52,7 @@ window.addEventListener("load", function() {
 					                <span class="title">${store[i].name}</span>
 					                <div class="hashtag">
 					                	<img src='/images/hashtag.png'>
-						                <span>#해시태그</span>
+						                <span>${store[i].hashtagName}</span>
 					                </div>
 					                <div class="address">
 						                <img src='/images/clock.png'>
