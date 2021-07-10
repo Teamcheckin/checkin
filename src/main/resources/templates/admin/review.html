@@ -39,27 +39,29 @@
 		</section>
 		<section class="review-container">
 			<div th:each="r:${list}" class="review-list">
-	 			<img th:src="${r.imagePath}?:@{/images/location.png}">
 				<div>
-					<div>
-		                <span>작성자</span>
-		                <span class="nickname font" th:text="${r.nickName}">치치</span>											
-					</div>
-					<div>
-						<span>등록일</span>
-						<span th:text="${#calendars.format(r.regDate,'yyyy.MM.dd')}" class="regdate font">2021.06.13</span>	
-					</div>
-					<div>
-						<span>서점</span>
-						<span class="bookstore-name" th:text="${r.bookstoreName}">한평책빵</span>						
-					</div>
-					<div>
-						<span>리뷰 내용</span>					
-						<span th:text="${r.content}" class="review-content font">분위기가 넘 좋아요!</span>					
-					</div>
+		 			<img th:src="${r.imagePath}?:@{/images/location.png}">
+					<div class="review-content">
+						<div>
+			                <span>작성자: </span>
+			                <span class="nickname font" th:text="${r.nickName}">치치</span>											
+						</div>
+						<div>
+							<span>등록일: </span>
+							<span th:text="${#calendars.format(r.regDate,'yyyy.MM.dd')}" class="regdate font">2021.06.13</span>	
+						</div>
+						<div>
+							<span>서점: </span>
+							<span class="bookstore-name" th:text="${r.bookstoreName}">한평책빵</span>						
+						</div>
+						<div>
+							<span>리뷰: </span>
+							<span th:text="${r.content}" class="review-content font">분위기가 넘 좋아요!</span>					
+						</div>
+					</div>				
 				</div>
 				<div class="del-btn">
-					<a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" th:href="@{del(id=${r.id})}" href="del"><img src="/images/trash.png"></a>
+					<a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" th:href="@{del/{id}(id=${r.id})}" href="del"><img src="/images/trash.png"></a>
 				</div>
 			</div>
 		</section>

@@ -74,7 +74,7 @@ select {
         flex-basis: 1;
         text-align: center;
         width: 100%;
-        font-size: 12px;
+        font-size: 10px;
     }
     
     .mini-nav .mini-nav-page {
@@ -83,7 +83,7 @@ select {
     }
     
 .gu-container {
-	margin-top: 10px;
+	margin: 15px 20px 12px;
 }
     
 .gu-list {
@@ -99,7 +99,45 @@ select {
 .gu-search-btn {
 	height: 30px;
 }
-    
+
+.review-list {
+	position: relative;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 16px;
+	margin-bottom: 10px;
+}
+
+.review-list>div {
+	display: flex;
+	align-items: center;
+}
+  
+	.review-list>div>img {
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+		border-radius: 50%;
+	}
+	
+	.review-content {
+		word-break: break-all;
+	}
+	
+	.del-btn {
+		display: flex;
+		justify-content: flex-end;
+	}
+	
+	.del-btn img {
+		width: 22px;
+		height: 22px;
+		position: absolute;
+		right: 8px;
+		bottom: 10px;
+	}
+	
+
     
     
     
