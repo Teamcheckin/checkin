@@ -38,7 +38,7 @@ public class BookInsertController {
 		this.guService = guService;
 	}
 	
-	@RequestMapping("/bookstore/insert")
+	@RequestMapping("admin/bookstore/insert")
 	public String BookInsertPage(Model model) {
 		List<Hashtag> hashList = hashService.getList();
 		List<Gu> guList = guService.getList();
@@ -50,7 +50,7 @@ public class BookInsertController {
 		return "admin/bookstoreInsert";
 	}
 	
-	@PostMapping("/bookstore/insert")
+	@PostMapping("admin/bookstore/insert")
 	public String BookinsertPost(
 				HttpServletRequest request
 				,@RequestParam(name="bg-img", required=false) MultipartFile bgImg
@@ -60,7 +60,7 @@ public class BookInsertController {
 		
 		// 배경 이미지 저장
 		if(bgImg != null) {
-			String path ="/upload/bookstore";
+			String path ="/images/bgImg";
 			String bgName = bgImg.getOriginalFilename();
 			System.out.println(bgName);
 			
@@ -102,14 +102,12 @@ public class BookInsertController {
 		HashtagBookstore hashBookstore = new HashtagBookstore();
 		hashBookstore.setHashtagId(hashId);
 
-		
-		if(bookstore.getName() == null)
-			return "redirect:/bookstore/insert?error";
-		
+
 		System.out.println(bookstore);
 		service.insert(bookstore, hashBookstore);
-			
-		return "redirect:/index";
+		
+		int returnId = bookstore.getId();
+		return "redirect:/bookstore/detail(id=${returnId})";
 	}
 	
 	

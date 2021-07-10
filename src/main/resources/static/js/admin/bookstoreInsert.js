@@ -69,7 +69,7 @@ window.addEventListener("load", function(){
 	
 	let nameCheck = false; let guCheck = false; let timeCheck = false; let instaCheck = false; let hashCheck = false;
 	
-	/*
+
 		let nameError = errorMessage[0];
 		let nameInput = input[0];
 
@@ -135,11 +135,18 @@ window.addEventListener("load", function(){
 			}
 		})
 		
-		
-		submitBtn.addEventListener("click", ()=>{
+		let rerror = document.querySelector(".rerror-message");
+		submitBtn.addEventListener("click", (e)=>{
 			if(nameCheck && guCheck && timeCheck && instaCheck && hashCheck){
 				return true;	
+			} else{
+				e.preventDefault();
+				rerror.classList.remove("d-none");
+				
+				window.scrollTo({
+					top: 80, 
+					behavior:'smooth'
+				});
 			}
 		})
-		*/
 	})

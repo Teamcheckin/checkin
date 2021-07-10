@@ -18,10 +18,10 @@ section .title{
 	
 	.bookstore-logo{
 		position: absolute;
-		width: 100px;
-		height: 100px;
-		bottom: 0;
-		left: 0;
+		width: 85px;
+		height: 85px;
+		bottom: 10px;
+		left: 10px;
 		background-color: white;
 		border-radius: 50px;
 	}
@@ -29,7 +29,7 @@ section .title{
 	.bookstore-card .hi-span{
 		display: flex;
 		justify-content: space-between;
-		margin: 0 5px 0 110px;
+		margin: 0 5px 0 100px;
 	}
 	.bookstore-card .hi{
 		margin-right: 5px;
@@ -65,8 +65,8 @@ section .title{
 	
 	.review-img{
 		border-radius: 7px;
-		width: 150px;
-		height: 150px;
+		width: 120px;
+		height: 120px;
 	}
 	
 	.review-card .hi-span{
