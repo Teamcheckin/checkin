@@ -17,9 +17,9 @@
    	<main id="main" layout:fragment="main">
     	<section class="bookstore-title">
 	    	<div th:each="b:${bookstore}">
-	    		<img class="bookstore-img" th:src="${b.bgImagePath}?:@{/images/bookstore.png}">
+	    		<img class="bookstore-img" th:src="${b.bgImg}?:@{/images/bookstore.png}">
 	    		<div class="bookstore-title-info">
-		    		<img class="logo-img" th:src="${b.logoImagePath}?:@{/images/books.png}">
+		    		<img class="logo-img" th:src="${b.logoImg}?:@{/images/books.png}">
 	    			<div>
 		    			<span class="name" th:text="${b.name}"></span>
 		    			<span class="hashtag" th:text="${b.hashtagName}"></span>	    			

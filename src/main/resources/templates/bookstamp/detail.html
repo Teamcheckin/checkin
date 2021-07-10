@@ -41,10 +41,10 @@
 		
 		<section>
 			<div class="store-name" th:each="b:${bookstore}">
-				<a th:href="@{/bookstore/detail(id=${b.id})}">
+				<a th:href="@{/bookstore/detail/{id}(id=${b.id})}">
 					<img class="img" th:src="${b.logoImg}?:@{/images/books.png}">
 				</a>
-				<a th:href="@{/bookstore/detail(id=${b.id})}">
+				<a th:href="@{/bookstore/detail/{id}(id=${b.id})}">
 					<span class="span-title" th:text="${b.name}"></span><br>
 				</a>				
 				<span class="span-adress" th:text="${b.address}"></span><br>
