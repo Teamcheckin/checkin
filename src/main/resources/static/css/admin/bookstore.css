@@ -23,6 +23,11 @@ select{
         color: black;
         border-bottom: 1px solid black;
     }
+    
+   	.create-btn {
+   		display: inline-block;
+    	margin: 5px 0;
+   	}
 
 /*--filter--*/
 .operation{
@@ -77,7 +82,7 @@ section{
 .create-btn{
 	/* ¿Ö ¾È µÊ.. ¤Ð¤Ð*/
 	
-	margin: 50px 0;	
+	/* margin: 50px 0; */
 	text-align: center;
 }
 
