@@ -69,7 +69,7 @@ window.addEventListener("load", function(){
 	
 	let nameCheck = false; let guCheck = false; let timeCheck = false; let instaCheck = false; let hashCheck = false;
 	
-	
+	/*
 		let nameError = errorMessage[0];
 		let nameInput = input[0];
 
@@ -86,23 +86,25 @@ window.addEventListener("load", function(){
 			}
 		})
 		
-		let guError = errorMessage[1];
+		let guError = errorMessage[2];
 		let selectOption = document.querySelector("select[name=guName]");
-		let option = selectOption.selectedIndex.value;
+		let option = selectOption.options[selectOption.selectedIndex].text;
 		selectOption.addEventListener("change", ()=>{
-			if(option == ''){
+
+				console.log(option);
+			if(option == '선택'){
 				guCheck = false;
 				guError.classList.add("animation");
 				selectOption.style.border = "2px solid red";
 			} else {
 				guCheck = true;
-				guError.classList.remove("animation");
+				guError.classList.remove("ß");
 				selectOption.style.border = "1px solid black";
 			}
 		})
 		
-		let timeError = errorMessage[2];
-		let timeInput = input[1];
+		let timeError = errorMessage[3];
+		let timeInput = input[2];
 		let timePattern = '';
 		timeInput.addEventListener("change", ()=>{
 			if(timeInput.value.match(timePattern) == null){
@@ -116,11 +118,12 @@ window.addEventListener("load", function(){
 			}
 		})
 		
-		let instaError = errorMessage[2];
-		let instaInput = input[1];
+		let instaError = errorMessage[4];
+		let instaInput = input[3];
 		let instaPattern = '/(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/';
 
 		instaInput.addEventListener("change", ()=>{
+			console.log(nameCheck, guCheck, timeCheck, instaCheck, hashCheck);
 			if(instaInput.value.match(instaPattern) == null){
 				instaCheck = false;
 				instaError.classList.add("animation");
@@ -130,8 +133,6 @@ window.addEventListener("load", function(){
 				instaError.classList.remove("animation");
 				instaInput.style.border = "1px solid black";
 			}
-			
-			console.log(nameCheck, guCheck, timeCheck, instaCheck, hashCheck);
 		})
 		
 		
@@ -140,4 +141,5 @@ window.addEventListener("load", function(){
 				return true;	
 			}
 		})
+		*/
 	})

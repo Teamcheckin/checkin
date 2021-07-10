@@ -102,6 +102,13 @@ public class MemberServiceImp implements MemberService{
 		return (nick == null) ? true : false;
 	}
 
+	@Override
+	public boolean emailValid(String email) {
+		String emailTrue = dao.emailValid(email);
+		
+		return (emailTrue == null) ? true : false;
+	}
+
 
 
 }

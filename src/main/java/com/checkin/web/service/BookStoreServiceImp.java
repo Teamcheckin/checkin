@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.checkin.web.dao.BookStoreDao;
 import com.checkin.web.entity.BookStore;
+import com.checkin.web.entity.HashtagBookstore;
 
 @Service
 public class BookStoreServiceImp implements BookStoreService {
@@ -44,23 +45,17 @@ public class BookStoreServiceImp implements BookStoreService {
        
       return dao.getCount();
    }
-
    @Transactional
 	@Override
-	public int insert(BookStore bookStore, Integer hashId) {
-//		Connection con = getConnection();
-//		 try {
-//            con.setAutoCommit(false);
-//
-//            Integer bookstoreId = bookStore.getId();
-//            dao.insert(bookStore);
-//            hashdao.insert(hashId, bookstoreId);
-//
-//            con.commit();  
-//    } catch (Exception e) {
-//            con.rollback();
-//    }
-		return dao.insert(bookStore);
+	public int insert(BookStore bookStore, HashtagBookstore hashBookstore) {
+		dao.insert(bookStore);
+		System.out.println(bookStore);
+		Integer id = bookStore.getId();
+		System.out.println(id);
+		
+		hashBookstore.setBookstoreId(id);
+		dao.inserthash(hashBookstore);
+		return 0;
 	}
 
    @Override
@@ -80,5 +75,11 @@ public class BookStoreServiceImp implements BookStoreService {
       
       return dao.getGu(gu);
    }
+
+@Override
+public Integer[] getBookstoreIdArray() {
+
+	return dao.getBookstoreIdArray();
+}
 
 }

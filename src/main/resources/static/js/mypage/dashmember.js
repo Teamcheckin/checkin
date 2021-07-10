@@ -2,40 +2,59 @@ window.addEventListener("load", function(){
 	let myHashBtn = document.querySelector(".my-hash-btn");
 	let hashBtn = document.querySelector(".hash-btn");
 	let myHash = document.querySelector(".my-hash");
-	let hash = document.querySelector(".hash")
-
-	let selected;
+	let hash = document.querySelector(".hash");
+	const selected = new Set();
+	
 		
 	myHashBtn.addEventListener("click", function(){
-
 		hash.classList.remove("d-none");
 		myHash.classList.add("d-none");
+		
+			
+		let selectedId = document.querySelectorAll(".selected");
+		for(let j = 0; j < selectedId.length; j++){
+			let selectedValue = selectedId[j].nextElementSibling.value;
+			selected.add(selectedValue);
+		}
 	})
 	
 	hashBtn.addEventListener("click", function(){
-
 		hash.classList.add("d-none");
 		myHash.classList.remove("d-none");
+		let selectArray = Array.from(selected);
+		fetch('/api/hashUpdate', {
+			method: "POST",
+			headers: {
+			     'Content-Type': 'application/json'
+		    },
+			body: JSON.stringify({
+				"selected": selectArray
+			})
+		})
+		.then(res => res.text())
+		.then(text => {
+			console.log(text);
+		})
 	})
 	
-	hash.addEventListener("click", function(e){
+	hash.addEventListener("click", (e)=>{
 		if(!e.target.classList.contains("hash-edit-list")){
 			return;
 		}
-			
-		e.target.classList.toggle("selected");
+		
+		let hashId = e.target.nextElementSibling.value;
+		console.log(hashId);
+		if(!e.target.classList.contains("selected")){
+			e.target.classList.add("selected");
+			selected.add(hashId);
+		} else {
+			e.target.classList.remove("selected");
+			for(let i of selected) {
+			  if(i === hashId)  {
+			    selected.delete(hashId);
+			  }
+			}
+		}
 	})
 	
-	hashBtn.addEventListener("click", function(){
-		let url = 'http://localhost:8080/mypage/dashboard/update'
-		fetch(url, {
-			method: "POST",
-			body: JSON.stringify({
-				hashId: selected,
-			})
-		})
-		.then(response=>{
-			console.log("post 완료")
-		})
-	})
 })

@@ -56,6 +56,8 @@ public class MyBatisMemberDao implements MemberDao{
 		
 		return mapper.insert(member);
 	}
+	
+	
 
 	@Override
 	public int update(Member member) {
@@ -73,5 +75,11 @@ public class MyBatisMemberDao implements MemberDao{
 	@Override
 	public String nickTrue(String nickname) {
 		return mapper.nickTrue(nickname);
+	}
+
+	@Override
+	public String emailValid(String email) {
+		
+		return mapper.emailValid(email);
 	}
 }

@@ -12,6 +12,10 @@
     <result column="Member_id" property="memberId"/>
 </resultMap>
     
+   	<select id="getStampList" resultMap="StampMap">
+       select * from stamp_route_member order by reg_date desc
+    </select> 
+    
 	<select id="get" resultType="Date">
         select reg_date from stamp_route_member
         where Bookstore_id = #{bookstoreId}

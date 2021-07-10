@@ -19,6 +19,6 @@ public interface BookmarkService {
 	Integer getStampCount(Integer memberId);
 	Integer getStampAdminCount(Integer bookstoreId);
 	Integer insert(Integer bookestoreId, Integer memberId);
-	
+	List<StampView> getStampList();
 
 }

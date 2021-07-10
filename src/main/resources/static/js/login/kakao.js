@@ -15,7 +15,7 @@ function kakaoLogin(){
 					};
 					
 					console.log(kakao_account);
-					fetch('login/kakao',{
+					fetch('api/login/kakao',{
 						method: 'POST',
 						headers: {
         				    'Content-Type': 'application/json'
@@ -23,7 +23,9 @@ function kakaoLogin(){
     				    body: JSON.stringify(member)
 					})
 					.then(response => response.text())
-					.then(text => {console.log(text)}); // 중괄호로 끝
+					.then(text => {
+						console.log(text)
+						location.href="/mypage"}); // 중괄호로 끝
 				}
 			});
 		}			

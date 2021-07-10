@@ -28,17 +28,21 @@ public class MemberController {
 		return nicktrue;
 	}
 	
-	@RequestMapping("/login/kakao")
+	@RequestMapping("/api/login/kakao")
 	public String kakaoLogin(@RequestBody Member member, HttpSession session, HttpServletRequest request){
 		
-		service.insert(member);
 		
 		String email = member.getEmail();
-		member = service.getByEmail(email);
-		session.setAttribute("Member", member);
-		
-		System.out.println(member);
-		
+		boolean valid = service.emailValid(email);
+		if(valid) {
+			member.setProfileImg(member.getProfileImg());
+			member.setPassword("kakao");
+			service.insert(member);
+			session.setAttribute("member", member);
+		} else {
+			member = service.getByEmail(email);
+			session.setAttribute("member", member);
+		}
 		String result = "ok";
 		return result;
 	}
