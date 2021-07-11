@@ -14,6 +14,7 @@ public interface RecService {
 	List<BookStoreView> getListBooktStore(String query); //해당 해시태그를 갖고 있는 서점 검색
 	List<BookStoreView> getListHashtagBookstore(String query);
 	
-	List<Integer> getIdArray(); //해시태그 id 얻어오기
+	Integer[] getIdArray(); //해시태그 id 얻어오기
 	List<Hashtag> getHashNamegByMemberId(int id); //해시태그 id로 해시태그 이름 얻어오기
+	String getHashName(Integer integer);
 }

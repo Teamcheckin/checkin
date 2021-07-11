@@ -13,6 +13,10 @@
 		select id from hashtag;
      </select>
      
+     <select id="getHashName" resultType="com.checkin.web.entity.Hashtag">
+		select name from hashtag where id = #{id}
+     </select>
+     
      <select id="getIdByName" resultType="int">
 		select id from hashtag where name = #{name}
      </select>

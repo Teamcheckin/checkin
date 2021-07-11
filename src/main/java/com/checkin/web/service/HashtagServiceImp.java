@@ -59,8 +59,13 @@ public class HashtagServiceImp implements HashtagService {
 	}
 
 	@Override
-	public List<Integer> getIdArray() {
+	public Integer[] getIdArray() {
 		return dao.getIdArray();
+	}
+
+	@Override
+	public String getHashName(int id) {
+		return dao.getHashName(id);
 	}
 	
 
