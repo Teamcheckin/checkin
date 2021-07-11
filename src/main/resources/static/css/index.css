@@ -1,9 +1,12 @@
 section .title{
     margin: 40px 0 30px 0;
     font-size: 25px;
+    background-color: #e0ebeb;
+    border-radius: 10px;
+    padding: 3px;
 }
 
-/* 이 서점은 어떠세요? */
+/* �씠 �꽌�젏�� �뼱�뼚�꽭�슂? */
 .bookstore-card{
 	border: 1px solid black;
 	border-radius: 10px;
@@ -36,7 +39,7 @@ section .title{
 		margin-right: 5px;
 	}
 
-/* 사람들이 스탬프를 찍고 있어요 */
+/* �궗�엺�뱾�씠 �뒪�꺃�봽瑜� 李띻퀬 �엳�뼱�슂 */
 .stamp-card{
 }
 
@@ -53,7 +56,7 @@ section .title{
 		float: right;
 	}
 
-/* 최근 리뷰 */
+/* 理쒓렐 由щ럭 */
 .review-card{
 	display: flex;
 	flex-direction: row;
