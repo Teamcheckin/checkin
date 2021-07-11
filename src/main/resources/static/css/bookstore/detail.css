@@ -84,6 +84,14 @@ hr {
 	padding: 70px 0 60px 0;
 }
 
+.link-btn {
+	display: flex;
+}
+.link-btn>img {
+	width: 10px;
+	height: 10px;
+}
+
 .edit-btn {
 	text-align: right;
 	margin-bottom: 10px;
