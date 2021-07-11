@@ -42,6 +42,12 @@ public class BookmarkServiceImp implements BookmarkService{
 	}
 
 	@Override
+	public Integer getBookmark(Integer bookstoreId, Integer memberId) {
+
+		return dao.getBookmark(bookstoreId, memberId);
+	}
+	
+	@Override
 	public Integer addStore(MyStore myStore) {
 		
 		return dao.insert(myStore);
@@ -101,4 +107,5 @@ public class BookmarkServiceImp implements BookmarkService{
 		
 		return list;
 	}
+
 }

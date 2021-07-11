@@ -24,7 +24,8 @@
 		    		<img class="bookstore-img" th:src="${b.bgImg}?:@{/images/bookstore.png}">
 		    		<form id="bookmark-form" action="/mypage/bookmark" method="post">
 						<input class="bookstore-id" type="hidden" name="bookstoreId" th:value="${b.id}">
-			    		<img src="/images/blankstar.png" class="bookmark">  
+			    		<img th:if="${bookmark} == 0" src="/images/blackstar1.png" class="bookmark"> 
+			    		<img th:if="${bookmark} == 1" src="/images/star.png" class="bookmark">   
 			    		<!-- th:if="${member == null}?onclick="alert(회원가입 시 서비스 이용이 가능합니다.')"" -->	
 					</form>				
 		    		<div class="bookstore-title-info">

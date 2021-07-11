@@ -39,6 +39,12 @@ public class MyBatisMyStoreDao implements MyStoreDao{
 	}
 
 	@Override
+	public Integer getBookmark(Integer bookstoreId, Integer memberId) {
+
+		return mapper.getBookmark(bookstoreId, memberId);
+	}
+
+	@Override
 	public Integer insert(MyStore myStore) {
 		
 		return mapper.insert(myStore);

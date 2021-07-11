@@ -10,6 +10,7 @@ public interface MyStoreDao {
 	
 	Integer getStoreCount(Integer storeId);
 	Integer getMyCount(Integer memberId);	
+	Integer getBookmark(Integer bookstoreId, Integer memberId);
 	
 	Integer insert(MyStore myStore);
 	Integer delete(Integer storeId);

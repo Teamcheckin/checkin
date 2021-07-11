@@ -19,6 +19,7 @@ import com.checkin.web.entity.BookStoreView;
 import com.checkin.web.entity.Member;
 import com.checkin.web.entity.ReviewView2;
 import com.checkin.web.service.BookStoreService;
+import com.checkin.web.service.BookmarkService;
 import com.checkin.web.service.ReviewService;
 
 @Controller
@@ -29,12 +30,18 @@ public class BookStoreController {
 	private BookStoreService service;
 	
 	@Autowired
+	private BookmarkService bookmarkService;
+	
+	@Autowired
 	private ReviewService reviewService;
 	
 	@GetMapping("detail/{id}")
 	public String detail(
 			@PathVariable int id, Model model, HttpSession session) {
+		
 		Member member = (Member)session.getAttribute("member");
+		int memberId = member.getId();
+		
 		if(member != null) {
 			if(member.getPositionId() != '1')
 				model.addAttribute("member", null);
@@ -45,9 +52,11 @@ public class BookStoreController {
 		
 		BookStoreView bookstore = service.getView(id);
 		List<ReviewView2> review = reviewService.getBookStoreList(id);
+		Integer hasBookmark = bookmarkService.getBookmark(id, memberId);
 		
 		model.addAttribute("bookstore", bookstore);
 		model.addAttribute("review", review);
+		model.addAttribute("bookmark", hasBookmark);
 		
 		return "bookstore/detail";
 	}

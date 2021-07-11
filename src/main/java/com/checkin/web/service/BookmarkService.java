@@ -11,7 +11,8 @@ import com.checkin.web.entity.StampList;
 public interface BookmarkService {
 	Integer[] getStoreList(Integer id);
 	Integer getStoreCount(Integer storeId);
-	Integer getMyCount(Integer memberId);	
+	Integer getMyCount(Integer memberId);
+	Integer getBookmark(Integer bookstoreId, Integer memberId);
 
 	Integer addStore(MyStore myStore);
 	Integer delStore(Integer storeId);

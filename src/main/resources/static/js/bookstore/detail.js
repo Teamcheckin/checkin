@@ -76,7 +76,7 @@ window.addEventListener("load", function() {
 			
 			let request = new XMLHttpRequest();
 			request.onload = function(e) {
-				bookmark.src="/images/bookmark.png";
+				bookmark.src="/images/star.png";
 				bookmark.classList.add("bookmarkAdded");
 			};
 			request.open("POST", "/mypage/bookmark", true);
@@ -86,7 +86,7 @@ window.addEventListener("load", function() {
 			
 			let request = new XMLHttpRequest();
 			request.onload = function(e) {
-				bookmark.src="/images/blankstar.png";
+				bookmark.src="/images/blackstar1.png";
 				bookmark.classList.remove("bookmarkAdded");
 			};
 			request.open("POST", "/mypage/bookmark/del", true);
