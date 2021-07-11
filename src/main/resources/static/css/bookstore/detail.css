@@ -84,6 +84,11 @@ hr {
 	padding: 70px 0 60px 0;
 }
 
+.edit-btn {
+	text-align: right;
+	margin-bottom: 10px;
+}
+
 .bookstore-title>div {
 	position: relative;	
 }
@@ -137,6 +142,8 @@ hr {
 	display: flex;
 	justify-content: center;
 	margin: 12px 20px;
+	font-size: 17px;
+	font-weight: bold;
 }
 	
 .tap-menu>span {
@@ -161,7 +168,7 @@ hr {
 	}
 	
 	.bookstore-info .info div {
-		font-size: 12px;
+		font-size: 13px;
 		margin: 0 0 2px 5px;
 	}
 
@@ -226,17 +233,22 @@ hr {
 			padding: 3px;
 		}
 		
-form .location-btn{
-	display: flex;
+form>span {
+	display: inline-block;
+	margin-bottom: 5px;
+	font-weight: bold;
+}		
+		
+form .location-btn {
 	margin-bottom: 11px;
-	font-size: 11px;
 }
-form .location-btn input{
-	margin: 0px 5px;
+form .location-btn>input {
+	padding: 5px;
+	font-size: 11.4px;
 }
-form .edit-btn{
-	text-align: right;
+form .location-btn>input[type=submit] {
+	padding: 5px 11px;
 }
-form .edit-btn a{
+form .edit-btn a {
 	background-color: var(--secondary);
 }

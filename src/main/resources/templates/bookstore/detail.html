@@ -17,6 +17,9 @@
    	<main id="main" layout:fragment="main">
     	<section class="bookstore-title">
 	    	<div th:each="b:${bookstore}">
+	    		<div class="edit-btn">
+	    			<a th:href="@{/admin/bookstore/edit/{id}(id=${b.id})}" class="btn">서점 정보 수정</a>
+				</div> 
 	    		<img class="bookstore-img" th:src="${b.bgImg}?:@{/images/bookstore.png}">
 	    		<div class="bookstore-title-info">
 		    		<img class="logo-img" th:src="${b.logoImg}?:@{/images/books.png}">
@@ -54,15 +57,13 @@
 		    </div>
 	    	<div id="map"></div>
 	    	<form method="post" action="/bookstore/detail/location" th:if="${member != null}">
-					<div class="location-btn">
-			    		<input type="text" name="latitude" class="input" placeholder="위도를 입력하세요"><br>
-			    		<input type="text" name="longitude" class="input" placeholder="경도를 입력하세요"><br>
-			    		<input type="hidden" name="bookstoreId" th:value="${bookstore.id}">
-			    		<input type="submit" class="btn" value="입력">
-		    		</div>
-		    		<div class="edit-btn">
-		    			<a th:href="@{/admin/bookstore/edit/{id}(id=${bookstore.id})}" class="btn">서점 정보 수정</a>
-					</div>    	
+	    		<span>서점 위치 수정</span>
+				<div class="location-btn">
+		    		<input type="text" name="latitude" class="input font" placeholder="위도를 입력하세요">
+		    		<input type="text" name="longitude" class="input font" placeholder="경도를 입력하세요">
+		    		<input type="hidden" name="bookstoreId" th:value="${bookstore.id}">
+		    		<input type="submit" class="btn font" value="입력">
+	    		</div>   	
 	    	</form>
 	    </section>
 	    <section class="review-section d-none">	    
