@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -125,6 +126,15 @@ public class BookmarkController {
 		model.addAttribute("guList", guList);
 		
 		return "mypage/review";
+	}
+	
+	@RequestMapping("del/{id}")
+	public String del(
+			@PathVariable int id) {
+		
+		reviewService.delete(id);
+		
+		return "redirect:/mypage/review";
 	}
 
 }

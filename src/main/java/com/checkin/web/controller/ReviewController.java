@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,7 @@ import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.Gu;
 import com.checkin.web.entity.Hashtag;
 import com.checkin.web.entity.HashtagReview;
+import com.checkin.web.entity.Member;
 import com.checkin.web.entity.Rating;
 import com.checkin.web.entity.RatingReview;
 import com.checkin.web.entity.Review;
@@ -73,8 +76,11 @@ public class ReviewController {
 			Integer hashtag,
 			String content, 
 			Integer rating,
-			Integer member_id,
+			HttpSession session,
 			@RequestParam("image") MultipartFile multipartFile) throws IOException {
+		
+		Member member = (Member)session.getAttribute("member");
+		int memberId = member.getId();
 		
 		Review review = new Review();
 		
@@ -104,7 +110,7 @@ public class ReviewController {
         
         review.setBookstoreId(bookstore);
         review.setContent(content);
-        review.setMemberId(1);
+        review.setMemberId(memberId);
         hreview.setHashtagId(hashtag);
 		rreview.setRatingId(rating);
 

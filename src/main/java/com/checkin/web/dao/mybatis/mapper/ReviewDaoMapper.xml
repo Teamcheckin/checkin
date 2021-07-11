@@ -50,10 +50,10 @@
     	select * from myreview_view
     	<where>
     	<if test="gu != null and gu != ''"> <!-- gu == '지역별' 문자열일 때도 where 조건 실행 안되게 하기 -->
-    		bookstore_gu = #{gu},  	
+    		bookstore_gu = #{gu}	
     	</if>    
     	<if test="memberId != null"> <!-- gu == '지역별' 문자열일 때도 where 조건 실행 안되게 하기 -->
-    		member_id = #{memberId}  	
+    		and member_id = #{memberId}
     	</if> 	
     	</where>
     	order by regdate desc
