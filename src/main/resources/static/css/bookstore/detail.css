@@ -225,4 +225,12 @@ hr {
 			border-radius: 5px;
 			padding: 3px;
 		}
-	
+		
+form div{
+	display: flex;
+	justify-content: center;
+	font-size: 11px;
+}
+form div input{
+	margin: 4px;
+}
