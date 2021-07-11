@@ -53,11 +53,12 @@ public class BookInsertController {
 	@PostMapping("admin/bookstore/insert")
 	public String BookinsertPost(
 				HttpServletRequest request
-				,@RequestParam(name="bg-img", required=false) MultipartFile bgImg
-				,@RequestParam(name="logo-img", required=false) MultipartFile logoImg
+				,@RequestParam(name="file1", required=false) MultipartFile bgImg
+				,@RequestParam(name="file2", required=false) MultipartFile logoImg
 				,BookStore bookstore
 				,Integer hashId) {
-		
+		System.out.println(bgImg);
+		System.out.println(logoImg);
 		// 배경 이미지 저장
 		if(bgImg != null) {
 			String path ="/images/bgImg";
@@ -74,6 +75,7 @@ public class BookInsertController {
 				File saveFile = new File(filePath);
 				bgImg.transferTo(saveFile);
 				bookstore.setBgImg(path + '/' + bgName);
+				System.out.println(bookstore.getBgImg());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -94,6 +96,7 @@ public class BookInsertController {
 				File saveFile = new File(filePath);
 				logoImg.transferTo(saveFile);
 				bookstore.setLogoImg(path + '/' + logoName);
+				System.out.println(bookstore.getLogoImg());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -106,15 +109,15 @@ public class BookInsertController {
 		System.out.println(bookstore);
 		service.insert(bookstore, hashBookstore);
 		
-		int returnId = bookstore.getId();
-		return "redirect:/bookstore/detail/{returnId}";
+
+		return "redirect:/bookstamp";
 	}
 	
 	
 	@RequestMapping("addressPopup")
 	public String addressPopup() {
 		
-		return "admin/addressPopup";
+		return "admin/address";
 	}
 	
 }
