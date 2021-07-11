@@ -73,8 +73,8 @@ public class ReviewController {
 	@PostMapping("reg")
 	public String reg(
 			Integer bookstore,
-			Integer hashtag,
 			String content, 
+			Integer hashtag,
 			Integer rating,
 			HttpSession session,
 			@RequestParam("image") MultipartFile multipartFile) throws IOException {

@@ -77,17 +77,27 @@
 		select * from review where member_id = #{memberId}
     </select>
     
-    <insert id="insert">  
-		insert into review(content, img, bookstore_id, member_id) 
-		values(#{review.content}, #{review.img}, #{review.bookstoreId}, #{review.memberId}); 
-    	<selectKey resultType="int" keyProperty="id" order="BEFORE">
-		    select id from review_view2 order by id desc limit 1;
-			<!-- select LAST_INSERT_ID() as id; -->
-		</selectKey>
-		insert into hashtag_review(review_id, hashtag_id) 
-		values(#{id}+1, #{hreview.hashtagId});
-		insert into rating_review(review_id, rating_id) 
-		values(#{id}+1, #{rreview.ratingId});
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.checkin.web.entity.Review">  
+		insert into review(
+			content, 
+			<if test="img != null">img,</if> 
+			bookstore_id, 
+			member_id) 
+		values(
+			#{content}, 
+			<if test="img != null">#{img},</if>  
+			#{bookstoreId}, 
+			#{memberId}); 
+    </insert>
+    
+    <insert id="insertHashtag" parameterType="com.checkin.web.entity.HashtagReview">  
+    	insert into hashtag_review(review_id, hashtag_id) 
+		values(#{reviewId}, #{hashtagId});
+    </insert>
+		
+	<insert id="insertRating" parameterType="com.checkin.web.entity.RatingReview">  
+    	insert into rating_review(review_id, rating_id) 
+		values(#{reviewId}, #{ratingId});
     </insert>
     
     <update id="update">

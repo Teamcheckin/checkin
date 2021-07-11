@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.checkin.web.dao.BookStoreDao;
 import com.checkin.web.dao.GuDao;
@@ -106,13 +107,25 @@ public class ReviewServiceImp implements ReviewService {
 		return list;
 	}
 
+	@Transactional
 	@Override
 	public int insert(
 			Review review, 
 			HashtagReview hreview, 
 			RatingReview rreview) {
+		
+		reviewDao.insert(review);
+		System.out.println("review: " + review);
 
-		return reviewDao.insert(review, hreview, rreview);
+		int id = review.getId();
+		System.out.println("리뷰 아이디:" + id);
+		
+		hreview.setReviewId(id);
+		rreview.setReviewId(id);
+		reviewDao.insertHashtag(hreview);
+		reviewDao.insertRating(rreview);
+
+		return 0;
 	}
 	
 	@Override
