@@ -56,7 +56,7 @@ public class RecController {
 
 		List<Hashtag> memberHlist = service.getHashNamegByMemberId(memberId);
 		
-		if(memberHlist.size()==1) {
+		if(memberHlist.size()>=1) {
 			h1 = memberHlist.get(0).getName();
 		}
 		

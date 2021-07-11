@@ -45,7 +45,7 @@ window.addEventListener("load", function() {
 				for (let i = 0; i < store.length; i++) {
 					
 					resultContent = resultContent + `<section id="bookstore">
-					        <div>
+					        <div onclick="window.location.href='/bookstore/detail/${store[i].id}'">
 					            <div>
 					                <img src='${store[i].bgImg}'>
 					            </div>
