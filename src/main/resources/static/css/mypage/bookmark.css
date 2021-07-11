@@ -29,6 +29,11 @@ section{
 		height: 50px;
 		border-radius: 50%;
 	} 
+
+.small-title {
+	margin-left: 10px;
+}	
+	
 .bookstore-info{
 	margin-top: 20px;
 }

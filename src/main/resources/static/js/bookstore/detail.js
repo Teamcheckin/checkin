@@ -7,6 +7,7 @@ window.addEventListener("load", function() {
 	var bookstoreSection = document.querySelector(".bookstore-section");
 	var reviewSection = document.querySelector(".review-section");
 	var bookmark = document.querySelector(".bookmark");
+	var bookstoreId = document.querySelector(".bookstore-id").value;
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 
@@ -66,5 +67,32 @@ window.addEventListener("load", function() {
 		review.classList.toggle("selected");
 		information.classList.toggle("selected");
 	} 
+	
+	// 북마크 버튼 클릭 시 북마크 되기
+	bookmark.onclick = function(e) {
+		
+		if(!bookmark.classList.contains("bookmarkAdded")) {
+			let formData = new FormData(document.getElementById('bookmark-form'));
+			
+			let request = new XMLHttpRequest();
+			request.onload = function(e) {
+				bookmark.src="/images/bookmark.png";
+				bookmark.classList.add("bookmarkAdded");
+			};
+			request.open("POST", "/mypage/bookmark", true);
+			request.send(formData);
+		} else {
+			let formData = new FormData(document.getElementById('bookmark-form'));
+			
+			let request = new XMLHttpRequest();
+			request.onload = function(e) {
+				bookmark.src="/images/blankstar.png";
+				bookmark.classList.remove("bookmarkAdded");
+			};
+			request.open("POST", "/mypage/bookmark/del", true);
+			request.send(formData);
+		}
+	}
+	
 	
 });

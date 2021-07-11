@@ -84,23 +84,30 @@ hr {
 	padding: 70px 0 60px 0;
 }
 
-.link-btn {
+/* .link-btn {
 	display: flex;
 	align-items: center;
 	margin-bottom: 10px;
 	justify-content: space-between;
-}
-.link-btn>img {
-	width: 27px;
-	height: 27px;
-}
+} */
 
 .edit-btn {
 	text-align: right;
+	margin-bottom: 10px;
 }
 
-.bookstore-title>div {
+.parent-bookstore-img {
 	position: relative;	
+}
+.bookmark {
+	position: absolute;
+	width: 27px;
+	height: 27px;
+	background-color: white;
+    border-radius: 7%;
+    padding: 3px;
+    top: 4px;
+    right: 4px;
 }
 
 .bookstore-img {

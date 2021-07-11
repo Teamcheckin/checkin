@@ -16,21 +16,25 @@
 <body>
    	<main id="main" layout:fragment="main">
     	<section class="bookstore-title">
-	    	<div th:each="b:${bookstore}">
-	    		<div class="link-btn">
-					<img src="/images/blankstar.png" class="bookmark">  	
-		    		<div class="edit-btn">
-		    			<a th:href="@{/admin/bookstore/edit/{id}(id=${b.id})}" class="btn">서점 정보 수정</a>
-					</div> 
-	    		</div>
-	    		<img class="bookstore-img" th:src="${b.bgImg}?:@{/images/bookstore.png}">
-	    		<div class="bookstore-title-info">
-		    		<img class="logo-img" th:src="${b.logoImg}?:@{/images/books.png}">
-	    			<div>
-		    			<span class="name" th:text="${b.name}"></span>
-		    			<span class="hashtag" th:text="${b.hashtagName}"></span>	    			
-	    			</div>
-	    		</div>
+	    	<div th:each="b:${bookstore}"> 
+	    		<div class="edit-btn" th:if="${member != null}">
+	    			<a th:href="@{/admin/bookstore/edit/{id}(id=${b.id})}" class="btn">서점 정보 수정</a>
+				</div> 
+				<div class="parent-bookstore-img">
+		    		<img class="bookstore-img" th:src="${b.bgImg}?:@{/images/bookstore.png}">
+		    		<form id="bookmark-form" action="/mypage/bookmark" method="post">
+						<input class="bookstore-id" type="hidden" name="bookstoreId" th:value="${b.id}">
+			    		<img src="/images/blankstar.png" class="bookmark">  
+			    		<!-- th:if="${member == null}?onclick="alert(회원가입 시 서비스 이용이 가능합니다.')"" -->	
+					</form>				
+		    		<div class="bookstore-title-info">
+			    		<img class="logo-img" th:src="${b.logoImg}?:@{/images/books.png}">
+		    			<div>
+			    			<span class="name" th:text="${b.name}"></span>
+			    			<span class="hashtag" th:text="${b.hashtagName}"></span>	    			
+		    			</div>
+		    		</div>
+				</div>
 	    	</div>
 	    </section>    
 	    <section class="tap-menu">
