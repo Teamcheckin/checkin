@@ -45,11 +45,11 @@ public class RecController {
 		model.addAttribute("hlist",hlist);
 		
 		//추천 코너 3개 - 비로그인 시 랜덤 추천
-		List<Integer> hashIdArray = service.getIdArray();
-		List<Integer> Ids = shuffle(hashIdArray);
-		String h1="#고양이";
-		String h2="#술";
-		String h3="#독서모임";
+//		Integer[] hashIdArray = service.getIdArray();
+//		Integer[] Ids = shuffle(hashIdArray);
+		String h1=null;
+		String h2=null;
+		String h3=null;
 		
 		//로그인한 사용자 id 얻어서 사용자가 고른 해시태그 얻어오기
 		Member member = (Member)session.getAttribute("member");
@@ -90,22 +90,21 @@ public class RecController {
 	}
 	
 	
-	public static List<Integer> shuffle(List<Integer> array){
-		int r1, r2;
-		int temp;
-		
-		for(int i=0; i<array.size(); i++) {
-			r1 = (int)(Math.random()*array.size());
-			r2 = (int)(Math.random()*array.size());
-			
-			temp = array.get(r1);
-			//array.get(r1) = array.get(r2);
-			
-			
-		}
-		
-		return null;
-	}
+//	public static Integer[] shuffle(Integer[] array){
+//		int r1, r2;
+//		int temp;
+//		
+//		for(int i=0; i<array.length; i++) {
+//			r1 = (int)(Math.random()*array.length);
+//			r2 = (int)(Math.random()*array.length);
+//		
+//			temp = array[r1];
+//			array[r1] = array[r2];
+//			array[2] = temp;
+//		}
+//		
+//		return array;
+//	}
 	
 	
 	

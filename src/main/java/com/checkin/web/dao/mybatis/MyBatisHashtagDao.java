@@ -68,9 +68,15 @@ public class MyBatisHashtagDao implements HashtagDao{
 	}
 
 	@Override
-	public List<Integer> getIdArray() {
+	public Integer[] getIdArray() {
 		// TODO Auto-generated method stub
 		return mapper.getIdArray();
+	}
+
+	@Override
+	public String getHashName(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getHashName(id);
 	}
 
 

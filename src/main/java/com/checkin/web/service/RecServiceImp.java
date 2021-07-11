@@ -74,9 +74,16 @@ public class RecServiceImp implements RecService{
 	}
 
 	@Override
-	public List<Integer> getIdArray() {
+	public Integer[] getIdArray() {
 		// TODO Auto-generated method stub
 		return dao.getIdArray();
 	}
+
+	@Override
+	public String getHashName(Integer integer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
