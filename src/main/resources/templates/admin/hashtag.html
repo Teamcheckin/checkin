@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/inc/layout">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="/css/admin/member.css" rel="stylesheet">
-<link href="/css/common.css" rel="stylesheet">
-<link href="/css/admin/hash/list.css" rel="stylesheet">
-<script src="/js/admin/hash/list.js"></script>
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
-<title>해시태그 관리 페이지</title>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/admin/member.css" rel="stylesheet">
+	<link href="/css/common.css" rel="stylesheet">
+	<link href="/css/admin/hash/list.css" rel="stylesheet">
+	<script src="/js/admin/hash/list.js"></script>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+	<title>해시태그 관리 페이지</title>
 </head>
+
 <body>
 
 	<main layout:fragment="main">
@@ -32,21 +34,21 @@
 				<!-- 검색버튼을 a태그로 만들 경우 자바스크립트가 필요 -->
 			</div>
 		</form>
-	
-		
-		<div>
-			<a  class="btn addBtn">추가</a> 
+
+
+		<div class="Btn">
+			<a class="btn addBtn">추가</a>
 			<a class="btn delBtn">삭제</a>
-			
-			<form class="d-none" action="/admin/hash/reg" method="post">
-				<div>
-					<input type="text" value="#" name="q">
-					<input type="submit" class="btn" value="등록">
-				</div>
-			</form>
 		</div>
 
-		<section>
+		<form class="subForm d-none" action="/admin/hash/reg" method="post">
+			<div>
+				<input type="text" value="#" name="q">
+				<input type="submit" class="btn" value="등록">
+			</div>
+		</form>
+
+		<section class="cardSection">
 			<div class="card" th:each="h:${list}">
 				<div class="hi-span">
 					<span th:text="${h.name}"></span>
@@ -58,4 +60,5 @@
 		</section>
 	</main>
 </body>
+
 </html>

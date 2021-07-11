@@ -19,7 +19,7 @@ window.addEventListener("load", function() {
 		console.log(selected)
 		selected.classList.toggle("selected");
 
-		let sibling = e.target.nextElementSibling.nextElementSibling;
+		let sibling = e.target.parentElement.nextElementSibling;
 		sibling.classList.toggle("d-none");
 
 	}
