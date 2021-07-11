@@ -7,22 +7,42 @@ window.addEventListener("load", function(){
 	let popup = document.querySelector(".popup");
 	let btnList = document.querySelector(".btn-list");
 	let assignBtn = document.querySelector(".assign-btn");
+	let form = document.querySelectorAll("form")[1];
+	
+
 	
 	
-	card.addEventListener("click", (e) =>{
+	form.addEventListener("click", (e) =>{
 		e.preventDefault();
 		
 		if(!e.target.classList.contains("popup-btn"))
 			return;
 			
-		popup.classList.remove("d-none");
+			console.log(e.target.parentElement.previousElementSibling);
+		e.target.parentElement.previousElementSibling.classList.remove("d-none");
 			
 	})
 
-	let input = document.querySelectorAll("input[type=hidden]");
-	let bookstoreId = input[0]
-	let MemberId = input[1]
-	assignBtn.addEventListener("click",(e) =>{
+	form.addEventListener("click",(e) =>{
+		
+		if(!e.target.classList.contains("assign-btn"))
+		return;
+		
+		let input= e.target.parentElement.querySelectorAll("input[type=hidden]")
+		console.log(input);
+		let memberId = input[0].value
+		let bookstoreId = input[1].value		
+		console.log(memberId, bookstoreId)
+				
+			let url = `/api/assign/${memberId}/${bookstoreId}`
+			console.log(url)
+			fetch(url)
+	        .then(response=>{
+	            return response.text(); // false or true
+	        })
+	        .then(result=>{
+				console.log(result)})
+
 		
 		
 		
