@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.checkin.web.entity.BookStore;
+import com.checkin.web.entity.BookStoreView;
 import com.checkin.web.entity.Hashtag;
 import com.checkin.web.service.BookStoreService;
 import com.checkin.web.service.HashtagService;
@@ -48,7 +49,7 @@ public class RecController {
 			System.out.println(query);
 			System.out.println(field);
 			
-			List<BookStore> list = service.getListBooktStore(query, null);
+			List<BookStoreView> list = service.getListBooktStore(query);
 			
 			System.out.println(list);
 			System.out.println(list.isEmpty());
@@ -59,7 +60,7 @@ public class RecController {
 			//해시태그 검색
 			System.out.println(query);
 			System.out.println(field);
-			List<BookStore> list = service.getListHashtagBookstore(query);
+			List<BookStoreView> list = service.getListHashtagBookstore(query);
 			
 			map.put("list",list);
 		}

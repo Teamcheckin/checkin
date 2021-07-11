@@ -61,12 +61,19 @@ ul, li{
 	display: flex;
     align-items: center;
     margin-top: 6px;
+
 }
 
 	.hashtag>img{
 		width: 20px;
     	height: 20px;
     	padding-right: 5px;
+	}
+	
+	.hashtag>span{
+		background-color: #e0ebeb;
+   	 	padding: 3px 3px;
+   	 	border-radius: 7px;
 	}
 	
 
@@ -84,6 +91,7 @@ ul, li{
 
 .recTitle{
 	margin-top:30px;
+	font-weight: bold;
 }
 
 .bookstore{
@@ -126,8 +134,8 @@ input {
             text-align: center;
             line-height: 30px;
     		margin-right : 15px;
-   			 margin-left : 15px;
-}
+   			margin-left : 15px;
+		}
 
     .bookstore>div{
         border: 1px gray solid; 
@@ -167,12 +175,10 @@ input {
 	}
 	
     .slides li{
-		
 	    white-space:nowrap;
 	}
 	
-        
-        
+
         
         
         
