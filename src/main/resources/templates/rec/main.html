@@ -40,7 +40,7 @@
 			<div th:each="l1:${hlist1}" class="bookstore">
 				<div th:onclick="'window.location.href=\''+@{/bookstore/detail/{id}(id=${l1.id})}+'\''" class="bs" >
 					<div>
-						<img th:src="${l1.bgImg}">
+						<img th:src="${l1.bgImg}" src="/images/books.png">
 					</div>
 					<div class="bsInfo">
 						<span class="truncate" th:text="${l1.name}"> 책방이름</span> 
@@ -57,7 +57,7 @@
 			<div th:each="l2:${hlist2}" class="bookstore">
 				<div th:onclick="'window.location.href=\''+@{/bookstore/detail/{id}(id=${l2.id})}+'\''" class="bs">
 					<div>
-						<img th:src="${l2.bgImg}">
+						<img th:src="${l2.bgImg}" src="/images/books.png">
 					</div>
 					<div  class="bsInfo">
 						<span class="truncate" th:text="${l2.name}"> 책방이름</span> 
@@ -73,7 +73,7 @@
 			<div th:each="l3:${hlist3}" class="bookstore">
 				<div  th:onclick="'window.location.href=\''+@{/bookstore/detail/{id}(id=${l3.id})}+'\''" class="bs">
 					<div>
-						<img th:src="${l3.bgImg}" src="/images/bs.jpg" alt="">
+						<img th:src="${l3.bgImg}" src="/images/books.png">
 					</div>
 					<div class="bsInfo">
 						<span class="truncate" th:text="${l3.name}"> 책방이름</span> 

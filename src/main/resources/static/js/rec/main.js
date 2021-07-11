@@ -40,14 +40,20 @@ window.addEventListener("load", function() {
 		(async () => {
 			try {
 				let store = await showResult();
-				console.log(store.length)
+				console.log(store)
 				let resultContent = ""; //결과가 여러개니까 전의 결과에 + 해서 연결. 배열로 하면 , 이 나온다
+				
 				for (let i = 0; i < store.length; i++) {
+					
+					if(store[i].bgImg==null){
+						store[i].bgImg = "/images/location.png";
+					}
+					
 					
 					resultContent = resultContent + `<section id="bookstore">
 					        <div onclick="window.location.href='/bookstore/detail/${store[i].id}'">
-					            <div>
-					                <img src='${store[i].bgImg}'>
+					            <div class="H180">
+					                <img src="${store[i].bgImg}">
 					            </div>
 					            <div class="BS">
 					                <span class="title">${store[i].name}</span>
