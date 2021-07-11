@@ -226,11 +226,17 @@ hr {
 			padding: 3px;
 		}
 		
-form div{
+form .location-btn{
 	display: flex;
-	justify-content: center;
+	margin-bottom: 11px;
 	font-size: 11px;
 }
-form div input{
-	margin: 4px;
+form .location-btn input{
+	margin: 0px 5px;
+}
+form .edit-btn{
+	text-align: right;
+}
+form .edit-btn a{
+	background-color: var(--secondary);
 }

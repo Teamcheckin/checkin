@@ -2,6 +2,8 @@ package com.checkin.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.BookStoreView;
+import com.checkin.web.entity.Member;
 import com.checkin.web.entity.ReviewView2;
 import com.checkin.web.service.BookStoreService;
 import com.checkin.web.service.ReviewService;
@@ -30,7 +33,15 @@ public class BookStoreController {
 	
 	@GetMapping("detail/{id}")
 	public String detail(
-			@PathVariable int id, Model model) {
+			@PathVariable int id, Model model, HttpSession session) {
+		Member member = (Member)session.getAttribute("member");
+		if(member != null) {
+			if(member.getPositionId() != '1')
+				model.addAttribute("member", null);
+			model.addAttribute("member", member);
+		} else {
+			model.addAttribute("member", null);
+		}
 		
 		BookStoreView bookstore = service.getView(id);
 		List<ReviewView2> review = reviewService.getBookStoreList(id);
@@ -56,7 +67,9 @@ public class BookStoreController {
 		System.out.println(bookstore);
 		BookStoreView bookstoreView = service.getView(id);
 		
+	
 		re.addAttribute("id", id);
+		model.addAttribute(null, bookstoreView);
 		model.addAttribute("bookstore", bookstoreView);
 		model.addAttribute("review", review);
 		
