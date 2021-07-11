@@ -8,10 +8,16 @@
 	display: flex !important; 
     justify-content: space-between;
     align-items: center;
+    height:20px;
 }
 
 
 .img{
 	padding:0 !important;
+	margin:0 !important;
+}
+
+
+section>.card>div{
 	margin:0 !important;
 }

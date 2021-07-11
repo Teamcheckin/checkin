@@ -225,4 +225,18 @@ hr {
 			border-radius: 5px;
 			padding: 3px;
 		}
-	
+		
+form .location-btn{
+	display: flex;
+	margin-bottom: 11px;
+	font-size: 11px;
+}
+form .location-btn input{
+	margin: 0px 5px;
+}
+form .edit-btn{
+	text-align: right;
+}
+form .edit-btn a{
+	background-color: var(--secondary);
+}

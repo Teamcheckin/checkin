@@ -43,6 +43,7 @@ public class RecController {
 		System.out.println(hlist);
 		model.addAttribute("hlist",hlist);
 		
+		String h1="#고양이";
 		String h2="#술";
 		String h3="#독서모임";
 		
@@ -54,12 +55,14 @@ public class RecController {
 		}
 
 		List<Hashtag> memberHlist = service.getHashNamegByMemberId(memberId);
-		System.out.println(memberHlist);
-		System.out.println(memberHlist.get(0).getName());
 		
-		List<BookStoreView> hlist1 = service.getListHashtagBookstore(memberHlist.get(0).getName());
+		if(memberHlist.size()==1) {
+			h1 = memberHlist.get(0).getName();
+		}
+		
+		List<BookStoreView> hlist1 = service.getListHashtagBookstore(h1);
 		model.addAttribute("hlist1",hlist1);
-		model.addAttribute("hlist1Name",memberHlist.get(0).getName());
+		model.addAttribute("hlist1Name",h1);
 		
 		if(memberHlist.size()>1) {
 			h2 = memberHlist.get(1).getName();
@@ -76,6 +79,8 @@ public class RecController {
 		List<BookStoreView> hlist3 = service.getListHashtagBookstore(h3);
 		model.addAttribute("hlist3",hlist3);
 		model.addAttribute("hlist3Name",h3);
+		
+		
 		return "rec/main";
 	}
 	

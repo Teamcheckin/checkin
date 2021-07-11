@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,7 +41,7 @@ public class BookInsertController {
 		this.guService = guService;
 	}
 	
-	@RequestMapping("admin/bookstore/insert")
+	@GetMapping("admin/bookstore/insert")
 	public String BookInsertPage(Model model) {
 		List<Hashtag> hashList = hashService.getList();
 		List<Gu> guList = guService.getList();
@@ -48,7 +50,16 @@ public class BookInsertController {
 		model.addAttribute("guList", guList);
 		model.addAttribute("hashCount", hashCount);
 		
-		return "admin/bookstoreInsert";
+		return "bookstore/insert";
+	}
+	
+	
+	@GetMapping("admin/bookstore/edit/{id}")
+	public String BookEditPage(Model model
+			,@PathVariable Integer id) {
+		
+		
+		return "bookstore/edit";
 	}
 	
 	@PostMapping("admin/bookstore/insert")

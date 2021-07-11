@@ -18,10 +18,10 @@ public interface ReviewDao {
 	List<MyReviewView> getMyReviewList(String gu, int memberId);
 	ReviewView2 get(int id);
 
-	int insert(
-			@Param("review") Review review, 
-			@Param("hreview") HashtagReview hreview, 
-			@Param("rreview") RatingReview rreview);
+	int insert(Review review);
+	int insertHashtag(HashtagReview hreview);
+	int insertRating(RatingReview rreview);
+	
 	int update(
 			@Param("review") Review review, 
 			@Param("hreview") HashtagReview hreview, 

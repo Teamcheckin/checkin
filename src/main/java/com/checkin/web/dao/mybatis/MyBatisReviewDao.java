@@ -56,11 +56,21 @@ public class MyBatisReviewDao implements ReviewDao {
 	}
 	
 	@Override
-	public int insert(			
-			@Param("review") Review review, 
-			@Param("hreview") HashtagReview hreview, 
-			@Param("rreview") RatingReview rreview) {
-		return mapper.insert(review, hreview, rreview);
+	public int insert(Review review) {
+		
+		return mapper.insert(review);
+	}
+	
+	@Override
+	public int insertHashtag(HashtagReview hreview) {
+
+		return mapper.insertHashtag(hreview);
+	}
+
+	@Override
+	public int insertRating(RatingReview rreview) {
+
+		return mapper.insertRating(rreview);
 	}
 
 	@Override

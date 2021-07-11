@@ -69,7 +69,7 @@ public class HashtagController {
 			response.setContentType("text/html; charset=UTF-8"); 
 			
 			PrintWriter out = response.getWriter(); 
-			out.println("<script>popUp('해시태그가 등록되었습니다'); "
+			out.println("<script>alert('해시태그가 등록되었습니다'); "
 					+ "location.href='/admin/hash/list';</script>"); 
 			out.flush();
 

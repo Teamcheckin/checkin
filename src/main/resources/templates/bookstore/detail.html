@@ -53,6 +53,17 @@
 		    	</div>
 		    </div>
 	    	<div id="map"></div>
+	    	<form method="post" action="/bookstore/detail/location" th:if="${member != null}">
+					<div class="location-btn">
+			    		<input type="text" name="latitude" class="input" placeholder="위도를 입력하세요"><br>
+			    		<input type="text" name="longitude" class="input" placeholder="경도를 입력하세요"><br>
+			    		<input type="hidden" name="bookstoreId" th:value="${bookstore.id}">
+			    		<input type="submit" class="btn" value="입력">
+		    		</div>
+		    		<div class="edit-btn">
+		    			<a th:href="@{/admin/bookstore/edit/{id}(id=${bookstore.id})}" class="btn">서점 정보 수정</a>
+					</div>    	
+	    	</form>
 	    </section>
 	    <section class="review-section d-none">	    
     		<div th:each="r:${review}">
