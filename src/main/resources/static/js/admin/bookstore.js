@@ -1,6 +1,6 @@
 //팝업주소, 팝업창 이름, 팝업창 설정
 
-window.addEventListener("load", function(){
+window.addEventListener("load",() =>{
 	
 	let card = document.querySelector(".card");
 	let popupBtn = document.querySelector(".popup-btn");
@@ -8,12 +8,23 @@ window.addEventListener("load", function(){
 	let btnList = document.querySelector(".btn-list");
 	let assignBtn = document.querySelector(".assign-btn");
 	let form = document.querySelectorAll("form")[1];
-	
+	let close = document.querySelector(".close");
 
 	
+	//임명카드 닫기 버튼 만들기
+
+	form.addEventListener("click",(e) =>{
+					
+		if(!e.target.classList.contains("close"))
+			return;
+
+			e.target.parentElement.parentElement.classList.add("d-none");
+		
+	})
 	
+
 	form.addEventListener("click", (e) =>{
-		e.preventDefault();
+		// e.preventDefault();
 		
 		if(!e.target.classList.contains("popup-btn"))
 			return;
@@ -43,8 +54,8 @@ window.addEventListener("load", function(){
 	        .then(result=>{
 				console.log(result)})
 
-		
-		
+			e.target.parentElement.parentElement.parentElement.parentElement.classList.add("d-none");
+				console.log(e.target.parentElement.parentElement.parentElement.parentElement);
 		
 	})
 
