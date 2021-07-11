@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.Gu;
@@ -53,17 +54,17 @@ public class BookInsertController {
 	@PostMapping("admin/bookstore/insert")
 	public String BookinsertPost(
 				HttpServletRequest request
-				,@RequestParam(name="file1", required=false) MultipartFile bgImg
-				,@RequestParam(name="file2", required=false) MultipartFile logoImg
-				,BookStore bookstore
-				,Integer hashId) {
-		System.out.println(bgImg);
-		System.out.println(logoImg);
+				,@RequestParam(required=false) MultipartFile file1
+				,@RequestParam(required=false) MultipartFile file2
+				,BookStore bookstore, Integer hashId, Model model,
+				RedirectAttributes re) {
+		System.out.println(file1);
+		System.out.println(file2);
 		// 배경 이미지 저장
-		if(bgImg != null) {
+		if(file1 != null) {
 			String path ="/images/bgImg";
-			String bgName = bgImg.getOriginalFilename();
-			System.out.println(bgName);
+			String bgName = file1.getOriginalFilename();
+
 			
 			
 			ServletContext application = request.getServletContext();
@@ -71,34 +72,34 @@ public class BookInsertController {
 			
 			try {
 				String filePath = uploadPath + File.separator + bgName;
-				System.out.println(filePath);
+
 				File saveFile = new File(filePath);
-				bgImg.transferTo(saveFile);
+				file1.transferTo(saveFile);
 				bookstore.setBgImg(path + '/' + bgName);
 				System.out.println(bookstore.getBgImg());
 			} catch (IOException e) {
 				e.printStackTrace();
+				System.out.println("배경업로드에러발생");
 			}
 		}
 		
 		//로고 이미지 저장
-		if(logoImg != null) {
+		if(file2 != null) {
 			String path ="/images/logoImg";
-			String logoName = bgImg.getOriginalFilename();
-			System.out.println(logoName);
+			String logoName = file2.getOriginalFilename();
 			
 			ServletContext application = request.getServletContext();
 			String uploadPath = application.getRealPath(path);
 	
 			try {
 				String filePath = uploadPath + File.separator + logoName;
-				System.out.println(filePath);
 				File saveFile = new File(filePath);
-				logoImg.transferTo(saveFile);
+				file2.transferTo(saveFile);
 				bookstore.setLogoImg(path + '/' + logoName);
 				System.out.println(bookstore.getLogoImg());
 			} catch (IOException e) {
 				e.printStackTrace();
+				System.out.println("로고업로드에러발생");
 			}
 		}
 		
@@ -109,15 +110,11 @@ public class BookInsertController {
 		System.out.println(bookstore);
 		service.insert(bookstore, hashBookstore);
 		
+		BookStore modelBookstore = service.getBookstore(bookstore.getName());
 
-		return "redirect:/bookstamp";
+		re.addAttribute("id", modelBookstore.getId());
+		model.addAttribute("bookstore", modelBookstore);
+		return "redirect:/bookstore/detail/{id}";
 	}
-	
-	
-	@RequestMapping("addressPopup")
-	public String addressPopup() {
-		
-		return "admin/address";
-	}
-	
+
 }
