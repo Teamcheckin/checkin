@@ -24,6 +24,10 @@ form{
 	padding: 14px;
 }
 
+.btn-list input {
+	font-size: 15px;
+}
+
 input[type="submit"]{
 	margin-bottom: 30px;	
 }
