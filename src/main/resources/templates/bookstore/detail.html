@@ -18,7 +18,8 @@
     	<section class="bookstore-title">
 	    	<div th:each="b:${bookstore}">
 	    		<div class="link-btn">
-					<img src="/images/bookmark.png" class="bookmark">  		
+					<img src="/images/bookmark.png" class="bookmark">  	
+					<span>북마크</span>	
 		    		<div class="edit-btn">
 		    			<a th:href="@{/admin/bookstore/edit/{id}(id=${b.id})}" class="btn">서점 정보 수정</a>
 					</div> 

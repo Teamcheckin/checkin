@@ -86,15 +86,17 @@ hr {
 
 .link-btn {
 	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	justify-content: space-between;
 }
 .link-btn>img {
-	width: 10px;
-	height: 10px;
+	width: 27px;
+	height: 27px;
 }
 
 .edit-btn {
 	text-align: right;
-	margin-bottom: 10px;
 }
 
 .bookstore-title>div {
