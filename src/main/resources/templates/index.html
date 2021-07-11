@@ -42,7 +42,7 @@
 					<div th:each="r, index:${review}" class="each-review-card" th:if="${index.index}<6">
 						<img th:src="${r.imagePath}?:@{/images/bs.jpg}" class="review-img">
 						<span class="hi-span">
-							<span th:text="${r.bookstoreName}"></span>
+							<span class="truncate" th:text="${r.bookstoreName}"></span>
 							<span th:text="${r.nickName}" class="small-font right"></span>
 						</span>
 					</div>

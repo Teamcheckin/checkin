@@ -19,7 +19,7 @@ input {
 .store-name{
 	border-bottom: solid 1px ;
 	padding-bottom: 10px;
-	padding-top: 15px;
+	padding-top: 20px;
 	display: flex;
 } 
 
@@ -43,10 +43,13 @@ input {
 }
 .info div {
     font-size: 10px;
-    margin: 0 0 8px 5px;
+    margin: 0 0 0px 5px;
 	display: flex;
+	align-items: center;
 	width: 80%;
-	
+}
+.info>div {
+	margin-bottom: 5px;
 }
 
 .info div div{
