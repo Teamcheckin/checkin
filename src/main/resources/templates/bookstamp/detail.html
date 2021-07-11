@@ -44,9 +44,9 @@
 				<a th:href="@{/bookstore/detail/{id}(id=${b.id})}">
 					<img class="img" th:src="${b.logoImg}?:@{/images/books.png}">
 				</a>
-				<a th:href="@{/bookstore/detail/{id}(id=${b.id})}"></a>
 				<div class="stamp-info">
-					<div class="span-title" th:text="${b.name}"></div><br>
+					<a th:href="@{/bookstore/detail/{id}(id=${b.id})}">
+						<div class="span-title" th:text="${b.name}"></div></a><br>
 					<div class="info">
 						<div>
 							<img src="/images/home.png">
