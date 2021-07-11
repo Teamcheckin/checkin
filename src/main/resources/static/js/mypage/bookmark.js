@@ -1,9 +1,18 @@
 window.addEventListener("load", ()=>{
 	
-	let bookstore = document.querySelector(".bookstore-card")
-	let id = document.querySelector("input[type=hidden]").value;
+	let bookstore = document.querySelectorAll(".bookstore-card");
+	let bookmarkCount = document.querySelector(".count").value;
+	let valueArr = [];
 	
-	bookstore.addEventListener("click", ()=>{
-		location.href=`/bookstore/detail/${id}`;
-	})
-})
+	for(var i=0; i<bookmarkCount; i++) {
+		
+		valueArr.push(document.querySelectorAll(".bookmark")[i].value);
+		let value = valueArr[i];
+		
+		bookstore[i].addEventListener("click", ()=>{
+			console.log(value);
+			location.href=`/bookstore/detail/${value}`;
+		})
+	}
+	
+});

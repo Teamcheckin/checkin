@@ -16,13 +16,14 @@
         <div class="title">북마크</div>
         </section>
         <section class="bottom-section">
+        	<input class="count" type="hidden" th:value="${count}">
         	<span class="small-title" th:text="${bookstore} == null
         			?'아직 내가 좋아하는 서점이 없어요!'
         			:'내가 좋아하는 서점은 '+${count}+'개예요!'"></span>
         		
          	<div class="bookstore-info">
 				<div th:each="b:${bookstore}" class="bookstore-card"> 
-				<input type="hidden" th:value="${b.id}">
+				<input class="bookmark" type="hidden" th:value="${b.id}">
 					<div class="bookstore-name">
 						<img class="logo-img" th:src="${b.logoImg}?:@{/images/books.png}">
 						<div th:text="${b.name}"></div>
