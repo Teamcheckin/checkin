@@ -43,16 +43,23 @@ input[type="text"]{
 
 /*--card--*/
 .card{
-    margin: 10px 0;
+    margin: 27px 0;
     border-radius: 15px;
     padding: 15px;
-    border: 1px solid black;
-   
+    border: 1px solid black; 
+
 }
+form .card .popup .card{
+    padding: 0 15px 0 15px;
+
+}
+
+
 .popup .card{
 	 border: none;
 	 border-radius: 0;
 	 border-right: 1px solid var(--primary);
+     width: 90%;
 }
     .card .card-img{
         width: 50px;
@@ -80,9 +87,6 @@ section{
 	position: relative;
 }
 .create-btn{
-	/* ¿Ö ¾È µÊ.. ¤Ð¤Ð*/
-	
-	/* margin: 50px 0; */
 	text-align: center;
 }
 
@@ -104,4 +108,11 @@ section{
 	display:flex;
 	overflow:scroll;
 	flex-wrap: nowrap;
+}
+.close{
+    width: 14px;
+    height: 14px;
+    position: absolute;  
+    right: 10px;
+    
 }

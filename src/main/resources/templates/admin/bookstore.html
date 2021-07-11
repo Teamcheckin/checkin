@@ -26,7 +26,7 @@
 
 
       <section>
-         <a th:href="@{/admin/bookstore/insert}" class="btn create-btn"> Create</a>
+       
          <form>
             <div class="operation">
                <!--select와 검색 중 하나만 하기 추천
@@ -54,21 +54,23 @@
                      <div th:each="m : ${member}" class="card">
                         <img th:src="${m.profileImg}?:@{/images/profile.png}" class="card-img">
                         <div class="hi-span">
-                           <span th:text="${m.nickname}+'('+${m.email} +')'">닉네임(email)</span>
+                           <span th:text="${m.nickname}">닉네임(email)</span><br>
+                           <span th:text="${m.email}">닉네임(email)</span><br>
                            <span th:text="'가입: '+${#calendars.format(m.regDate, 'yy-MM-dd')}">가입일</span>
                         </div>
                         <div class="btn-list">
-                           <a th:href="@{admin/bookstore/update}" class="btn assign-btn">임명</a>
+                           <input type="button" th:href="@{admin/bookstore/update}" class="btn assign-btn" value="임명">
                            <input type="hidden" name="memberId" th:value="${m.id}">
                            <input type="hidden" name="bookstoreId" th:value="${b.id}">
                         </div>
                      </div>
+                     <img src="/images/cancel.png" class="close">
                   </div>
                </div>
 
                <div class="btn-list">
-                  <a href="" class="btn popup-btn">서점지기 임명</a>
-                  <a href="" class="btn">편집</a>
+                  <input type="button" class="btn popup-btn" value="서점지기 임명">
+                  <a th:href="@{/bookstore/detail/{id}(id=${b.id})}" class="btn">편집</a>
                </div>
 
             </div>
