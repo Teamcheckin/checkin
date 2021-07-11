@@ -28,8 +28,9 @@ window.addEventListener("load", function(){
             url         :   '/api/hashUpdate',
             type        :   "post",
             dataType    :   "json",
+            traditional :   true,
             contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
-            data        :   {'selected':selectArray},
+            data        :   {selectArray},
             success     :   function(result){console.log("good")}
         });
 		/*

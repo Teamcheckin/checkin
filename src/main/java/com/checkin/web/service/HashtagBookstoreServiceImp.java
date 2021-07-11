@@ -27,9 +27,9 @@ public class HashtagBookstoreServiceImp implements HashtagBookstoreService{
 	}
 
 	@Override
-	public int delete(int hashtagId, int bookstoreId) {
+	public int delete(Integer bookstoreId) {
 		// TODO Auto-generated method stub
-		return dao.delete(hashtagId, bookstoreId);
+		return dao.delete(bookstoreId);
 	}
 
 }

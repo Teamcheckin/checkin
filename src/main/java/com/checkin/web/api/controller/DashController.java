@@ -22,7 +22,7 @@ public class DashController {
 	private HashtagMemberService hashmemService;
 	
 	@RequestMapping("/api/hashUpdate")
-	public String hashUpdate(@RequestBody Map<String, Object> selectArray, final HttpSession session, Model model){
+	public String hashUpdate(@RequestBody List<Integer> selectArray, final HttpSession session, Model model){
 		 Member member = (Member) session.getAttribute("member");
 		 Integer memberId = member.getId();
 

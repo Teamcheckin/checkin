@@ -90,4 +90,8 @@ public Integer[] getBookstoreIdArray() {
 	return dao.getBookstoreIdArray();
 }
 
+@Override
+public int inserthash(HashtagBookstore hashBookstore) {
+	return dao.inserthash(hashBookstore);
+}
 }

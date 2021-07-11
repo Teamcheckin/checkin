@@ -33,12 +33,14 @@ public class BookInsertController {
 	private BookStoreService service;
 	private HashtagService hashService;
 	private GuService guService;
+	private HashtagBookstoreService hashbookservice;
 	
 	@Autowired
-	public BookInsertController(BookStoreService service, HashtagService hashService, GuService guService) {
+	public BookInsertController(BookStoreService service, HashtagService hashService, GuService guService, HashtagBookstoreService hashbookservice) {
 		this.service = service;
 		this.hashService = hashService;
 		this.guService = guService;
+		this.hashbookservice = hashbookservice;
 	}
 	
 	@GetMapping("admin/bookstore/insert")
@@ -160,7 +162,6 @@ public class BookInsertController {
 				File saveFile = new File(filePath);
 				file1.transferTo(saveFile);
 				bookstore.setBgImg(path + '/' + bgName);
-				System.out.println(bookstore.getBgImg());
 			} catch (IOException e) {
 				e.printStackTrace();
 				System.out.println("배경업로드에러발생");
@@ -180,18 +181,19 @@ public class BookInsertController {
 				File saveFile = new File(filePath);
 				file2.transferTo(saveFile);
 				bookstore.setLogoImg(path + '/' + logoName);
-				System.out.println(bookstore.getLogoImg());
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 				System.out.println("로고업로드에러발생");
 			}
 		}
 		
-		HashtagBookstore hashBookstore = new HashtagBookstore();
-		hashBookstore.setHashtagId(hashId);
 		
 		service.update(bookstore);
-		
+		HashtagBookstore hashBookstore = new HashtagBookstore(hashId, id);
+		if(service.getView(id).getHashtagId() != null)
+			hashbookservice.delete(id);
+		service.inserthash(hashBookstore);
 		re.addAttribute("id", id);
 		return "redirect:/bookstore/detail/{id}";
 	}
