@@ -21,9 +21,18 @@ window.addEventListener("load", function(){
 	hashBtn.addEventListener("click", function(){
 		hash.classList.add("d-none");
 		myHash.classList.remove("d-none");
-		console.log(selected);
 		let selectArray = Array.from(selected);
 		console.log(selectArray);
+
+ 		$.ajax({
+            url         :   '/api/hashUpdate',
+            type        :   "post",
+            dataType    :   "json",
+            contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
+            data        :   {'selected':selectArray},
+            success     :   function(result){console.log("good")}
+        });
+		/*
 		fetch('/api/hashUpdate', {
 			method: "POST",
 			headers: {
@@ -35,6 +44,8 @@ window.addEventListener("load", function(){
 		.then(text => {
 			console.log(text);
 		})
+		*/		
+
 	})
 	
 	hash.addEventListener("click", (e)=>{

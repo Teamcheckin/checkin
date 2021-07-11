@@ -38,6 +38,9 @@ input {
 	width: 20px;
 	height: 20px;
 }
+.stamp-info{
+	width: 70%;
+}
 .info div {
     font-size: 10px;
     margin: 0 0 8px 5px;
@@ -51,9 +54,9 @@ input {
     overflow: hidden;
     text-overflow: ellipsis;
 	display: block;
+	width: 90%;
 }
 
-                                  
 
 /* .map-section>div {
 	font-size: 15px;

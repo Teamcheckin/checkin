@@ -25,22 +25,23 @@
 	
 	            <div class="my-activity">
 	                <span  th:text="'자주 가는 서점 '+${bookCount}">자주 가는 서점 2</span>
+   	                <span th:text="'스탬프 '+${stampCount}">스탬프</span>
 	            </div>
         </section>
 
 		<section>
 	    	 <div class="dash-board">
-	            <a href="" th:href="@{mypage/dashboard}">
-	                     서점 대시보드 바로가기
+	            <a href="" th:href="@{bookstore/detail/73}">
+	                     내 서점 바로가기
 	              </a>
 	          </div>
 		</section>
 		 <section class="mypage-menu">
-                <a href="/mypage/bookmark.html" th:href="@{mypage/bookmark}" class="icon-img">
+                <a th:href="@{mypage/bookmark}" class="icon-img">
                 	<span>북마크</span></a>
-                <a href="/mypage/stamp.html" th:href="@{mypage/stamp}" class="icon-img">
+                <a th:href="@{mypage/stamp}" class="icon-img">
                 	<span>내 스탬프</span></a>
-                <a href="/mypage/review.html"  class="icon-img">
+                <a  th:href="@{mypage/review}"  class="icon-img">
                 	<span>내 후기</span></a> 
        	</section>
       	 	 <div class="last-board">
