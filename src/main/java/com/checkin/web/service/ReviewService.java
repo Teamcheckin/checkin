@@ -6,10 +6,10 @@ import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.Gu;
 import com.checkin.web.entity.Hashtag;
 import com.checkin.web.entity.HashtagReview;
+import com.checkin.web.entity.MyReviewView;
 import com.checkin.web.entity.Rating;
 import com.checkin.web.entity.RatingReview;
 import com.checkin.web.entity.Review;
-import com.checkin.web.entity.ReviewView;
 import com.checkin.web.entity.ReviewView2;
 
 public interface ReviewService {
@@ -17,6 +17,7 @@ public interface ReviewService {
 	List<ReviewView2> getViewList();
 	List<ReviewView2> getViewList(String gu); 
 	List<ReviewView2> getBookStoreList(Integer bookstoreId);
+	List<MyReviewView> getMyReviewList(String gu, int memberId);
 	ReviewView2 get(int id);
 	List<Gu> getGu();
 	List<BookStore> getBookstore();

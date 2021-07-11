@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.checkin.web.dao.ReviewDao;
 import com.checkin.web.entity.HashtagReview;
+import com.checkin.web.entity.MyReviewView;
 import com.checkin.web.entity.RatingReview;
 import com.checkin.web.entity.Review;
 import com.checkin.web.entity.ReviewView;
@@ -41,6 +42,12 @@ public class MyBatisReviewDao implements ReviewDao {
 	public List<ReviewView2> getBookStoreList(Integer bookstoreId) {
 
 		return mapper.getBookStoreList(bookstoreId);
+	}
+	
+	@Override
+	public List<MyReviewView> getMyReviewList(String gu, int memberId) {
+
+		return mapper.getMyReviewList(gu, memberId);
 	}
 	
 	@Override

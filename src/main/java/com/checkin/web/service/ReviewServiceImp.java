@@ -14,6 +14,7 @@ import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.Gu;
 import com.checkin.web.entity.Hashtag;
 import com.checkin.web.entity.HashtagReview;
+import com.checkin.web.entity.MyReviewView;
 import com.checkin.web.entity.Rating;
 import com.checkin.web.entity.RatingReview;
 import com.checkin.web.entity.Review;
@@ -59,6 +60,14 @@ public class ReviewServiceImp implements ReviewService {
 		
 		List<ReviewView2> list = reviewDao.getBookStoreList(bookstoreId);
 
+		return list;
+	}
+	
+	@Override
+	public List<MyReviewView> getMyReviewList(String gu, int memberId) {
+
+		List<MyReviewView> list = reviewDao.getMyReviewList(gu, memberId);
+		
 		return list;
 	}
 	

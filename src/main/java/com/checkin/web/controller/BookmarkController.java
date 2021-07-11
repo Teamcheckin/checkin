@@ -16,25 +16,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.Gu;
 import com.checkin.web.entity.Member;
+import com.checkin.web.entity.MyReviewView;
+import com.checkin.web.entity.ReviewView2;
 import com.checkin.web.service.BookStoreService;
 import com.checkin.web.service.BookmarkService;
 import com.checkin.web.service.GuService;
+import com.checkin.web.service.ReviewService;
 
 @Controller
+@RequestMapping("/mypage/")
 public class BookmarkController {
 	private BookmarkService service;
 	private BookStoreService bookService;
 	private GuService guService;
+	private ReviewService reviewService;
 	
 	@Autowired
-	public BookmarkController(BookmarkService service, BookStoreService bookService, GuService guService) {
+	public BookmarkController(
+			BookmarkService service, 
+			BookStoreService bookService, 
+			GuService guService,
+			ReviewService reviewService) {
 		this.service = service;
 		this.bookService = bookService;
 		this.guService = guService;
+		this.reviewService = reviewService;
 	}
 	
 
-	@RequestMapping("/mypage/bookmark")
+	@RequestMapping("bookmark")
 	public String bookmark(HttpSession session, 
 							Model model) {
 		Member member = (Member)session.getAttribute("member");
@@ -66,7 +76,7 @@ public class BookmarkController {
 		return "mypage/bookmark";
 	}
 	
-	@RequestMapping("/mypage/stamp")
+	@RequestMapping("stamp")
 	public String stamp(HttpSession session,
 							Model model,
 							@RequestParam(required=false)String gu) {
@@ -100,5 +110,21 @@ public class BookmarkController {
 		return "mypage/stamp";
 	}
 	
+	@RequestMapping("review")
+	public String review(HttpSession session,
+						String gu, Model model) {
+		
+		Member member = (Member)session.getAttribute("member");
+		int memberId = member.getId();
+
+		List<MyReviewView> list = reviewService.getMyReviewList(gu, memberId);
+		model.addAttribute("list", list);
+		model.addAttribute("selectedGu", gu);
+		
+		List<Gu> guList = reviewService.getGu();
+		model.addAttribute("guList", guList);
+		
+		return "mypage/review";
+	}
 
 }

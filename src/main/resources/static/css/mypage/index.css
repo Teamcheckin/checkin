@@ -91,7 +91,10 @@
        	background: url("/images/stampmark.png") center no-repeat;
         background-size: contain;
     }
-    
+    .mypage-menu  .icon-img:nth-child(3){
+       	background: url("/images/reviewmark.png") center no-repeat;
+        background-size: contain;
+    }  
 
     .mypage-menu a span{
         position:absolute;

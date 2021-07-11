@@ -22,15 +22,39 @@
         <result column="hashtag_name" property="hashtagName"/>
         <result column="rating_id" property="ratingId"/>
         <result column="rating_name" property="ratingName"/>
-        
+	</resultMap>
+	
+	<resultMap type="com.checkin.web.entity.MyReviewView" id="myReviewMap">
+        <result column="bookstore_id" property="bookstoreId"/>
+        <result column="profile_img" property="profileImg"/>
+        <result column="member_id" property="memberId"/>
+        <result column="bookstore_name" property="bookstoreName"/>
+        <result column="bookstore_gu" property="bookstoreGu"/>
+        <result column="hashtag_id" property="hashtagId"/>
+        <result column="hashtag_name" property="hashtagName"/>
+        <result column="rating_id" property="ratingId"/>
+        <result column="rating_name" property="ratingName"/>
 	</resultMap>
 	
 	<select id="getViewList" resultMap="review2Map"> <!-- 반환할 때 사용되는 그릇의 형식 적기 -->
     	select * from review_view2
     	<where>
     	<if test="gu != null and gu != ''"> <!-- gu == '지역별' 문자열일 때도 where 조건 실행 안되게 하기 -->
-    		bookstore_gu = #{gu}  	
+    		bookstore_gu = #{gu}	
     	</if>    	
+    	</where>
+    	order by regdate desc
+    </select>
+    
+    <select id="getMyReviewList" resultMap="myReviewMap"> <!-- 반환할 때 사용되는 그릇의 형식 적기 -->
+    	select * from myreview_view
+    	<where>
+    	<if test="gu != null and gu != ''"> <!-- gu == '지역별' 문자열일 때도 where 조건 실행 안되게 하기 -->
+    		bookstore_gu = #{gu},  	
+    	</if>    
+    	<if test="memberId != null"> <!-- gu == '지역별' 문자열일 때도 where 조건 실행 안되게 하기 -->
+    		member_id = #{memberId}  	
+    	</if> 	
     	</where>
     	order by regdate desc
     </select>
