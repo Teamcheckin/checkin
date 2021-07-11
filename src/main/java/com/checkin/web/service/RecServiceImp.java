@@ -11,6 +11,7 @@ import com.checkin.web.dao.HashtagBookstoreDao;
 import com.checkin.web.dao.HashtagDao;
 import com.checkin.web.dao.HashtagMemberDao;
 import com.checkin.web.entity.BookStore;
+import com.checkin.web.entity.BookStoreView;
 import com.checkin.web.entity.Hashtag;
 import com.checkin.web.entity.HashtagBookstore;
 
@@ -21,6 +22,7 @@ public class RecServiceImp implements RecService{
 	private BookStoreDao bookstoredao;
 	private HashtagBookstoreDao hashtagbookstoredao;
 	private HashtagMemberDao hashtagMemberdao;
+	
 	
 	@Autowired
 	public RecServiceImp(HashtagDao dao, BookStoreDao bookstoredao,
@@ -42,16 +44,7 @@ public class RecServiceImp implements RecService{
 		return dao.getList(query);
 	}
 
-	@Override
-	public List<BookStore> getListBooktStore(String query, String gu) {
-		return bookstoredao.getList(query, null);
-	}
-
-	@Override
-	public List<BookStore> getListHashtagBookstore(String query) {
-		
-		return hashtagbookstoredao.getList(query);
-	}
+	
 
 	@Override
 	public List<Hashtag> getHashNamegByMemberId(int id) {
@@ -66,6 +59,18 @@ public class RecServiceImp implements RecService{
 		System.out.println(hNameList);
 		
 		return hNameList;
+	}
+
+	@Override
+	public List<BookStoreView> getListBooktStore(String query) {
+		// TODO Auto-generated method stub
+		return bookstoredao.getBookstoreByQuery(query);
+	}
+
+	@Override
+	public List<BookStoreView> getListHashtagBookstore(String query) {
+		// TODO Auto-generated method stub
+		return hashtagbookstoredao.getListByView(query);
 	}
 
 }

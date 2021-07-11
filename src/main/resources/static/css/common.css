@@ -77,5 +77,6 @@ section{
     text-align: center;
     margin: 30px 0;
     font-size: 30px;
+    display: block;
 }
 

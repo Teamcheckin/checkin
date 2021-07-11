@@ -74,6 +74,10 @@ hr {
 	margin: 20px 0;
 }
 
+.selected {
+	background-color: #d0e2e2;	
+}
+
 /* -------------------------------------------------------------- */
 
 #main {
@@ -132,12 +136,11 @@ hr {
 .tap-menu {
 	display: flex;
 	justify-content: center;
-	margin: 7px 20px 10px;
+	margin: 12px 20px;
 }
 	
 .tap-menu>span {
 	text-align: center;
-	background-color: #d0e2e2;
 	padding: 3px 50px;
     width: 100%;
 	border: 1px solid black;
@@ -164,7 +167,7 @@ hr {
 
 #map {
 	width: 100%; 
-	height: 180px;
+	height: 230px;
 	border-radius: 10px;
 	margin: 10px 0 15px;
 }
@@ -175,20 +178,19 @@ hr {
 
 .review {
 	display: flex;
-	align-items: center;
 }
 
 .review-content>div {
 	display: flex;
-	margin-bottom: 1.5px;
+	margin-bottom: 2px;
 	font-size: 13px;
 	align-items: center;
 	word-break: break-all;
 }
 
 	.review>.review-img {
-		width: 100px;
-		height: 100px;
+		width: 102px;
+		height: 105px;
 		margin-right: 15px;
 		border-radius: 5px;
 	}
@@ -215,5 +217,12 @@ hr {
 			margin-right: 7px;
 			padding: 2px 3px;
 			border-radius: 7px;
+		}
+	
+		.content {
+			width: 95%;
+			border: 1px solid black;
+			border-radius: 5px;
+			padding: 3px;
 		}
 	

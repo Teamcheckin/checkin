@@ -83,7 +83,7 @@ public class BookmarkController {
 		
 		Map<Integer, String> date = new HashMap<>();
 		/*--구 네임에 해당하는 서점 정보--*/
-		List<BookStore> bookstore= bookService.getList();
+		List<BookStore> bookstore= bookService.getList(null, gu);
 		for(BookStore book : bookstore) {
 			 int bookId = book.getId();
 			 String dateString = service.get(bookId, id);

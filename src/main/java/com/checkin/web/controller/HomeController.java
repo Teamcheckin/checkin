@@ -37,8 +37,9 @@ public class HomeController {
 		// 이 서점은 어떠세요?
 		Integer[] bookStoreArray = service.getBookstoreIdArray();
 		System.out.println(bookStoreArray);
-		//Integer[] id = shuffle(bookStoreArray);
-		BookStoreView bookstore= service.getView(bookStoreArray[0]);
+		Integer[] ids = shuffle(bookStoreArray);
+		System.out.println(ids);
+		BookStoreView bookstore= service.getView(ids[0]);
 		System.out.println(bookstore);
 		model.addAttribute("b", bookstore);
 		
@@ -66,20 +67,20 @@ public class HomeController {
 		return "inc/header";
 	}
 	
-	static Integer[] shuffle(Integer[] bookStoreArray) {
-		int r1, r2;
-		int temp;
-		for (int i = 0; i < bookStoreArray.length; i++) {
-			//for문이 돌아갈때마다 바뀌는 난수 r1, r2생성
-			r1 = (int) (Math.random()*9);
-			r2 = (int) (Math.random()*9);
-			//변수에 배열 r1번의 값을 담기 -> swap용
-			temp = bookStoreArray[r1];
-			//r1번째 값을 r2번째 값으로 바꿔주기
-			bookStoreArray[r1] = bookStoreArray[r2];
-			//r2번째 값에 swap용변수(r1)번 값 담아주기 
-			bookStoreArray[r2] = temp;
-		}
-		return bookStoreArray;
-	}
+
+	
+	public static Integer[] shuffle(Integer[] arr){
+	    for(int x=0 ; x<arr.length; x++){
+	      int i = (int)(Math.random()*arr.length);
+	      int j = (int)(Math.random()*arr.length);
+	            
+	      int tmp = arr[i];
+	      arr[i] = arr[j];
+	      arr[j] = tmp;
+	    }
+	        
+	    return arr;
+	  }
+
+
 }

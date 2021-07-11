@@ -46,7 +46,14 @@
             font-size: 12px;
         }
 
-
+.create-btn{
+	text-align: right;
+	margin: 10px;
+}
+.create-btn a{
+	border-bottom : 1px solid black;
+	padding-bottom: 2px;
+}
 .dash-board a{
 	display:flex;
 	justify-content: center;

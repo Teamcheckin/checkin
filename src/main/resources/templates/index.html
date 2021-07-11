@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/index.css" rel="stylesheet">
+   	<script src="/js/index.js"></script>
     <title>Home</title>
 </head>
 <body>
@@ -15,6 +16,7 @@
       	<section> 
 			<div class="title">이 서점은 어떠세요?</div>
 				<div class="bookstore-card">
+				<input type="hidden" th:value="${b.id}">
 					<img th:src="${b.bgImg}?${b.bgImg}:@{/images/books.png}" class="bookstore-bg">
 					<img th:src="${b.logoImg}?:@{/images/books.png}" class="bookstore-logo">
 					<span class="hi-span">

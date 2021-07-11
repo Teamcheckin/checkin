@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.checkin.web.entity.BookStore;
+import com.checkin.web.entity.BookStoreView;
 import com.checkin.web.entity.Hashtag;
 import com.checkin.web.entity.HashtagBookstore;
 import com.checkin.web.entity.Member;
@@ -56,7 +57,7 @@ public class RecController {
 		System.out.println(memberHlist);
 		System.out.println(memberHlist.get(0).getName());
 		
-		List<BookStore> hlist1 = service.getListHashtagBookstore(memberHlist.get(0).getName());
+		List<BookStoreView> hlist1 = service.getListHashtagBookstore(memberHlist.get(0).getName());
 		model.addAttribute("hlist1",hlist1);
 		model.addAttribute("hlist1Name",memberHlist.get(0).getName());
 		
@@ -64,7 +65,7 @@ public class RecController {
 			h2 = memberHlist.get(1).getName();
 		}
 		
-		List<BookStore> hlist2 = service.getListHashtagBookstore(h2);
+		List<BookStoreView> hlist2 = service.getListHashtagBookstore(h2);
 		model.addAttribute("hlist2",hlist2);
 		model.addAttribute("hlist2Name", h2);
 		
@@ -72,7 +73,7 @@ public class RecController {
 			h3 = memberHlist.get(2).getName();
 		}
 		
-		List<BookStore> hlist3 = service.getListHashtagBookstore(h3);
+		List<BookStoreView> hlist3 = service.getListHashtagBookstore(h3);
 		model.addAttribute("hlist3",hlist3);
 		model.addAttribute("hlist3Name",h3);
 		return "rec/main";
@@ -98,7 +99,7 @@ public class RecController {
 			System.out.println(query);
 			System.out.println(field);
 			
-			List<BookStore> list = service.getListBooktStore(query, null);
+			List<BookStoreView> list = service.getListBooktStore(query);
 			System.out.println(list);
 			System.out.println(list.isEmpty());
 			model.addAttribute("list",list);
@@ -108,12 +109,13 @@ public class RecController {
 			System.out.println(query);
 			System.out.println(field);
 			
-			List<BookStore> list = service.getListHashtagBookstore(query);
+			List<BookStoreView> list = service.getListHashtagBookstore(query);
 			System.out.println(list);
 			
 			model.addAttribute("list",list);
 		}
-			
+		
+
 		
 		return "rec/result";
 	}

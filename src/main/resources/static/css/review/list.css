@@ -56,20 +56,6 @@ button {
     font-family: 'TmoneyRoundWindRegular';
 }
 
-.text-strong {
-	font-weight: bold;
-	color: rgb(250, 195, 43);
-}
-
-:root {
-    --text-color-basic: #464646 !important;
-    --text-color-light: #E2E2E2 !important;
-    --text-color-strong: #FD9F28 !important;
-    --bg-color-light: #FFFEFD !important;
-    --hover-color-bg: #EFF0F1;
-    --border-color-light: #E4E6E8;
-}
-
 /* -------------------------------------------------------------- */
 
 #main {

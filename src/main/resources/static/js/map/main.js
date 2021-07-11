@@ -57,7 +57,14 @@ window.addEventListener("load", function() {
 			        title : bookstores[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 			        image : markerImage // 마커 이미지 
 			    });
-				            
+				                    
+				     
+				if(list[i].bgImg == null) {
+					bgImg = "/images/location.png";
+				} else {
+					bgImg = list[i].bgImg;
+				}
+				      
 				let url = "https://map.kakao.com/link/map/" + list[i].name + ',' + list[i].latitude + ',' + list[i].longitude; 
 				            
 				// 커스텀 오버레이에 표시할 컨텐츠
@@ -69,7 +76,7 @@ window.addEventListener("load", function() {
 				                    </div>
 				                    <div class="body"> 
 				                        <div class="img">
-				                            <img src="${list[i].bgImg}" width="73" height="70">
+				                            <img src="${bgImg}" width="53" height="51">
 				                       </div> 
 				                       <div class="desc">
 				                            <div class="ellipsis">
