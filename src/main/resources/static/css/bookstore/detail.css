@@ -71,7 +71,7 @@ button {
 }
 
 hr {
-	margin: 20px 0;
+	margin: 17px 0;
 }
 
 .selected {
@@ -197,7 +197,7 @@ hr {
 }
 
 .review-section {
-	margin-top: 20px;
+	margin-top: 25px;
 }
 
 .review {
@@ -206,7 +206,7 @@ hr {
 
 .review-content>div {
 	display: flex;
-	margin-bottom: 2px;
+	margin-bottom: 4px;
 	font-size: 13px;
 	align-items: center;
 	word-break: break-all;
@@ -247,7 +247,7 @@ hr {
 			width: 95%;
 			border: 1px solid black;
 			border-radius: 5px;
-			padding: 3px;
+			padding: 4px;
 		}
 		
 form>span {

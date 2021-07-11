@@ -43,7 +43,7 @@ public class BookStoreController {
 		int memberId = member.getId();
 		
 		if(member != null) {
-			if(member.getPositionId() != '1')
+			if(member.getPositionId() != 1)
 				model.addAttribute("member", null);
 			model.addAttribute("member", member);
 		} else {

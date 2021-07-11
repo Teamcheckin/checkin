@@ -121,6 +121,7 @@ select {
 	}
 	
 	.review-content {
+		font-size: 13px;
 		word-break: break-all;
 	}
 	

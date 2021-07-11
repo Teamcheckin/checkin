@@ -17,15 +17,15 @@
    	<main id="main" layout:fragment="main">
     	<section class="bookstore-title">
 	    	<div th:each="b:${bookstore}"> 
-	    		<div class="edit-btn" th:if="${member != null}">
-	    			<a th:href="@{/admin/bookstore/edit/{id}(id=${b.id})}" class="btn">서점 정보 수정</a>
+	    		<div class="edit-btn">
+	    			<a th:if="${member != null}" th:href="@{/admin/bookstore/edit/{id}(id=${b.id})}" class="btn">서점 정보 수정</a>
 				</div> 
 				<div class="parent-bookstore-img">
 		    		<img class="bookstore-img" th:src="${b.bgImg}?:@{/images/bookstore.png}">
 		    		<form id="bookmark-form" action="/mypage/bookmark" method="post">
 						<input class="bookstore-id" type="hidden" name="bookstoreId" th:value="${b.id}">
 			    		<img th:if="${bookmark} == 0" src="/images/blackstar1.png" class="bookmark"> 
-			    		<img th:if="${bookmark} == 1" src="/images/star.png" class="bookmark">   
+			    		<img th:if="${bookmark} == 1" src="/images/star.png" class="bookmarkAdded bookmark">   
 			    		<!-- th:if="${member == null}?onclick="alert(회원가입 시 서비스 이용이 가능합니다.')"" -->	
 					</form>				
 		    		<div class="bookstore-title-info">

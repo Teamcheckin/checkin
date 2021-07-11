@@ -4,6 +4,23 @@ section{
 select{
     border-radius: 10px;
 }
+input {
+	font-family: 'TmoneyRoundWindRegular';
+}
+.btn-list {
+    display: flex;
+    justify-content: flex-end;
+}
+.btn {
+	font-size: 13px;
+    height: 28px;
+}
+.btn-list>a {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin-left: 2px;
+}
 
 /*--mini nav--*/
 .mini-nav{
@@ -110,8 +127,8 @@ section{
 	flex-wrap: nowrap;
 }
 .close{
-    width: 14px;
-    height: 14px;
+    width: 20px;
+    height: 20px;
     position: absolute;  
     right: 10px;
     
