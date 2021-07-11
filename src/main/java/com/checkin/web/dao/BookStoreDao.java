@@ -11,6 +11,7 @@ public interface BookStoreDao {
 	Integer[] getBookstoreIdArray();
 	BookStore get(int id);
 	BookStoreView getView(int id);
+	List<BookStoreView> getBookstoreByQuery(String query);
 	BookStore getBookstore(String name);
 	List<BookStore> getList();
 	List<BookStore> getList(String query, String gu);

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.checkin.web.dao.BookStoreDao;
 import com.checkin.web.dao.HashtagBookstoreDao;
 import com.checkin.web.entity.BookStore;
+import com.checkin.web.entity.BookStoreView;
 import com.checkin.web.entity.HashtagBookstore;
 
 @Repository
@@ -44,5 +45,15 @@ public class MybatisHashtagBookstoreDao implements HashtagBookstoreDao {
 	
 		return mapper.getList(query);
 	}
+
+
+	@Override
+	public List<BookStoreView> getListByView(String query) {
+		// TODO Auto-generated method stub
+		return mapper.getListByView(query);
+	}
+
+
+
 
 }
