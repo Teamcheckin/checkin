@@ -27,13 +27,13 @@
      </select> 
      
         
-     <insert id="insert" parameterType="com.checkin.web.entity.HashtagMember">
+     <insert id="insert">
      	insert into hashtag_member(hashtag_id, member_id)
-     	values(#{hashtagId}, #{memberId})
+     	values(#{param1}, #{param2})
      </insert>
 
      <delete id="delete" parameterType="Integer">
      	delete from hashtag_member
-     	where hashtag_id = #{hashtagId} and member_id = #{memberId}
+     	where hashtag_id = #{param1} and member_id = #{param2}
      </delete>
 </mapper>

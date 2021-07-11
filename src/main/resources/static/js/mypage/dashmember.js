@@ -23,15 +23,16 @@ window.addEventListener("load", function(){
 		myHash.classList.remove("d-none");
 		let selectArray = Array.from(selected);
 		console.log(selectArray);
-
+		let data = {
+			"selected" : selectArray
+		}
  		$.ajax({
             url         :   '/api/hashUpdate',
             type        :   "post",
             dataType    :   "json",
-            traditional :   true,
             contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
-            data        :   {selectArray},
-            success     :   function(result){console.log("good")}
+            data        :   data,
+            success     :   function(result){console.log(result)}
         });
 		/*
 		fetch('/api/hashUpdate', {
