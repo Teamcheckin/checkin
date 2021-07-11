@@ -188,11 +188,11 @@ public class BookInsertController {
 			}
 		}
 		
-		
 		service.update(bookstore);
-		HashtagBookstore hashBookstore = new HashtagBookstore(hashId, id);
+
 		if(service.getView(id).getHashtagId() != null)
 			hashbookservice.delete(id);
+		HashtagBookstore hashBookstore = new HashtagBookstore(hashId, id);
 		service.inserthash(hashBookstore);
 		re.addAttribute("id", id);
 		return "redirect:/bookstore/detail/{id}";

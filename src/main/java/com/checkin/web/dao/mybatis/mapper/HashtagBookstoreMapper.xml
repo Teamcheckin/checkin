@@ -56,8 +56,7 @@
     </insert>
     
     <delete id="delete" parameterType="Integer">
-    	delete from hashtag_bookstore
-    	 where Bookstore_id = #{bookstoreId} 
+    	delete from hashtag_bookstore where Bookstore_id = #{bookstoreId} 
     </delete>	
 
 </mapper>
