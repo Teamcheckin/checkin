@@ -6,6 +6,7 @@ window.addEventListener("load", function() {
 	var review = document.querySelectorAll(".tap-menu>span")[1];
 	var bookstoreSection = document.querySelector(".bookstore-section");
 	var reviewSection = document.querySelector(".review-section");
+	var bookmark = document.querySelector(".bookmark");
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 
