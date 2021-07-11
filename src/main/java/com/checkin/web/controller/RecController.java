@@ -1,5 +1,8 @@
 package com.checkin.web.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,12 +40,13 @@ public class RecController {
 	
 	@RequestMapping("main")
 	public String main(Model model, HttpSession session) {
-
+		//해시태그 불러오기
 		List<Hashtag> hlist = service.getList();
-		
-		System.out.println(hlist);
 		model.addAttribute("hlist",hlist);
 		
+		//추천 코너 3개 - 비로그인 시 랜덤 추천
+		List<Integer> hashIdArray = service.getIdArray();
+		List<Integer> Ids = shuffle(hashIdArray);
 		String h1="#고양이";
 		String h2="#술";
 		String h3="#독서모임";
@@ -56,6 +60,7 @@ public class RecController {
 
 		List<Hashtag> memberHlist = service.getHashNamegByMemberId(memberId);
 		
+		//사용자가 선택한 해시태그가 1개 이상인 경우
 		if(memberHlist.size()>=1) {
 			h1 = memberHlist.get(0).getName();
 		}
@@ -85,7 +90,22 @@ public class RecController {
 	}
 	
 	
-	
+	public static List<Integer> shuffle(List<Integer> array){
+		int r1, r2;
+		int temp;
+		
+		for(int i=0; i<array.size(); i++) {
+			r1 = (int)(Math.random()*array.size());
+			r2 = (int)(Math.random()*array.size());
+			
+			temp = array.get(r1);
+			//array.get(r1) = array.get(r2);
+			
+			
+		}
+		
+		return null;
+	}
 	
 	
 	

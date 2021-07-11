@@ -9,6 +9,10 @@
 		select * from hashtag where id = #{id}
      </select>
      
+     <select id="getIdArray" resultType="Integer">
+		select id from hashtag;
+     </select>
+     
      <select id="getIdByName" resultType="int">
 		select id from hashtag where name = #{name}
      </select>

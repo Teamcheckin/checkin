@@ -11,6 +11,7 @@ public interface HashtagDao {
 	List<Hashtag> getList();
 	List<Hashtag> getList(String query); //해시태그 검색 -> 해시태그 여러개 선택했을 때 나오게 하는거 생각중
 	List<Hashtag> getListById(int id);
+	List<Integer> getIdArray();
 	
 	int getCount();	//해시태그 총 개수
 	int insert(String hashtag); //해시태그 추가

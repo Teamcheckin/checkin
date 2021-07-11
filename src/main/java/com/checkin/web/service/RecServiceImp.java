@@ -73,4 +73,10 @@ public class RecServiceImp implements RecService{
 		return hashtagbookstoredao.getListByView(query);
 	}
 
+	@Override
+	public List<Integer> getIdArray() {
+		// TODO Auto-generated method stub
+		return dao.getIdArray();
+	}
+
 }
