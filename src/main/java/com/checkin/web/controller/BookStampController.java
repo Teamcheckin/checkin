@@ -42,8 +42,9 @@ public class BookStampController {
 	@GetMapping("/bookstamp/detail")
 	public String detail(Model model, @RequestParam Integer id) {
 		List<Gu> guList = guService.getList();
-		model.addAttribute("gu", guList);
-		
+		model.addAttribute("gu", guList);		
+		model.addAttribute("selectedGu", id);
+
 		String gu = guService.getGuById(id);
 		List<BookStore> bookstore = service.getGu(gu);
 		model.addAttribute("guName", gu);
