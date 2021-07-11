@@ -23,7 +23,7 @@
 			<a href="" class="mini-nav-page">해시태그</a>
 		</nav>
 
-		<form action="/admin/hash/result" method="post">
+		<form action="/admin/hash/reg" method="post">
 			<div class="operation">
 				<!--select와 검색 중 하나만 하기 추천
                     둘 다 구현은 너무 번거로움-->
@@ -46,15 +46,16 @@
 			</form>
 		</div>
 
-
-		<div class="card" th:each="h:${list}">
-			<div class="hi-span">
-				<span th:text="${h.name}"></span>
-				<a th:href="@{/admin/hash/del(id=${h.id})}">
-					<img src="/images/times-solid.svg" class="d-none img" />
-				</a>
+		<section>
+			<div class="card" th:each="h:${list}">
+				<div class="hi-span">
+					<span th:text="${h.name}"></span>
+					<a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" th:href="@{/admin/hash/del(id=${h.id})}">
+						<img src="/images/times-solid.svg" class="d-none img" />
+					</a>
+				</div>
 			</div>
-		</div>
+		</section>
 	</main>
 </body>
 </html>

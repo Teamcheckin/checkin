@@ -37,9 +37,6 @@ window.addEventListener("load", function() {
 	}
 	
 	
-/*	function popUp(sentence){
-		window.open("/admin/hash/popUp.html")
-	}*/
 
 	
 })
