@@ -49,7 +49,6 @@ window.addEventListener("load", function() {
 						store[i].bgImg = "/images/location.png";
 					}
 					
-					
 					resultContent = resultContent + `<section id="bookstore">
 					        <div onclick="window.location.href='/bookstore/detail/${store[i].id}'">
 					            <div class="H180">
