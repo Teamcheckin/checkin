@@ -55,11 +55,8 @@
      	values(#{hashtagId}, #{bookstoreId})
     </insert>
     
-    <delete id="delete" parameterType="int">
-    	delete from hashtag_bookstore 
-    	<where>
-    		Hashtag_id = #{hashtagId} and Bookstore_id = #{bookstoreId};
-    	</where>
+    <delete id="delete" parameterType="Integer">
+    	delete from hashtag_bookstore where Bookstore_id = #{bookstoreId} 
     </delete>	
 
 </mapper>

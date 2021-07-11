@@ -34,9 +34,9 @@ public class MybatisHashtagBookstoreDao implements HashtagBookstoreDao {
 	}
 
 	@Override
-	public int delete(int hashtagId, int bookstoreId) {
+	public int delete(Integer bookstoreId) {
 		// TODO Auto-generated method stub
-		return mapper.delete(hashtagId, bookstoreId);
+		return mapper.delete(bookstoreId);
 	}
 
 

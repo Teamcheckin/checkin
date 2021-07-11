@@ -13,6 +13,12 @@ public class HashtagBookstore {
 		return hashtagId;
 	}
 
+	public HashtagBookstore(Integer hashtagId, Integer bookstoreId) {
+		super();
+		this.hashtagId = hashtagId;
+		this.bookstoreId = bookstoreId;
+	}
+
 	public void setHashtagId(Integer hashtagId) {
 		this.hashtagId = hashtagId;
 	}

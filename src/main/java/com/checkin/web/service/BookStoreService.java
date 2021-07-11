@@ -22,4 +22,5 @@ public interface BookStoreService {
 	int update(BookStore bookStore);
 	int delete(int id);
 	
+	int inserthash(HashtagBookstore hashBookstore);
 }

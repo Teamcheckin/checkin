@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class DashController {
 	private HashtagMemberService hashmemService;
 	
 	@RequestMapping("/api/hashUpdate")
-	public String hashUpdate(@RequestBody Map<String, Object> selectArray, final HttpSession session, Model model){
+	public String hashUpdate(@RequestBody List<Integer> selectArray, final HttpSession session, Model model, HttpServletRequest request){
 		 Member member = (Member) session.getAttribute("member");
 		 Integer memberId = member.getId();
 
