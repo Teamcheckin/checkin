@@ -53,15 +53,7 @@ public class BookInsertController {
 		return "bookstore/insert";
 	}
 	
-	
-	@GetMapping("admin/bookstore/edit/{id}")
-	public String BookEditPage(Model model
-			,@PathVariable Integer id) {
-		
-		
-		return "bookstore/edit";
-	}
-	
+
 	@PostMapping("admin/bookstore/insert")
 	public String BookinsertPost(
 				HttpServletRequest request
@@ -69,8 +61,7 @@ public class BookInsertController {
 				,@RequestParam(required=false) MultipartFile file2
 				,BookStore bookstore, Integer hashId, Model model,
 				RedirectAttributes re) {
-		System.out.println(file1);
-		System.out.println(file2);
+
 		// 배경 이미지 저장
 		if(file1 != null) {
 			String path ="/images/bgImg";
@@ -127,5 +118,83 @@ public class BookInsertController {
 		model.addAttribute("bookstore", modelBookstore);
 		return "redirect:/bookstore/detail/{id}";
 	}
+	
+	
+	
+	@GetMapping("admin/bookstore/edit/{id}")
+	public String BookEditPage(Model model
+			,@PathVariable Integer id) {
+		BookStore bookstore = service.get(id);
+		
+		List<Hashtag> hashList = hashService.getList();
+		List<Gu> guList = guService.getList();
+		Integer hashCount = hashService.getCount();
+		model.addAttribute("hashList", hashList);
+		model.addAttribute("guList", guList);
+		model.addAttribute("hashCount", hashCount);
+		model.addAttribute("b", bookstore);
+		return "bookstore/edit";
+	}
+	
+	@PostMapping("admin/bookstore/edit/{id}")
+	public String BookEditPage(Model model, HttpServletRequest request
+			,@RequestParam(required=false) MultipartFile file1
+			,@RequestParam(required=false) MultipartFile file2
+			,BookStore bookstore, Integer hashId
+			,@PathVariable Integer id
+			,RedirectAttributes re) {
+	
+		// 배경 이미지 저장
+		if(file1 != null) {
+			String path ="/images/bgImg";
+			String bgName = file1.getOriginalFilename();
+
+			
+			
+			ServletContext application = request.getServletContext();
+			String uploadPath = application.getRealPath(path);
+			
+			try {
+				String filePath = uploadPath + File.separator + bgName;
+
+				File saveFile = new File(filePath);
+				file1.transferTo(saveFile);
+				bookstore.setBgImg(path + '/' + bgName);
+				System.out.println(bookstore.getBgImg());
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.out.println("배경업로드에러발생");
+			}
+		}
+		
+		//로고 이미지 저장
+		if(file2 != null) {
+			String path ="/images/logoImg";
+			String logoName = file2.getOriginalFilename();
+			
+			ServletContext application = request.getServletContext();
+			String uploadPath = application.getRealPath(path);
+	
+			try {
+				String filePath = uploadPath + File.separator + logoName;
+				File saveFile = new File(filePath);
+				file2.transferTo(saveFile);
+				bookstore.setLogoImg(path + '/' + logoName);
+				System.out.println(bookstore.getLogoImg());
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.out.println("로고업로드에러발생");
+			}
+		}
+		
+		HashtagBookstore hashBookstore = new HashtagBookstore();
+		hashBookstore.setHashtagId(hashId);
+		
+		service.update(bookstore);
+		
+		re.addAttribute("id", id);
+		return "redirect:/bookstore/detail/{id}";
+	}
+	
 
 }
