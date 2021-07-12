@@ -47,13 +47,10 @@ public class ReviewController {
 	private ReviewService service;
 	
 	
-	@RequestMapping("list")
+	@GetMapping("list")
 	public String list(String gu, 
 					Model model,
 					HttpSession session) {
-		
-		Member member = (Member)session.getAttribute("member");
-		int memberId = member.getId();
 		
 		List<ReviewView2> list = service.getViewList(gu);
 		model.addAttribute("list", list);
@@ -62,37 +59,35 @@ public class ReviewController {
 		List<Gu> guList = service.getGu();
 		model.addAttribute("guList", guList);
 		
-		// 리뷰 아이디 포문 돌리기
-		
-		// 내가 좋아요 한 리뷰 아이디 포문 돌리기
-		// 두 아이디에서 같은 게 있으면 map에 리뷰 아이디넣어주기
-		
 		Map<Integer, String> map = new HashMap<>();
 		
-		List<Integer> likeReview = service.getMemberLike(memberId);
-		System.out.println(likeReview);			
+		Member member = (Member)session.getAttribute("member");
+		if(member != null) {
+			int memberId = member.getId();
 
-		
-		for(ReviewView2 review : list) {
+			List<Integer> likeReview = service.getMemberLike(memberId);
 			
-			int entireReviewId = review.getId();
-			
-			for(Integer like : likeReview) {
+			// 리뷰 아이디 반복
+			for(ReviewView2 review : list) {
+				int entireReviewId = review.getId();
 				
-				if(entireReviewId == like) {
-					map.put(like, "ok");					
-				}
-				
+				// 내가 좋아요 한 리뷰 아이디 반복
+				for(Integer like : likeReview) {
+					
+					// 두 아이디에서 같은 아이디가 있으면 map에 리뷰 아이디 넣어주기
+					if(entireReviewId == like) 
+						map.put(like, "ok");					
+				}			
 			}
 			
-			System.out.println(map);			
+		} else {
+			Integer like = null;
+			map.put(like, null);
 		}
-
-		
-		model.addAttribute("map", map);
 				
+		model.addAttribute("map", map);
+		
 		return "review/list";
-		//return "review.list";
 	}
 	
 	@GetMapping("reg")
