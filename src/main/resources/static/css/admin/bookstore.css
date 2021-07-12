@@ -34,7 +34,7 @@ input {
         text-align: center;
         width:100%;
         
-        font-size: 12px;
+        font-size: 10px;
     }
     .mini-nav .mini-nav-page{
         color: black;
@@ -72,6 +72,7 @@ form .card .popup .card{
 }
 
 
+
 .popup .card{
 	 border: none;
 	 border-radius: 0;
@@ -85,10 +86,13 @@ form .card .popup .card{
         display: inline-block;
         border-radius: 10%;
     }
-
-    .card .hi-span span{
+	
+	.card .hi-span .hi-span-nick{
+		font-size: 17px;
+	}
+    .card .hi-span div{
         display:flex;
-        font-size: 13px;
+        font-size: 11px;
     }
 
     .card .hi-span{
@@ -132,4 +136,49 @@ section{
     position: absolute;  
     right: 10px;
     
+}
+
+.logo-img {
+	background-color: white;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+} 
+
+
+.bookstore-card{
+	border: 1px solid gray;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
+}
+.tap-menu>span:nth-child(1) {
+	border-right: none;
+}
+
+	.bookstore-info .info>div {
+		display: flex;
+		line-height: 20px;
+	}
+			
+	.bookstore-info .info img {
+		width: 20px;
+		height: 20px;
+	}
+	
+	.bookstore-info .info div {
+		font-size: 12px;
+		margin: 0 0 2px 5px;
+	}
+	
+.bookstore-name{
+	position:relative;
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+.bookstore-name div{
+	margin-left: 15px;
 }

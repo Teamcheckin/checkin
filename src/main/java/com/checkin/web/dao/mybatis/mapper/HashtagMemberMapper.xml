@@ -42,7 +42,7 @@
 			on hb.bookstore_id = b.id
 			join hashtag h on hb.hashtag_id = h.id
 			join bookmark_store bm on b.id = bm.bookstore_id
-			where bm.member_id='9'
+			where bm.member_id= #{memberId}
 			group by h.name
 			order by count(h.id) desc
      </select>

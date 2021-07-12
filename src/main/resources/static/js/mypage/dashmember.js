@@ -16,6 +16,7 @@ window.addEventListener("load", function(){
 	for(var i of colorCount){
 		let entire = parseInt(i.textContent);
 		entireCount = entireCount + entire;
+		console.log("entireCount" + entireCount)
 	}
 	setTimeout(function() {
 		for(var e of colorCount){
@@ -26,8 +27,8 @@ window.addEventListener("load", function(){
 			} else if(pk==0){
 			color[pk].style.width = '95%';
 			color[pk].style.backgroundColor = '#26a69a';
-			}
 			afterCount = e.textContent;
+			}
 			pk++;
 		}
 	}, 100);
