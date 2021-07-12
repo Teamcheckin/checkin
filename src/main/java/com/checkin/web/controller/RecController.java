@@ -47,9 +47,9 @@ public class RecController {
 		//추천 코너 3개 - 비로그인 시 랜덤 추천
 //		Integer[] hashIdArray = service.getIdArray();
 //		Integer[] Ids = shuffle(hashIdArray);
-		String h1=null;
-		String h2=null;
-		String h3=null;
+		String h1="#고양이";
+		String h2="#고서";
+		String h3="큐레이터";
 		
 		//로그인한 사용자 id 얻어서 사용자가 고른 해시태그 얻어오기
 		Member member = (Member)session.getAttribute("member");
