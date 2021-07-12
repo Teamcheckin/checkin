@@ -28,26 +28,26 @@ public class DashController {
 		 Member member = (Member) session.getAttribute("member");
 		 Integer memberId = member.getId();
 
-		 System.out.println(selected);
+		 // 내 해시목록에 있는 애가 안 왔으면 삭제
+		 Integer[] myHash = hashmemService.getList(memberId);
+		 for(Integer i : myHash) {
+			 boolean areyouthere= Arrays.asList(selected).contains(i);
+			 System.out.println(areyouthere);
+			 if(!areyouthere)
+				 hashmemService.delete(i, memberId);
+		 }
+
 		 for(String stringId :selected) {
 			 Integer id = Integer.parseInt(stringId);
 			 System.out.println(id);
 			 boolean hashTrue= hashmemService.hashCheck(id, memberId);
 			 if(!hashTrue) {
 				 System.out.println("없는 것:" + id);
-			 // 내 해시목록에 없으면, 삽입
+				// 내 해시목록에 없으면, 삽입
 				 hashmemService.insert(id, memberId);
-			 } else {
-				 System.out.println("있는 것:" + id);
-//			// 내 해시목록에 있는 애가 새 해시 목록에 없으면, 삭제
-			 Integer[] myHash = hashmemService.getList(memberId);
-			 System.out.println(myHash);
-			 boolean areyouthere= Arrays.asList(myHash).contains(id);
-			 if(!areyouthere)
-				 System.out.println(id+"야, 너 거기 없니?");
-				 hashmemService.delete(id, memberId);
-			 }
-		  }
+			 } 
+		 }
+			
 			 
 		String ok = "ok";
 		return ok;

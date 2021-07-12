@@ -45,7 +45,11 @@ public class DashController {
 		  Integer memberId = member.getId();
 		  model.addAttribute("member", member);
 			
+		  
+		  List<Map<String, Integer>> mylovehash = hashmemService.mylovehashtag(memberId);
 				
+		  System.out.println(mylovehash);
+		  model.addAttribute("mylovehash", mylovehash);
 			// --- Hash, 나의 Hash, Hash count ---
 			Integer[] hashId = hashmemService.getList(memberId);
 			List<Hashtag> list= hashService.getList(); // 전체 목록

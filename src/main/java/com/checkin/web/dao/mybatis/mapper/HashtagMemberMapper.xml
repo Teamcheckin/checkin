@@ -36,4 +36,14 @@
      	delete from hashtag_member
      	where hashtag_id = #{param1} and member_id = #{param2}
      </delete>
+     
+     <select id="mylovehashtag" resultType="Map">
+			select h.name name, count(h.id) count from hashtag_bookstore hb inner join bookstore b
+			on hb.bookstore_id = b.id
+			join hashtag h on hb.hashtag_id = h.id
+			join bookmark_store bm on b.id = bm.bookstore_id
+			where bm.member_id='9'
+			group by h.name
+			order by count(h.id) desc
+     </select>
 </mapper>

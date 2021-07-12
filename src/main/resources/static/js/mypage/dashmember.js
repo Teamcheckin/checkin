@@ -5,6 +5,33 @@ window.addEventListener("load", function(){
 	let hash = document.querySelector(".hash");
 	const selected = new Set();
 	
+	let mylovehash = document.querySelector(".mylovehash-board");
+	let color = document.querySelectorAll(".color-box");
+	let colorCount = document.querySelectorAll(".box-count");
+	let entireCount = 0;
+	let pk = 0;
+	let million = 0;
+	let afterCount = 0;
+	
+	for(var i of colorCount){
+		let entire = parseInt(i.textContent);
+		entireCount = entireCount + entire;
+	}
+	setTimeout(function() {
+		for(var e of colorCount){
+			if(pk>0){
+				let afterafterCount = (e.textContent / afterCount) * 100;
+				color[pk].style.width = afterafterCount+'%';
+						color[pk].style.backgroundColor = '#ba6b6c';
+			} else if(pk==0){
+			color[pk].style.width = '95%';
+			color[pk].style.backgroundColor = '#26a69a';
+			}
+			afterCount = e.textContent;
+			pk++;
+		}
+	}, 100);
+	
 		
 	myHashBtn.addEventListener("click", function(){
 		hash.classList.remove("d-none");
@@ -34,24 +61,17 @@ window.addEventListener("load", function(){
             data        :   data,
             success     :   function(result){console.log(result)}
         });
-		/*
-		fetch('/api/hashUpdate', {
-			method: "POST",
-			headers: {
-			     'Content-Type': 'application/json'
-		    },
-			body: JSON.parse({selectArray})
-		})
-		.then(res => res.text())
-		.then(text => {
-			console.log(text);
-		})
-		*/		
-
+        
+        location.href = location.href;
 	})
 	
 	hash.addEventListener("click", (e)=>{
 		if(!e.target.classList.contains("hash-edit-list")){
+			return;
+		}
+		
+		if(selected.size > 2 && !e.target.classList.contains("selected")){
+			alert("3개까지만 선택 가능합니다");
 			return;
 		}
 		

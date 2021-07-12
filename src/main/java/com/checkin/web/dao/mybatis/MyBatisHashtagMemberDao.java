@@ -1,5 +1,8 @@
 package com.checkin.web.dao.mybatis;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -46,6 +49,13 @@ public class MyBatisHashtagMemberDao implements HashtagMemberDao{
 	public Integer delete(Integer hashtagId, Integer memberId) {
 		
 		return mapper.delete(hashtagId, memberId);
+	}
+
+
+	@Override
+	public List<Map<String, Integer>> mylovehashtag(Integer memberId) {
+		
+		return mapper.mylovehashtag(memberId);
 	}
 
 }

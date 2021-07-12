@@ -1,5 +1,8 @@
 package com.checkin.web.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +44,12 @@ public class HashtagMemberServiceImp implements HashtagMemberService{
 	public Integer delete(Integer hashtagId, Integer memberId) {
 		
 		return dao.delete(hashtagId, memberId);
+	}
+
+	@Override
+	public List<Map<String, Integer>> mylovehashtag(Integer memberId) {
+
+		return dao.mylovehashtag(memberId);
 	}
 
 }
