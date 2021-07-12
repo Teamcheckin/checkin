@@ -37,7 +37,6 @@ window.addEventListener("load", function(){
 	myHashBtn.addEventListener("click", function(){
 		hash.classList.remove("d-none");
 		myHash.classList.add("d-none");
-		
 			
 		let selectedId = document.querySelectorAll(".selected");
 		for(let j = 0; j < selectedId.length; j++){
@@ -47,8 +46,7 @@ window.addEventListener("load", function(){
 	})
 	
 	hashBtn.addEventListener("click", function(){
-		hash.classList.add("d-none");
-		myHash.classList.remove("d-none");
+		
 		let selectArray = Array.from(selected);
 		console.log(selectArray);
 		let data = {
@@ -63,7 +61,10 @@ window.addEventListener("load", function(){
             success     :   function(result){console.log(result)}
         });
         
-        location.href = location.href;
+        setTimeout(function() {
+			location.href = location.href;
+		}, 300);
+        
 	})
 	
 	hash.addEventListener("click", (e)=>{
