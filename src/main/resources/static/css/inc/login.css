@@ -5,6 +5,9 @@
 	border: 1px solid gray;
 	padding: 10px;
 }
+input {
+	font-family: 'TmoneyRoundWindRegular';
+}
 
 form{
 	display: flex;

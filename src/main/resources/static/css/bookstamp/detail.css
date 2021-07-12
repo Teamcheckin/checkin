@@ -85,5 +85,5 @@ input {
 .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
 .info .img {position: absolute;top: 6px;left: 5px;width: 53px;height: 51px;border: 1px solid #ddd;color: #888;overflow: hidden;}
-.info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 1px;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+.info:after {position: absolute;margin-left: -12px;left: 50%;bottom: 1px;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 .info .link {color: #5085BB;font-size: 10px;}
