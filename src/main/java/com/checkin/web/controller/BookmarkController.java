@@ -163,13 +163,17 @@ public class BookmarkController {
 		return "redirect:/bookstore/detail/{bookstoreId}";
 	}
 
-	// 북마크 삭제
+	// 북마크 취소
 	@PostMapping("bookmark/del")
 	public String bookmarkDel(
+			HttpSession session, 
 			Integer bookstoreId,
 			RedirectAttributes redirect) {
 		
-		service.delStore(bookstoreId);
+		Member member = (Member)session.getAttribute("member");
+		int memberId = member.getId();
+		
+		service.delStore(bookstoreId, memberId);
 		
 		redirect.addAttribute("bookstoreId", bookstoreId);
 			

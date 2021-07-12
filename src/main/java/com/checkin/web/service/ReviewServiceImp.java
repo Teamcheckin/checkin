@@ -11,6 +11,7 @@ import com.checkin.web.dao.GuDao;
 import com.checkin.web.dao.HashtagDao;
 import com.checkin.web.dao.RatingDao;
 import com.checkin.web.dao.ReviewDao;
+import com.checkin.web.dao.ReviewLikeDao;
 import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.Gu;
 import com.checkin.web.entity.Hashtag;
@@ -19,6 +20,8 @@ import com.checkin.web.entity.MyReviewView;
 import com.checkin.web.entity.Rating;
 import com.checkin.web.entity.RatingReview;
 import com.checkin.web.entity.Review;
+import com.checkin.web.entity.ReviewLike;
+import com.checkin.web.entity.ReviewLikeView;
 import com.checkin.web.entity.ReviewView;
 import com.checkin.web.entity.ReviewView2;
 
@@ -30,16 +33,18 @@ public class ReviewServiceImp implements ReviewService {
 	private BookStoreDao bookstoreDao;
 	private HashtagDao hashtagDao;
 	private RatingDao ratingDao;
+	private ReviewLikeDao reviewLikeDao;
 	
 	@Autowired
 	public ReviewServiceImp(ReviewDao reviewDao, GuDao guDao, BookStoreDao bookstoreDao, 
-							HashtagDao hashtagDao, RatingDao ratingDao) {
+							HashtagDao hashtagDao, RatingDao ratingDao, ReviewLikeDao reviewLikeDao) {
 		
 		this.reviewDao = reviewDao;
 		this.guDao = guDao;
 		this.bookstoreDao = bookstoreDao;
 		this.hashtagDao = hashtagDao;
 		this.ratingDao = ratingDao;
+		this.reviewLikeDao = reviewLikeDao;
 	}
 	
 	@Override
@@ -68,6 +73,14 @@ public class ReviewServiceImp implements ReviewService {
 	public List<MyReviewView> getMyReviewList(String gu, int memberId) {
 
 		List<MyReviewView> list = reviewDao.getMyReviewList(gu, memberId);
+		
+		return list;
+	}
+	
+	@Override
+	public List<Integer> getMemberLike(Integer memberId) {
+		
+		List<Integer> list = reviewLikeDao.getMemberLike(memberId);
 		
 		return list;
 	}
@@ -141,10 +154,23 @@ public class ReviewServiceImp implements ReviewService {
 	public int delete(int id) {
 		return reviewDao.delete(id);
 	}
+	
+	@Override
+	public int getLike(Integer reviewId, Integer memberId) {
+		// TODO Auto-generated method stub
+		return reviewLikeDao.getLike(reviewId, memberId);
+	}
 
 	@Override
-	public int likeToggle(int id) {
-		return 0;
+	public int like(ReviewLike reviewLike) {
+		// TODO Auto-generated method stub
+		return reviewLikeDao.insert(reviewLike);
+	}
+
+	@Override
+	public int dontLike(Integer reviewId, Integer memberId) {
+		// TODO Auto-generated method stub
+		return reviewLikeDao.delete(reviewId, memberId);
 	}
 
 }

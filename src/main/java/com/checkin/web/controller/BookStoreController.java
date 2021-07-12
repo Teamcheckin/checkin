@@ -38,25 +38,31 @@ public class BookStoreController {
 	@GetMapping("detail/{id}")
 	public String detail(
 			@PathVariable int id, Model model, HttpSession session) {
-		
+				
 		Member member = (Member)session.getAttribute("member");
-		int memberId = member.getId();
-		
 		if(member != null) {
-			if(member.getPositionId() != 1)
-				model.addAttribute("member", null);
-			model.addAttribute("member", member);
-		} else {
-			model.addAttribute("member", null);
+			int memberId = member.getId();
+			
+			if(member.getPositionId() == 3) {
+				model.addAttribute("member", '0');				
+			} else if(member.getPositionId() == 1 || member.getPositionId() == 2) {
+				model.addAttribute("member", '1');				
+			}
+			
+			Integer hasBookmark = bookmarkService.getBookmark(id, memberId);
+			model.addAttribute("bookmark", hasBookmark);
+			
+		} else if(member == null) {
+			model.addAttribute("member", '0');
+			model.addAttribute("bookmark", '0');
 		}
+		
 		
 		BookStoreView bookstore = service.getView(id);
 		List<ReviewView2> review = reviewService.getBookStoreList(id);
-		Integer hasBookmark = bookmarkService.getBookmark(id, memberId);
 		
 		model.addAttribute("bookstore", bookstore);
 		model.addAttribute("review", review);
-		model.addAttribute("bookmark", hasBookmark);
 		
 		return "bookstore/detail";
 	}

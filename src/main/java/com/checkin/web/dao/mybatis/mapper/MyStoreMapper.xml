@@ -31,8 +31,8 @@
      	values(#{bookstoreId}, #{memberId})
      </insert>
      
-     <delete id="delete" parameterType="Integer">
-     	delete from bookmark_store where Bookstore_id = #{id} 
+     <delete id="delete" parameterType="com.checkin.web.entity.MyStore">
+     	delete from bookmark_store where Member_id = #{memberId} and Bookstore_id = #{bookstoreId} 
      </delete>
      
 </mapper>

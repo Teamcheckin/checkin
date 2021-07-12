@@ -18,11 +18,11 @@
     	<section class="bookstore-title">
 	    	<div th:each="b:${bookstore}"> 
 	    		<div class="edit-btn">
-	    			<a th:if="${member != null}" th:href="@{/admin/bookstore/edit/{id}(id=${b.id})}" class="btn">서점 정보 수정</a>
+	    			<a th:if="${member} == '1'" th:href="@{/admin/bookstore/edit/{id}(id=${b.id})}" class="btn">서점 정보 수정</a>
 				</div> 
 				<div class="parent-bookstore-img">
 		    		<img class="bookstore-img" th:src="${b.bgImg}?:@{/images/bookstore.png}">
-		    		<form id="bookmark-form" action="/mypage/bookmark" method="post">
+		    		<form id="bookmark-form">
 						<input class="bookstore-id" type="hidden" name="bookstoreId" th:value="${b.id}">
 			    		<img th:if="${bookmark} == 0" src="/images/blackstar1.png" class="bookmark"> 
 			    		<img th:if="${bookmark} == 1" src="/images/star.png" class="bookmarkAdded bookmark">   
@@ -64,7 +64,7 @@
 		    	</div>
 		    </div>
 	    	<div id="map"></div>
-	    	<form method="post" action="/bookstore/detail/location" th:if="${member != null}">
+	    	<form method="post" action="/bookstore/detail/location" th:if="${member} == '1'">
 	    		<span>서점 위치 수정</span>
 				<div class="location-btn">
 		    		<input type="text" name="latitude" class="input font" placeholder="위도를 입력하세요">

@@ -13,5 +13,5 @@ public interface MyStoreDao {
 	Integer getBookmark(Integer bookstoreId, Integer memberId);
 	
 	Integer insert(MyStore myStore);
-	Integer delete(Integer storeId);
+	Integer delete(Integer bookstoreId, Integer memberId);
 }

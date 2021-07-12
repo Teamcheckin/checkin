@@ -126,7 +126,7 @@ button {
         }
 
         .nickname {
-        	font-size: 18px;
+        	font-size: 16px;
             margin-left: 10px;
             line-height: 35px;
         }
@@ -155,20 +155,21 @@ button {
 		border-radius: 3px;
 	}
 	
-	.review-img>div {
+	.review-img>form {
 		display: flex;
 		position: absolute;
+		align-items: center;
 		left: 7px;
 		bottom: 0px;
 		background-color: rgb(245, 245, 245);
 		margin: 5px 0 6px 0;
-		padding: 5px;
+		padding: 4px 6px;
 		border-radius: 5px;
 	} 
 		
 		.like {
-			width: 15px;
-			height: 15px;
+			width: 20px;
+			height: 20px;
 			margin: 0 6px 0 3px;
 		}
 	

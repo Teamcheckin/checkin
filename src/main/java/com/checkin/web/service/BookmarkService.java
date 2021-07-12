@@ -15,7 +15,7 @@ public interface BookmarkService {
 	Integer getBookmark(Integer bookstoreId, Integer memberId);
 
 	Integer addStore(MyStore myStore);
-	Integer delStore(Integer storeId);
+	Integer delStore(Integer bookstoreId, Integer memberId);
 	
 	
 	String get(Integer bookstoreId, Integer memberId);

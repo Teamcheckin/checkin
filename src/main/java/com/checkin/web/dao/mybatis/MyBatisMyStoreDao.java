@@ -51,9 +51,9 @@ public class MyBatisMyStoreDao implements MyStoreDao{
 	}
 
 	@Override
-	public Integer delete(Integer storeId) {
+	public Integer delete(Integer bookstoreId, Integer memberId) {
 		
-		return mapper.delete(storeId);
+		return mapper.delete(bookstoreId, memberId);
 	}
 
 }

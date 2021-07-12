@@ -94,5 +94,4 @@ window.addEventListener("load", function() {
 		}
 	}
 	
-	
 });

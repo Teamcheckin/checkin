@@ -7,7 +7,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.checkin.web.entity.BookStore;
 import com.checkin.web.entity.Gu;
@@ -30,6 +33,8 @@ import com.checkin.web.entity.Member;
 import com.checkin.web.entity.Rating;
 import com.checkin.web.entity.RatingReview;
 import com.checkin.web.entity.Review;
+import com.checkin.web.entity.ReviewLike;
+import com.checkin.web.entity.ReviewLikeView;
 import com.checkin.web.entity.ReviewView;
 import com.checkin.web.entity.ReviewView2;
 import com.checkin.web.service.ReviewService;
@@ -41,8 +46,14 @@ public class ReviewController {
 	@Autowired
 	private ReviewService service;
 	
-	@GetMapping("list")
-	public String list(String gu, Model model) {
+	
+	@RequestMapping("list")
+	public String list(String gu, 
+					Model model,
+					HttpSession session) {
+		
+		Member member = (Member)session.getAttribute("member");
+		int memberId = member.getId();
 		
 		List<ReviewView2> list = service.getViewList(gu);
 		model.addAttribute("list", list);
@@ -51,6 +62,35 @@ public class ReviewController {
 		List<Gu> guList = service.getGu();
 		model.addAttribute("guList", guList);
 		
+		// 리뷰 아이디 포문 돌리기
+		
+		// 내가 좋아요 한 리뷰 아이디 포문 돌리기
+		// 두 아이디에서 같은 게 있으면 map에 리뷰 아이디넣어주기
+		
+		Map<Integer, String> map = new HashMap<>();
+		
+		List<Integer> likeReview = service.getMemberLike(memberId);
+		System.out.println(likeReview);			
+
+		
+		for(ReviewView2 review : list) {
+			
+			int entireReviewId = review.getId();
+			
+			for(Integer like : likeReview) {
+				
+				if(entireReviewId == like) {
+					map.put(like, "ok");					
+				}
+				
+			}
+			
+			System.out.println(map);			
+		}
+
+		
+		model.addAttribute("map", map);
+				
 		return "review/list";
 		//return "review.list";
 	}
@@ -182,5 +222,36 @@ public class ReviewController {
 		return "redirect:list";
 	}
 	
-
+	// 좋아요
+	@PostMapping("like")
+	public String like(HttpSession session, 
+			Integer reviewId,
+			Model model) {
+		
+		Member member = (Member)session.getAttribute("member");
+		int memberId = member.getId();
+		
+		ReviewLike reviewLike = new ReviewLike();
+		reviewLike.setReviewId(reviewId);
+		reviewLike.setMemberId(memberId);
+		
+		service.like(reviewLike);
+			
+		return "redirect:/review/list";
+	}
+	
+	
+	// 좋아요 취소
+	@PostMapping("like/del")
+	public String likeDel(
+			HttpSession session, 
+			Integer reviewId) {
+		
+		Member member = (Member)session.getAttribute("member");
+		int memberId = member.getId();
+		
+		service.dontLike(reviewId, memberId);
+					
+		return "redirect:/review/list";
+	}
 }

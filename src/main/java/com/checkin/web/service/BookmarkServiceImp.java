@@ -53,9 +53,9 @@ public class BookmarkServiceImp implements BookmarkService{
 		return dao.insert(myStore);
 	}
 	@Override
-	public Integer delStore(Integer storeId) {
+	public Integer delStore(Integer bookstoreId, Integer memberId) {
 		
-		return dao.delete(storeId);
+		return dao.delete(bookstoreId, memberId);
 	}
 	
 	
