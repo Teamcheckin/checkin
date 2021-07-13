@@ -16,6 +16,7 @@ window.addEventListener("load", function(){
 	for(var i of colorCount){
 		let entire = parseInt(i.textContent);
 		entireCount = entireCount + entire;
+		console.log("entireCount" + entireCount)
 	}
 	setTimeout(function() {
 		for(var e of colorCount){
@@ -26,8 +27,8 @@ window.addEventListener("load", function(){
 			} else if(pk==0){
 			color[pk].style.width = '95%';
 			color[pk].style.backgroundColor = '#26a69a';
-			}
 			afterCount = e.textContent;
+			}
 			pk++;
 		}
 	}, 100);
@@ -36,7 +37,6 @@ window.addEventListener("load", function(){
 	myHashBtn.addEventListener("click", function(){
 		hash.classList.remove("d-none");
 		myHash.classList.add("d-none");
-		
 			
 		let selectedId = document.querySelectorAll(".selected");
 		for(let j = 0; j < selectedId.length; j++){
@@ -46,8 +46,7 @@ window.addEventListener("load", function(){
 	})
 	
 	hashBtn.addEventListener("click", function(){
-		hash.classList.add("d-none");
-		myHash.classList.remove("d-none");
+		
 		let selectArray = Array.from(selected);
 		console.log(selectArray);
 		let data = {
@@ -62,7 +61,10 @@ window.addEventListener("load", function(){
             success     :   function(result){console.log(result)}
         });
         
-        location.href = location.href;
+        setTimeout(function() {
+			location.href = location.href;
+		}, 300);
+        
 	})
 	
 	hash.addEventListener("click", (e)=>{

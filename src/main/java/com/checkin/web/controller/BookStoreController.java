@@ -84,8 +84,6 @@ public class BookStoreController {
 		
 	
 		re.addAttribute("id", id);
-		model.addAttribute(null, bookstoreView);
-		model.addAttribute("bookstore", bookstoreView);
 		model.addAttribute("review", review);
 		
 		return "redirect:/bookstore/detail/{id}";

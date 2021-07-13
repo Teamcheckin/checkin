@@ -1,6 +1,8 @@
 package com.checkin.web.controller.admin;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +35,16 @@ public class BookStoreController {
 		List<BookStore> list = service.getList(query, gu);
 		List<Gu> guList =guService.getList();
 		List<Member> memberList = memberService.getList(2, null);
+		Map<Integer, String> memberName = new HashMap<>();
+		for(BookStore b : list) {
+			if(b.getMemberId() != null) {
+				Integer bmid = b.getMemberId();
+				Member member = memberService.get(bmid);
+				memberName.put(b.getId(), member.getNickname());
+			}
+		}
+		System.out.println(memberName);
+		model.addAttribute("nameNotNumber", memberName);
 		model.addAttribute("bookstore", list);
 		model.addAttribute("gu", guList);
 		model.addAttribute("member", memberList);

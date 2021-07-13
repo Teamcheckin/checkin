@@ -40,22 +40,35 @@
             </div>
          </form>
          <form method="post">
-            <div class="card" th:each=" b : ${bookstore}">
-               <img th:src="${b.logoImg}?:@{/images/books.png}" class="card-img">
-               <div class="hi-span">
-                  <span th:text="${b.name}">서점 이름</span>
-                  <span th:text="${b.address}">서점 위치</span>
-                  <span th:text="${b.operatingTime}">서점 오픈시간</span>
-                  <span th:text="'서점지기: '+ ${b.memberId?:'없음'}">서점지기</span>
+            <div class="card bookstore-info" th:each=" b : ${bookstore}">
+               	<div class="bookstore-info">
+              	 	<div class="bookstore-name">
+						<img class="logo-img" th:src="${b.logoImg}?:@{/images/books.png}">
+						<div th:text="${b.name}"></div>
+		    		</div>
+		    		<div class="info">
+		    			<div>
+							<img src="/images/home.png">
+			    			<div class="address truncate" th:text="${b.address}"></div>	    			
+		    			</div>
+		    			<div>
+							<img src="/images/clock.png">
+		    				<div class="time" th:text="${b.operatingTime}"></div>
+		    			</div>
+				    	<div>
+							<img src="/images/person.jpg">
+                 			<div>서점지기: <span th:text="${nameNotNumber.get(b.id)}?:'공석'"></span></div>
+		    			</div>
+		    		</div>
                </div>
                <div class="popup d-none">
                   <div>
                      <div th:each="m : ${member}" class="card">
                         <img th:src="${m.profileImg}?:@{/images/profile.png}" class="card-img">
                         <div class="hi-span">
-                           <span th:text="${m.nickname}">닉네임(email)</span><br>
-                           <span th:text="${m.email}">닉네임(email)</span><br>
-                           <span th:text="'가입: '+${#calendars.format(m.regDate, 'yy-MM-dd')}">가입일</span>
+                           <div th:text="${m.nickname}" class="hi-span-nick">닉네임</div>
+                           <div th:text="${m.email}">email</div>
+                           <div th:text="'가입: '+${#calendars.format(m.regDate, 'yy-MM-dd')}">가입일</div>
                         </div>
                         <div class="btn-list">
                            <input type="button" th:href="@{admin/bookstore/update}" class="btn assign-btn" value="임명">
