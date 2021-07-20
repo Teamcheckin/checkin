@@ -1,20 +1,40 @@
-# checkin
-### 독립서점 정보 공유 플랫폼
+# ✔ Checkin
+## 독립서점 정보 공유 플랫폼
+책 좋아하시나요? 서점은요? 책에 대한 애정을 잃지 않은 사람들이 모여 독립서점 정보 공유 플랫폼을 만들었습니다. <br >
+서울에는 작지만 자기만의 특색을 가진 독립서점들이 많은데요. 흩어져 있는 독립서점은 발견하기도 정보를 얻기도 쉽지 않습니다. <br >
+**Checkin**과 함께 원하는 독립서점을 찾아 책크인해요! ✔👋
+
+## 👪 사용자
+- 독립서점에 관심이 있지만 정보를 찾기 어려워하는 사람
+- 특색있는 독립서점을 구경하기 좋아하는 사람
+
+## ✔ 사이트
 http://13.125.18.99:8080/index
 
-CHECKIN은 서울에 흩어져 있는 독립서점들의 위치를 지도로 파악하는 데에 목적이 있으며 제휴 서점과 QR 코드 협력을 통해 쿠폰, 도장깨기 등의 서비스를 제공하는 웹 기반 앱 형식 플랫폼입니다.
-책 좋아하시나요? 서점은요? 저희는 코딩을 하지만 책에 대한 애정을 잃지 않은 사람들이 모여 독립서점 정보 공유 플랫폼을 만들었습니다. 서울에는 작지만 자기만의 특색을 가진 독립서점들이 많은데요. 흩어져 있는 독립서점은 발견하기도 정보를 얻기도 쉽지 않습니다. 저희 메인 페이지를 보면 뭔가 독립서점에 대한 정보를 얻을 수 있다는 느낌이 오시나요? 
+## ⏲ 개발 기간
+- 2021.06 ~ 2021.07
 
-만약 서비스가 커진다면, 유지보수가 필요하지 않을까요? 저희 서비스는 관리자를 위한 페이지도 제공하고 있습니다
+## 🔍 기술 스택
+- Front
+  - HTML5
+  - CSS3
+  - JavaScript
+- Back
+  - JAVA
+  - Spring Boot
+  - Thymeleaf
+  - MyBatis
+  - MySQL
+- API
+  - Kakao Map API
+  - Kakao Login API
+  - Daum 도로명주소 API
 
+## 📰 기획 및 설게
+- [명세서](https://docs.google.com/presentation/d/14xvDZbAjFOrBPfYrQIwVT3zaNDxuX67TJ-y3ai3gZPE/edit?usp=sharing)
 
-- 개발인원 : 4명
-
-- 개발기간 : 42일
-
-- 사용기술 : JAVA8, thymeleaf, Spring MVC, MySQL, HTML5, CSS3, Javascript, AJAX, json, Maven
-
-- 사용툴 : Spring Tool Suite 4, VS Code, MySQLworkbench, Git
-
-- 사용API : Kakao Map API, Kakao Login API, Daum 도로명주소 API
-
+## 👩‍💻 Checkin 팀
+- Developer👩‍💻 [강담희](https://github.com/dame2)
+- Developer👩‍💻 [이민주](https://github.com/minjudev)
+- Developer👩‍💻 [정은정](https://github.com/ganada554)
+- Developer👩‍💻 [홍인하](https://github.com/WWIT-55)
