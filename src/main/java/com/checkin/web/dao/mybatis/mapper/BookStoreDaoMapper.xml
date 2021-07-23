@@ -60,7 +60,7 @@
      <select id="getList" resultMap="bookstoreMap">
         select * from bookstore 
 		   <where>  
-		   		<if test="query != null">Name like '%${query}%'</if>
+		   		<if test="query != null">Name like '%${query}%',</if>
 		   		<if test="gu != null">and gu_name = #{gu}</if>
 		   </where>
      </select>
@@ -92,7 +92,7 @@
 		values(#{bookstoreId}, #{hashtagId});
      </insert>
      
-      <update id="update" parameterType="com.checkin.web.entity.BookStore">
+     <update id="update" parameterType="com.checkin.web.entity.BookStore">
      	update bookstore
      	<set>     		
 			<if test="bgImg != null"> Bg_img = #{bgImg},</if>

@@ -9,13 +9,14 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.checkin</groupId>
-	<artifactId>bootPrj</artifactId>
+	<artifactId>checkin</artifactId>
 	<version>1.0</version>
-	<name>bootPrj</name>
+	<name>checkin</name>
 	<description>Spring Boot Project</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
