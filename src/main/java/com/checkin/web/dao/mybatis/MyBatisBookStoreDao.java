@@ -17,16 +17,12 @@ import com.checkin.web.entity.HashtagBookstore;
 @Repository
 public class MyBatisBookStoreDao implements BookStoreDao {
 	
-	private SqlSession sqlSession;
 	private BookStoreDao mapper;
-	
 	
 	@Autowired
 	 public MyBatisBookStoreDao(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
 		mapper = sqlSession.getMapper(BookStoreDao.class);
 	}
-	
 
 	@Override
 	public BookStore get(int id) {
