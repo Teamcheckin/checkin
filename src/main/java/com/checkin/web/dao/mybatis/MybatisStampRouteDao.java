@@ -13,12 +13,10 @@ import com.checkin.web.entity.StampRoute;
 @Repository
 public class MybatisStampRouteDao implements StampRouteDao {
 
-	private SqlSession sqlSession;
 	private StampRouteDao mapper;
 	
 	@Autowired
 	 public MybatisStampRouteDao(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
 		mapper = sqlSession.getMapper(StampRouteDao.class);
 	}
 	

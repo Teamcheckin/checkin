@@ -11,12 +11,11 @@ import com.checkin.web.dao.HashtagMemberDao;
 
 @Repository
 public class MyBatisHashtagMemberDao implements HashtagMemberDao{
-	private SqlSession sqlSession;
+
 	private HashtagMemberDao mapper;
 	
 	@Autowired
 	public MyBatisHashtagMemberDao(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
 		mapper = sqlSession.getMapper(HashtagMemberDao.class);
 	}
 	

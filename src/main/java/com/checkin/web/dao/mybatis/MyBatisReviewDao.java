@@ -19,12 +19,10 @@ import com.checkin.web.entity.ReviewView2;
 @Repository
 public class MyBatisReviewDao implements ReviewDao {
 	
-	private SqlSession sqlSession; 
 	private ReviewDao mapper;
 	
 	@Autowired
 	public MyBatisReviewDao(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
 		mapper = sqlSession.getMapper(ReviewDao.class);
 	}
 

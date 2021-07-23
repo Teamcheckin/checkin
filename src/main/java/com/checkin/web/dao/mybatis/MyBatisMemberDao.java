@@ -11,6 +11,7 @@ import com.checkin.web.entity.Member;
 
 @Repository
 public class MyBatisMemberDao implements MemberDao{
+	
 	private SqlSession sqlSession;
 	private MemberDao mapper;
 	

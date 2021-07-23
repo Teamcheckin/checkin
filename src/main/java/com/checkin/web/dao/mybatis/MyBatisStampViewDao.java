@@ -13,12 +13,10 @@ import com.checkin.web.entity.StampList;
 @Repository
 public class MyBatisStampViewDao implements StampViewDao {
 
-	private SqlSession sqlSession;
 	private StampViewDao mapper;
 	
 	@Autowired
 	public MyBatisStampViewDao(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
 		mapper = sqlSession.getMapper(StampViewDao.class);
 	}
 	

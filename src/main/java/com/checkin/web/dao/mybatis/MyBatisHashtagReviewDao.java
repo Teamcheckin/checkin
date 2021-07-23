@@ -3,13 +3,19 @@ package com.checkin.web.dao.mybatis;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.checkin.web.dao.BookStoreDao;
 import com.checkin.web.dao.HashtagReviewDao;
 import com.checkin.web.entity.HashtagReview;
 
 @Repository
 public class MyBatisHashtagReviewDao implements HashtagReviewDao{
-	private SqlSession sqlSession; 
+
 	private HashtagReviewDao mapper;
+	
+	public MyBatisHashtagReviewDao(SqlSession sqlSession) {
+		mapper = sqlSession.getMapper(HashtagReviewDao.class);
+	}
+	
 	
 	@Override
 	public HashtagReview get(int id) {

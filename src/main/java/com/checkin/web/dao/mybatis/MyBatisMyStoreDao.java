@@ -11,12 +11,11 @@ import com.checkin.web.entity.MyStore;
 
 @Repository
 public class MyBatisMyStoreDao implements MyStoreDao{
-	private SqlSession sqlSession;
+
 	private MyStoreDao mapper;
 	
 	@Autowired
 	public MyBatisMyStoreDao(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
 		mapper = sqlSession.getMapper(MyStoreDao.class);
 	}
 	

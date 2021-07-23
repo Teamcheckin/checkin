@@ -16,13 +16,11 @@ import com.checkin.web.entity.HashtagBookstore;
 public class MybatisHashtagBookstoreDao implements HashtagBookstoreDao {
 
 	
-	private SqlSession sqlSesstion;
 	private HashtagBookstoreDao mapper;
 	
 	
 	@Autowired
 	public MybatisHashtagBookstoreDao(SqlSession sqlSession) {
-		this.sqlSesstion = sqlSession;
 		mapper = sqlSession.getMapper(HashtagBookstoreDao.class);
 	}
 	

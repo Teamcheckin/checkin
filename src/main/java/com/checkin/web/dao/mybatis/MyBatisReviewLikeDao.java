@@ -13,12 +13,10 @@ import com.checkin.web.entity.ReviewLikeView;
 @Repository
 public class MyBatisReviewLikeDao implements ReviewLikeDao {
 	
-	private SqlSession sqlSession; 
 	private ReviewLikeDao mapper;
 	
 	@Autowired
 	public MyBatisReviewLikeDao(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
 		mapper = sqlSession.getMapper(ReviewLikeDao.class);
 	}
 	

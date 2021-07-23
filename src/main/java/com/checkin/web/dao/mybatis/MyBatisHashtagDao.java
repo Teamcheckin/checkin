@@ -12,12 +12,10 @@ import com.checkin.web.entity.Hashtag;
 @Repository
 public class MyBatisHashtagDao implements HashtagDao{
 
-	private SqlSession sqlSession;
 	private HashtagDao mapper;
 
 	@Autowired
 	public MyBatisHashtagDao(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
 		mapper = sqlSession.getMapper(HashtagDao.class);
 	}
 	

@@ -12,12 +12,10 @@ import com.checkin.web.entity.Rating;
 @Repository
 public class MyBatisRatingDao implements RatingDao {
 	
-	private SqlSession sqlSession; 
 	private RatingDao mapper;
 	
 	@Autowired
 	public MyBatisRatingDao(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
 		mapper = sqlSession.getMapper(RatingDao.class);
 	}
 

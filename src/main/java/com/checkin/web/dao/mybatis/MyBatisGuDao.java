@@ -12,12 +12,10 @@ import com.checkin.web.entity.Gu;
 @Repository
 public class MyBatisGuDao implements GuDao {
 
-	private SqlSession sqlSession;
 	private GuDao mapper;
 	
 	@Autowired
 	public MyBatisGuDao(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
 		mapper = sqlSession.getMapper(GuDao.class);
 	}
 	
