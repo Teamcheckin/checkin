@@ -30,7 +30,7 @@ http://13.125.18.99:8080/index
   - Kakao Login API
   - Daum 도로명주소 API
 
-## 📰 기획 및 설게
+## 📰 기획 및 설계
 - [명세서](https://docs.google.com/presentation/d/14xvDZbAjFOrBPfYrQIwVT3zaNDxuX67TJ-y3ai3gZPE/edit?usp=sharing)
 
 ## 👩‍💻 Checkin 팀
