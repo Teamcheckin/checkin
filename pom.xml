@@ -8,10 +8,10 @@
 		<version>2.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.checkin.web</groupId>
-	<artifactId>checkin</artifactId>
+	<groupId>com.checkin</groupId>
+	<artifactId>bootPrj</artifactId>
 	<version>1.0</version>
-	<name>checkin</name>
+	<name>bootPrj</name>
 	<description>Spring Boot Project</description>
 	<properties>
 		<java.version>1.8</java.version>
